@@ -1,0 +1,219 @@
+Petit transporteur
+
+    Feu rapide de Chasseur lourd : 66,67% (3)
+    Feu rapide de Traqueur : 66,67% (3)
+    Feu rapide de Étoile de la mort : 99,6% (250)
+    Feu rapide contre Sonde d'espionnage : 80% (5)
+    Feu rapide contre Satellite solaire : 80% (5)
+    Feu rapide contre Foreuse : 80% (5)
+
+Grand transporteur
+
+    Feu rapide de Traqueur : 66,67% (3)
+    Feu rapide de Étoile de la mort : 99,6% (250)
+    Feu rapide contre Sonde d'espionnage : 80% (5)
+    Feu rapide contre Satellite solaire : 80% (5)
+    Feu rapide contre Foreuse : 80% (5)
+
+Chasseur léger
+
+    Feu rapide de Croiseur : 83,34% (6)
+    Feu rapide de Étoile de la mort : 99,5% (200)
+    Feu rapide de Éclaireur : 66,67% (3)
+    Feu rapide contre Sonde d`espionnage : 80% (5)
+    Feu rapide contre Satellite solaire : 80% (5)
+    Feu rapide contre Foreuse : 80% (5)
+
+Chasseur lourd
+
+    Feu rapide de Traqueur: 75% (4)
+    Feu rapide de Étoile de la mort: 99% (100)
+    Feu rapide de Éclaireur: 50% (2)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Petit transporteur: 66,67% (3)
+
+Croiseur
+
+    Feu rapide de Traqueur: 75% (4)
+    Feu rapide de Étoile de la mort: 96,97% (33)
+    Feu rapide de Éclaireur: 66,67% (3)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Chasseur léger: 83,34% (6)
+    Feu rapide contre Lanceur de missiles: 90% (10)
+
+Vaisseau de bataille
+
+    Feu rapide de Traqueur: 85,72% (7)
+    Feu rapide de Étoile de la mort: 96,67% (30)
+    Feu rapide de Faucheur: 85,72% (7)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Éclaireur: 80% (5)
+
+Vaisseau de colonisation
+
+    Feu rapide de Étoile de la mort: 99,6% (250)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+
+Recycleur
+
+    Feu rapide de Étoile de la mort: 99,6% (250)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+
+Sonde d'espionnage
+
+    Feu rapide de Chasseur léger: 80% (5)
+    Feu rapide de Chasseur lourd: 80% (5)
+    Feu rapide de Croiseur: 80% (5)
+    Feu rapide de Vaisseau de bataille: 80% (5)
+    Feu rapide de Traqueur: 80% (5)
+    Feu rapide de Bombardier: 80% (5)
+    Feu rapide de Destructeur: 80% (5)
+    Feu rapide de Étoile de la mort: 99,6% (250)
+    Feu rapide de Faucheur: 80% (5)
+    Feu rapide de Éclaireur: 80% (5)
+    Feu rapide de Petit transporteur: 80% (5)
+    Feu rapide de Grand transporteur: 80% (5)
+    Feu rapide de Vaisseau de colonisation: 80% (5)
+    Feu rapide de Recycleur: 80% (5)
+
+Bombardier
+
+    Feu rapide de Étoile de la mort: 96% (25)
+    Feu rapide de Faucheur: 75% (4)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Lanceur de missiles: 95% (20)
+    Feu rapide contre Artillerie laser légère: 95% (20)
+    Feu rapide contre Artillerie laser lourde: 90% (10)
+    Feu rapide contre Artillerie à ions: 90% (10)
+    Feu rapide contre Canon de Gauss: 80% (5)
+    Feu rapide contre Lanceur de plasma: 80% (5)
+
+Satellite solaire
+
+    Feu rapide de Chasseur léger: 80% (5)
+    Feu rapide de Chasseur lourd: 80% (5)
+    Feu rapide de Croiseur: 80% (5)
+    Feu rapide de Vaisseau de bataille: 80% (5)
+    Feu rapide de Traqueur: 80% (5)
+    Feu rapide de Bombardier: 80% (5)
+    Feu rapide de Destructeur: 80% (5)
+    Feu rapide de Étoile de la mort: 99,6% (250)
+    Feu rapide de Faucheur: 80% (5)
+    Feu rapide de Éclaireur: 80% (5)
+    Feu rapide de Petit transporteur: 80% (5)
+    Feu rapide de Grand transporteur: 80% (5)
+    Feu rapide de Vaisseau de colonisation: 80% (5)
+    Feu rapide de Recycleur: 80% (5)
+
+Traqueur
+
+    Feu rapide de Destructeur: 50% (2)
+    Feu rapide de Étoile de la mort: 93,34% (15)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Chasseur lourd: 75% (4)
+    Feu rapide contre Croiseur: 75% (4)
+    Feu rapide contre Vaisseau de bataille: 85,72% (7)
+    Feu rapide contre Petit transporteur: 66,67% (3)
+    Feu rapide contre Grand transporteur: 66,67% (3)
+
+Destructeur
+
+    Feu rapide de Étoile de la mort: 80% (5)
+    Feu rapide de Faucheur: 66,67% (3)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Artillerie laser légère: 90% (10)
+    Feu rapide contre Traqueur: 50% (2)
+
+Étoile de la mort
+
+    Feu rapide contre Sonde d`espionnage: 99,6% (250)
+    Feu rapide contre Satellite solaire: 99,6% (250)
+    Feu rapide contre Chasseur léger: 99,5% (200)
+    Feu rapide contre Chasseur lourd: 99% (100)
+    Feu rapide contre Croiseur: 96,97% (33)
+    Feu rapide contre Vaisseau de bataille: 96,67% (30)
+    Feu rapide contre Bombardier: 96% (25)
+    Feu rapide contre Destructeur: 80% (5)
+    Feu rapide contre Petit transporteur: 99,6% (250)
+    Feu rapide contre Grand transporteur: 99,6% (250)
+    Feu rapide contre Vaisseau de colonisation: 99,6% (250)
+    Feu rapide contre Recycleur: 99,6% (250)
+    Feu rapide contre Lanceur de missiles: 99,5% (200)
+    Feu rapide contre Artillerie laser légère: 99,5% (200)
+    Feu rapide contre Artillerie laser lourde: 99% (100)
+    Feu rapide contre Artillerie à ions: 99% (100)
+    Feu rapide contre Canon de Gauss: 98% (50)
+    Feu rapide contre Traqueur: 93,34% (15)
+    Feu rapide contre Éclaireur: 96,67% (30)
+    Feu rapide contre Faucheur: 90% (10)
+    Feu rapide contre Foreuse: 99,6% (250)
+
+Faucheur
+
+    Feu rapide de Étoile de la mort: 90% (10)
+    Feu rapide de Artillerie à ions: 50% (2)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Vaisseau de bataille: 85,72% (7)
+    Feu rapide contre Bombardier: 75% (4)
+    Feu rapide contre Destructeur: 66,67% (3)
+
+Éclaireur
+
+    Feu rapide de Vaisseau de bataille: 80% (5)
+    Feu rapide de Étoile de la mort: 96,67% (30)
+    Feu rapide contre Sonde d`espionnage: 80% (5)
+    Feu rapide contre Satellite solaire: 80% (5)
+    Feu rapide contre Foreuse: 80% (5)
+    Feu rapide contre Croiseur: 66,67% (3)
+    Feu rapide contre Chasseur léger: 66,67% (3)
+    Feu rapide contre Chasseur lourd: 50% (2)
+
+Lanceur de missiles
+
+    Feu rapide de Croiseur: 90% (10)
+    Feu rapide de Bombardier: 95% (20)
+    Feu rapide de Étoile de la mort: 99,5% (200)
+
+Artillerie Laser légère
+
+    Feu rapide de Bombardier: 95% (20)
+    Feu rapide de Destructeur: 90% (10)
+    Feu rapide de Étoile de la mort: 99,5% (200)
+
+Artillerie laser lourde
+
+    Feu rapide de Bombardier: 90% (10)
+    Feu rapide de Étoile de la mort: 99% (100)
+
+Canon de Gauss
+
+    Feu rapide de Bombardier: 80% (5)
+    Feu rapide de Étoile de la mort: 98% (50)
+
+Artillerie à ions
+
+    Feu rapide de Bombardier: 90% (10)
+    Feu rapide de Étoile de la mort: 99% (100)
+    Feu rapide contre Faucheur: 50% (2)
+
+Lanceur de plasma
+
+    Feu rapide de Bombardier: 80% (5)
