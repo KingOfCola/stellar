@@ -54,26 +54,50 @@ cdef class FightField:
     cdef Fleet fleet_1, fleet_2
     cdef int max_rounds
 
-    def __cinit__(self, cnp.ndarray[DTYPE_t, ndim=2] fleet_1, cnp.ndarray[DTYPE_t, ndim=2] fleet_2, int max_rounds=MAX_ROUNDS):
+    def __cinit__(self, Fleet fleet_1, Fleet fleet_2, int max_rounds=MAX_ROUNDS):
         """
         Initialize the FightField object.
         The function takes two fleets and the maximum number of rounds to simulate.
         The fleets are stored as 2D numpy arrays, where each column represents a ship.
         """
-        # Extract the number of ships in each fleet
-        self.nb_ships_1 = fleet_1.shape[1]
-        self.nb_ships_2 = fleet_2.shape[1]
-
-        # Allocate memory for the fleets
-        self.fleet_1 = Fleet(self.nb_ships_1)
-        self.fleet_2 = Fleet(self.nb_ships_2)
-
         # Copy the fleets to the allocated memory
-        self.fleet_1.copy_2d_array(fleet_1)
-        self.fleet_2.copy_2d_array(fleet_2)
+        self.fleet_1 = fleet_1
+        self.fleet_2 = fleet_2
 
         # Store the additional parameters
         self.max_rounds = max_rounds
+
+    def describe(self):
+        """
+        Prints the number of ships in each fleet and a sample of the fleets.
+        """
+        print("Fleet 1:")
+        self.fleet_1.describe()
+        print()
+        print("Fleet 2:")
+        self.fleet_2.describe()
+
+    def compact_fleet_1(self):
+        """
+        Convert the first fleet to a compact fleet.
+
+        Returns
+        -------
+        CompactFleet
+            The compact fleet of the first fleet.
+        """
+        return compact_fleet_from_fleet(self.fleet_1)
+
+    def compact_fleet_2(self):
+        """
+        Convert the second fleet to a compact fleet.
+
+        Returns
+        -------
+        CompactFleet
+            The compact fleet of the second fleet.
+        """
+        return compact_fleet_from_fleet(self.fleet_2)
 
     def __dealloc__(self):
         pass
@@ -191,6 +215,10 @@ cdef class Armada:
         armada.copy_2d_array(ships)
         return armada
 
+    @property
+    def nb_ships_(self):
+        return self.nb_ships
+
     def __dealloc__(self):
         # Deallocate the fleet
         if self.ships is not NULL:
@@ -246,7 +274,7 @@ cdef class CompactFleet:
             The compact fleet as a numpy array.
         """
         # Create a numpy array to store the compact fleet
-        cdef ships = np.empty(self.nb_ship_types, dtype=DTYPE)
+        cdef ships = np.empty(self.nb_ship_types, dtype=int)
         cdef int ship_type_idx
 
         # Populate the numpy array with the ships from the compact fleet
@@ -317,6 +345,8 @@ cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):
     cdef int ship_idx, ship_type
 
     cdef DTYPE_t ship_type_idx
+
+    compact_fleet.initialize()
     
     # Initialize the compact fleet with zeros
     for ship_type_idx in range(nb_ship_types):
@@ -345,7 +375,7 @@ cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):
     Fleet
         The converted fleet.
     """
-    print("Converting compact fleet to fleet", compact_fleet.nb_ships())
+
     # Create a new fleet with the number of ships in the compact fleet
     cdef Fleet fleet = Fleet(compact_fleet.nb_ships())
     fleet.initialize()
@@ -368,7 +398,7 @@ cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):
 
 
 
-cdef fight_fleets(FightField fight_field):
+cpdef void fight_fleets(FightField fight_field):
     """
     Simulate inplace a fight between two fleets. After the function call,
     the fleets are modified to reflect the fight.
@@ -396,7 +426,7 @@ cdef fight_fleets(FightField fight_field):
 
         rounds += 1
 
-cdef remove_destroyed_ships(Fleet fleet):
+cpdef void remove_destroyed_ships(Fleet fleet):
     """
     Remove inplace the destroyed ships from the fleet.
 
@@ -422,7 +452,7 @@ cdef remove_destroyed_ships(Fleet fleet):
     # Resize the fleet to remove the destroyed ships
     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
 
-cdef restore_shields(Fleet fleet):
+cpdef void restore_shields(Fleet fleet):
     """
     Restore the shields of the fleet.
 
@@ -435,9 +465,9 @@ cdef restore_shields(Fleet fleet):
 
     # Restore the shields of each ship in the fleet to its shield generator value
     for ship_idx in range(fleet.nb_ships):
-        fleet[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
+        fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
 
-cdef fight_single_round(FightField fight_field):
+cpdef void fight_single_round(FightField fight_field):
     """
     Simulate a single round of fight between two fleets.
     The function returns the remaining fleet after the fight.
@@ -460,7 +490,7 @@ cdef fight_single_round(FightField fight_field):
     remove_destroyed_ships(fleet_1)
     remove_destroyed_ships(fleet_2)
 
-cdef fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
+cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
     """
     Simulate inplace a one-way fight between two fleets.
     
@@ -479,14 +509,16 @@ cdef fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
     nb_ships_attacker = fleet_attacker.nb_ships
     nb_ships_target = fleet_target.nb_ships
 
+    target_idxes = np.random.randint(0, nb_ships_target,size=nb_ships_attacker)
+
     # Each ship fom the first fleet attacks a random ship of the second fleet
     for attacker_idx in range(nb_ships_attacker):
         # Select a random target from the second fleet
-        target_idx = np.random.randint(0, nb_ships_target)
+        target_idx = target_idxes[attacker_idx]
 
         # Calculate damage based on the attack value of the attacker and the shield value of the target
-        damage = fleet_attacker[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
-        shield_value = fleet_target[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+        damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
+        shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
         shielded_damage = min(damage, shield_value)
         unshielded_damage = damage - shielded_damage
 
@@ -496,6 +528,6 @@ cdef fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
             shielded_damage = 0
 
         # Apply damage to the target ship
-        fleet_target[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
-        fleet_target[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
-        fleet_target[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
+        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
+        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
