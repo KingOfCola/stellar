@@ -19,6 +19,8 @@ import numpy as np
 cimport numpy as cnp
 
 from libc.stdlib cimport malloc, free, realloc
+from libc.stdlib cimport rand, RAND_MAX
+
 
 # We now need to fix a datatype for our arrays. I've used the variable
 # DTYPE for this, which is assigned to the usual NumPy runtime
@@ -509,12 +511,10 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
     nb_ships_attacker = fleet_attacker.nb_ships
     nb_ships_target = fleet_target.nb_ships
 
-    target_idxes = np.random.randint(0, nb_ships_target,size=nb_ships_attacker)
-
     # Each ship fom the first fleet attacks a random ship of the second fleet
     for attacker_idx in range(nb_ships_attacker):
         # Select a random target from the second fleet
-        target_idx = target_idxes[attacker_idx]
+        target_idx = choose_target(nb_ships_target)
 
         # Calculate damage based on the attack value of the attacker and the shield value of the target
         damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
@@ -531,3 +531,34 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
         fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
         fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
         fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+
+cpdef int choose_target(int nb_ships_target):
+    """
+    Choose a random target from the target fleet.
+
+    Parameters
+    ----------
+    nb_ships_target : int
+        The number of ships in the target fleet.
+
+    Returns
+    -------
+    int
+        The index of the chosen target ship.
+    """
+    # bound is the maximum value of the random number so far generated
+    cdef long bound = 1
+    # x is the random number generated so far
+    cdef int x = 0
+
+    # We need to tune the generated random number so that it gets
+    # uniformly distributed between 0 and nb_ships_target - 1
+    # To do so we generate a random number between 0 and N where
+    # N is much greater than nb_ships_target.
+    while bound < 100 * nb_ships_target:
+        x *= RAND_MAX
+        x += rand()
+
+        bound *= RAND_MAX
+
+    return x % nb_ships_target
