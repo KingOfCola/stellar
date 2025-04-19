@@ -12,31 +12,29 @@ import numpy as np
 
 from fight import fight
 
-v1 = np.array([1, 2, 3, 4, 5])
+v1 = np.array([1, 5, 3, 4, 5])
 v2 = np.array([2, 200, 30, 40, 50])
 
 
-compact_fleet_array = np.array([2, 5])
+compact_fleet_1_array = np.array([5, 2])
+compact_fleet_2_array = np.array([3, 7])
 armada_array = np.array([v1, v2]).T[1:, :]
 
 armada = fight.Armada.from_array(armada_array)
-compact_fleet = fight.CompactFleet.from_array(compact_fleet_array)
+compact_fleet_1 = fight.CompactFleet.from_array(compact_fleet_1_array)
+compact_fleet_2 = fight.CompactFleet.from_array(compact_fleet_2_array)
 
-fleet = fight.fleet_from_compact_fleet(compact_fleet, armada)
+fleet_1 = fight.fleet_from_compact_fleet(compact_fleet_1, armada)
+fleet_2 = fight.fleet_from_compact_fleet(compact_fleet_2, armada)
 
-fleet_1_summary = [(5, v1), (2, v2)]
-fleet_2_summary = [(3, v1), (7, v2)]
+fight_field = fight.FightField(fleet_1, fleet_2)
 
-fleet_1 = np.concatenate(
-    [np.repeat(ship[:, None], count, axis=1) for count, ship in fleet_1_summary], axis=1
-)
-fleet_2 = np.concatenate(
-    [np.repeat(ship[:, None], count, axis=1) for count, ship in fleet_2_summary], axis=1
-)
+print("Battle started")
+fight_field.describe()
+fight.fight_fleets(fight_field)
 
-result_1, result_2 = fight.fight_single_round(fleet_1, fleet_2)
-print("Fleet 1 summary:")
-print(result_1)
+print("Battle ended")
+fight_field.describe()
 
-print("Fleet 2 summary:")
-print(result_2)
+fleet_1.describe()
+fleet_2.describe()
