@@ -1,0 +1,22 @@
+﻿Nom,Type,Métal,Cristal,Deutérium,Points de structure,Puissance du bouclier,Valeur d'attaque,Capacité de fret,Vitesse de base,Consommation
+Petit transporteur,Vaisseau,2000,2000,0,4000,10,5,5000,5000,10
+Grand transporteur,Vaisseau,6000,6000,0,12000,25,5,25000,7500,50
+Chasseur léger,Vaisseau,3000,1000,0,4000,10,50,50,12500,20
+Chasseur lourd,Vaisseau,6000,4000,0,10000,25,150,100,10000,75
+Croiseur,Vaisseau,20000,7000,2000,27000,50,400,800,15000,300
+Vaisseau de bataille,Vaisseau,45000,15000,0,60000,200,1000,1500,10000,500
+Destructeur,Vaisseau,60000,50000,15000,110000,500,2000,2000,5000,1000
+Étoile de la mort,Vaisseau,5000000,4000000,1000000,9000000,50000,200000,1000000,100,1
+Traqueur,Vaisseau,30000,40000,15000,70000,400,700,750,10000,250
+Bombardier,Vaisseau,50000,25000,15000,75000,500,1000,500,4000,1000
+Recycleur,Vaisseau,10000,6000,2000,16000,10,10,20000,2000,300
+Sonde espionnage,Vaisseau,0,1000,0,1000,0.01,0.01,5,100000000,1
+Vaisseau de colonisation,Vaisseau,10000,20000,10000,30000,100,50,7500,2500,1000
+Lanceur de missiles,Défense,2000,0,0,2000,20,80,NA,NA,NA
+Artillerie laser légère,Défense,1500,500,0,2000,25,100,NA,NA,NA
+Artillerie laser lourde,Défense,6000,2000,0,8000,100,250,NA,NA,NA
+Artillerie à ions,Défense,2000,6000,0,8000,500,150,NA,NA,NA
+Canon de Gauss,Défense,20000,15000,2000,35000,200,1100,NA,NA,NA
+Lanceur de plasma,Défense,50000,50000,30000,100000,300,3000,NA,NA,NA
+Petit bouclier,Défense,10000,10000,0,20000,2000,1,NA,NA,NA
+Grand bouclier,Défense,50000,50000,0,100000,10000,1,NA,NA,NA
