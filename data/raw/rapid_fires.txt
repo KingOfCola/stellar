@@ -192,7 +192,7 @@ Lanceur de missiles
     Feu rapide de Bombardier: 95% (20)
     Feu rapide de Étoile de la mort: 99,5% (200)
 
-Artillerie Laser légère
+Artillerie laser légère
 
     Feu rapide de Bombardier: 95% (20)
     Feu rapide de Destructeur: 90% (10)
