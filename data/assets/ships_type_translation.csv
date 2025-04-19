@@ -1,22 +1,22 @@
-type_translation
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
+name,type_translation
+Petit transporteur,0
+Grand transporteur,1
+Chasseur léger,2
+Chasseur lourd,3
+Croiseur,4
+Vaisseau de bataille,5
+Destructeur,6
+Étoile de la mort,7
+Traqueur,8
+Bombardier,9
+Recycleur,10
+Sonde espionnage,11
+Vaisseau de colonisation,12
+Lanceur de missiles,13
+Artillerie laser légère,14
+Artillerie laser lourde,15
+Artillerie à ions,16
+Canon de Gauss,17
+Lanceur de plasma,18
+Petit bouclier,19
+Grand bouclier,20

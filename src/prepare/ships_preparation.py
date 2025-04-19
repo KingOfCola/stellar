@@ -42,4 +42,9 @@ if __name__ == "__main__":
 
     # Save the prepared data
     ships_chars.to_csv(data("assets/ships_chars.csv"), index=False)
-    ships_type_translation.to_csv(data("assets/ships_type_translation.csv"), index=True)
+    ships_type_translation_df = pd.DataFrame(ships_type_translation)
+    ships_type_translation_df.index.name = "name"
+    ships_type_translation_df.reset_index(inplace=True)
+    ships_type_translation_df.to_csv(
+        data("assets/ships_type_translation.csv"), index=False
+    )
