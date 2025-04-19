@@ -54,9 +54,10 @@ cdef class FightField:
     """
 
     cdef Fleet fleet_1, fleet_2
+    cdef Armada armada
     cdef int max_rounds
 
-    def __cinit__(self, Fleet fleet_1, Fleet fleet_2, int max_rounds=MAX_ROUNDS):
+    def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada = None, int max_rounds=MAX_ROUNDS):
         """
         Initialize the FightField object.
         The function takes two fleets and the maximum number of rounds to simulate.
@@ -65,6 +66,7 @@ cdef class FightField:
         # Copy the fleets to the allocated memory
         self.fleet_1 = fleet_1
         self.fleet_2 = fleet_2
+        self.armada = armada
 
         # Store the additional parameters
         self.max_rounds = max_rounds
@@ -100,6 +102,17 @@ cdef class FightField:
             The compact fleet of the second fleet.
         """
         return compact_fleet_from_fleet(self.fleet_2)
+
+    def armada_(self):
+        """
+        Exposes the armada of the fight field.
+
+        Returns
+        -------
+        Armada
+            The armada of the fight field.
+        """
+        return self.armada
 
     def __dealloc__(self):
         pass
@@ -172,6 +185,7 @@ cdef class Fleet:
 
 cdef class Armada:
     cdef DTYPE_t* ships
+    cdef int* rapid_fire
     cdef int nb_ships
 
     def __cinit__(self, int nb_ships):
@@ -181,15 +195,51 @@ cdef class Armada:
         """
         self.nb_ships = nb_ships
 
-    cdef void copy_2d_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):
+    cdef void initialize(self):
+        """
+        Initialize the fleet with zeros.
+        """
+        # Allocate memory for the fleet
+        self.ships = <DTYPE_t *> malloc(self.nb_ships * (SHIP_CHAR_SIZE - 1) * sizeof(DTYPE_t))
+        self.rapid_fire = <int *> malloc(self.nb_ships**2 * sizeof(DTYPE_t))
+
+        cdef int i
+
+        # Initialize the rapid fire array with ones
+        for i in range(self.nb_ships**2):
+            self.rapid_fire[i] = 1
+
+    cdef void ships_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):
         """
         Copy the fleet to the allocated memory.
+        The fleet is stored as a 1D array, where each ship is represented by a column in the 2D array.
+        The characteristics of each ship are stored consecutively in the 1D array.
         """
-        self.ships = <DTYPE_t *> malloc(self.nb_ships * (SHIP_CHAR_SIZE - 1) * sizeof(DTYPE_t))
+        # Initialize the fleet with zeros
+        self.initialize()
+
+        # Copy the fleet to the allocated memory
         cdef int ship_idx, ship_char
         for ship_idx in range(self.nb_ships):
             for ship_char in range((SHIP_CHAR_SIZE - 1)):
                 self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char] = ships[ship_char, ship_idx]
+
+    cdef void rapid_fire_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire):
+        """
+        Copy the rapid fire array to the allocated memory.
+        The rapid fire array is stored as a 1D array, where each ship is represented by a column in the 2D array.
+        The characteristics of each ship are stored consecutively in the 1D array.
+
+        Parameters
+        ----------
+        rapid_fire : cnp.ndarray[DTYPE_t, ndim=2]
+            The rapid fire array to copy.
+        """
+        # Copy the rapid fire array to the allocated memory
+        cdef int attacker_type, target_type
+        for attacker_type in range(self.nb_ships):
+            for target_type in range(self.nb_ships):
+                self.rapid_fire[attacker_type * self.nb_ships + target_type] = max(<int>rapid_fire[attacker_type, target_type], 1)
 
     cdef bint is_empty(self):
         """
@@ -198,7 +248,7 @@ cdef class Armada:
         return self.nb_ships == 0
     
     @staticmethod
-    def from_array(ships):
+    def from_array(cnp.ndarray[DTYPE_t, ndim=2] ships, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire = None):
         """
         Convert a numpy array to an Armada.
 
@@ -207,6 +257,9 @@ cdef class Armada:
         ships : cnp.ndarray[DTYPE_t, ndim=2]
             The numpy array to convert.
 
+        rapid_fire : cnp.ndarray[DTYPE_t, ndim=2]
+            The rapid fire array to convert.
+
         Returns
         -------
         Armada
@@ -214,12 +267,48 @@ cdef class Armada:
         """
         cdef int nb_ships = ships.shape[1]
         cdef Armada armada = Armada(nb_ships)
-        armada.copy_2d_array(ships)
+
+        if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:
+            raise ValueError(
+                "`rapid_fire` if provided should be square with `nb_ships` elements."
+                f"Expected shape: ({nb_ships}, {nb_ships}), got ({rapid_fire.shape[0]}, {rapid_fire.shape[1]})."    
+            )    
+
+        armada.ships_from_array(ships)
+        armada.rapid_fire_from_array(rapid_fire) if rapid_fire is not None else None
         return armada
 
     @property
     def nb_ships_(self):
         return self.nb_ships
+
+    @property
+    def ships_(self):
+        ships = np.empty((self.nb_ships, SHIP_CHAR_SIZE - 1), dtype=DTYPE)
+        cdef int ship_idx, ship_char
+        for ship_idx in range(self.nb_ships):
+            for ship_char in range(SHIP_CHAR_SIZE - 1):
+                ships[ship_idx, ship_char] = self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char]
+
+        return ships
+    
+    @property
+    def rapid_fire_(self):
+        """
+        Get the rapid fire array as a numpy array.
+
+        Returns
+        -------
+        cnp.ndarray[DTYPE_t, ndim=2]
+            The rapid fire array.
+        """
+        rapid_fire = np.empty((self.nb_ships, self.nb_ships), dtype=int)
+        cdef int ship_idx, ship_char
+        for ship_idx in range(self.nb_ships):
+            for ship_char in range(self.nb_ships):
+                rapid_fire[ship_idx, ship_char] = self.rapid_fire[ship_idx * self.nb_ships + ship_char]
+
+        return rapid_fire
 
     def __dealloc__(self):
         # Deallocate the fleet
@@ -336,7 +425,7 @@ cdef int nb_fleet_types(Fleet fleet):
     for ship_idx in range(fleet.nb_ships):
         ship_types = max(ship_types, fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX])
 
-    return ship_types + 1
+    return <int>ship_types + 1
 
 cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):
     """
@@ -356,7 +445,7 @@ cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):
 
     # Count the number of ships of each type in the fleet
     for ship_idx in range(fleet.nb_ships):
-        ship_type = fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX]
+        ship_type = <int> fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX]
         compact_fleet.ships[ship_type] += 1
 
     return compact_fleet
@@ -407,13 +496,8 @@ cpdef void fight_fleets(FightField fight_field):
 
     Parameters
     ----------
-    fleet_1 : int[:, ::1]
-        The first fleet.
-
-    fleet_2 : int[:, ::1]
-        The second fleet.
-
-    
+    fight_field : FightField
+        The fight field containing the two fleets to fight.
     """
 
     cdef int rounds = 0
@@ -485,14 +569,14 @@ cpdef void fight_single_round(FightField fight_field):
     cdef Fleet fleet_2 = fight_field.fleet_2
 
     # Each fleet attacks the other fleet
-    fight_one_way(fleet_1, fleet_2)
-    fight_one_way(fleet_2, fleet_1)
+    fight_one_way(fleet_1, fleet_2, fight_field.armada)
+    fight_one_way(fleet_2, fleet_1, fight_field.armada)
 
     # Remove destroyed ships from both fleets
     remove_destroyed_ships(fleet_1)
     remove_destroyed_ships(fleet_2)
 
-cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
+cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):
     """
     Simulate inplace a one-way fight between two fleets.
     
@@ -503,9 +587,13 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
 
     fleet_target : Fleet
         The defending fleet.
+
+    armada : Armada, optional
+        The armada containing rapid fire probabilities. If None, no rapid fire is tolerated.
     """
     cdef int attacker_idx, target_idx
     cdef int nb_ships_attacker, nb_ships_target
+    cdef bint attack_continues
     cdef DTYPE_t damage, shielded_damage, unshielded_damage, shield_value
 
     nb_ships_attacker = fleet_attacker.nb_ships
@@ -513,24 +601,67 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target):
 
     # Each ship fom the first fleet attacks a random ship of the second fleet
     for attacker_idx in range(nb_ships_attacker):
-        # Select a random target from the second fleet
-        target_idx = choose_target(nb_ships_target)
+        attack_continues = True
+        while attack_continues:
+            # Select a random target from the second fleet
+            target_idx = choose_target(nb_ships_target)
 
-        # Calculate damage based on the attack value of the attacker and the shield value of the target
-        damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
-        shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
-        shielded_damage = min(damage, shield_value)
-        unshielded_damage = damage - shielded_damage
+            # Calculate damage based on the attack value of the attacker and the shield value of the target
+            damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
+            shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+            shielded_damage = min(damage, shield_value)
+            unshielded_damage = damage - shielded_damage
 
-        # If the damage on the shield is not sufficient, the shots are deflected
-        # and the shield is not depleted
-        if shielded_damage * DEFLECTION_RATIO > shield_value:
-            shielded_damage = 0
+            # If the damage on the shield is not sufficient, the shots are deflected
+            # and the shield is not depleted
+            if shielded_damage * DEFLECTION_RATIO > shield_value:
+                shielded_damage = 0
 
-        # Apply damage to the target ship
-        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
-        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
-        fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+            # Apply damage to the target ship
+            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
+            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
+            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+
+            # Check if the attacker ship can attack again by rapid fire
+            attack_continues = check_rapid_fire(
+                <int>fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + TYPE_IDX], 
+                <int>fleet_target.ships[SHIP_CHAR_SIZE * target_idx + TYPE_IDX], 
+                armada
+            )
+
+
+cpdef int randint(int a):
+    """
+    Generate a random number between 0 and a given upper bound.
+
+    Parameters
+    ----------
+    a : int
+        The upper bound for the random number.
+
+
+    Returns
+    -------
+    int
+        A random number between 0 and RAND_MAX.
+    """
+    # bound is the maximum value of the random number so far generated
+    cdef long bound = 1
+    # x is the random number generated so far
+    cdef int x = 0
+
+    # We need to tune the generated random number so that it gets
+    # uniformly distributed between 0 and a - 1
+    # To do so we generate a random number between 0 and N where
+    # N is much greater than a.
+    while bound < 100 * a:
+        x *= RAND_MAX
+        x += rand()
+
+        bound *= RAND_MAX
+
+    return x % a
+
 
 cpdef int choose_target(int nb_ships_target):
     """
@@ -546,19 +677,40 @@ cpdef int choose_target(int nb_ships_target):
     int
         The index of the chosen target ship.
     """
-    # bound is the maximum value of the random number so far generated
-    cdef long bound = 1
-    # x is the random number generated so far
-    cdef int x = 0
+    return randint(nb_ships_target)
 
-    # We need to tune the generated random number so that it gets
-    # uniformly distributed between 0 and nb_ships_target - 1
-    # To do so we generate a random number between 0 and N where
-    # N is much greater than nb_ships_target.
-    while bound < 100 * nb_ships_target:
-        x *= RAND_MAX
-        x += rand()
+cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):
+    """
+    Checks if a rapid fire occured.
 
-        bound *= RAND_MAX
+    Parameters
+    ----------
+    attacker_type : int
+        The type of the attacking ship.
+    target_type : int
+        The type of the target ship.
+    armada : Armada
+        The armada containing rapid fire probabilities.
 
-    return x % nb_ships_target
+    Returns
+    -------
+    bint
+        True if rapid fire occurs, False otherwise.
+    """
+    # If no armada is provided, then no rapid fire is tolerated
+    if armada is None:
+        return False
+
+    cdef int rapid_fire_count = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]
+
+    # Retrieve the rapid fire chance from the armada
+    rapid_fire_chance = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]
+
+    # If the rapid fire count is less than or equal to 1, no rapid fire occurs
+    if rapid_fire_count <= 1:
+        return False
+
+    # Generate a random number to determine if the rapid fire stops
+    # There is a 1/rapid_fire_count chance that the rapid fire stops
+    # and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues
+    return randint(rapid_fire_count) > 0

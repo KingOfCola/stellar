@@ -47,25 +47,31 @@ def simulate_fight(n1: int, n2: int) -> None:
 
     return fight_field
 
-%timeit simulate_fight(100000, 200000)
 
+# %timeit simulate_fight(100000, 200000)
 
+# Create an armada with two ships
 v1 = np.array([1, 5, 3, 4, 5])
 v2 = np.array([2, 200, 30, 40, 50])
 
-
-compact_fleet_1_array = np.array([5, 2])
-compact_fleet_2_array = np.array([3, 7])
 armada_array = np.array([v1, v2]).T[1:, :]
 
 armada = fight.Armada.from_array(armada_array)
+armada = ARMADA
+
+# Create two fleets with two ships each
+compact_fleet_1_array = np.zeros(armada.nb_ships_, dtype=np.int32)
+compact_fleet_2_array = np.zeros(armada.nb_ships_, dtype=np.int32)
+compact_fleet_1_array[10] = 5
+compact_fleet_2_array[17] = 100
+
 compact_fleet_1 = fight.CompactFleet.from_array(compact_fleet_1_array)
 compact_fleet_2 = fight.CompactFleet.from_array(compact_fleet_2_array)
 
 fleet_1 = fight.fleet_from_compact_fleet(compact_fleet_1, armada)
 fleet_2 = fight.fleet_from_compact_fleet(compact_fleet_2, armada)
 
-fight_field = fight.FightField(fleet_1, fleet_2)
+fight_field = fight.FightField(fleet_1, fleet_2, armada=armada)
 
 print("Battle started")
 fight_field.describe()
