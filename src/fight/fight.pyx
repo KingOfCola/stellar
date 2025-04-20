@@ -57,7 +57,7 @@ cdef class FightField:
     cdef Armada armada
     cdef int max_rounds
 
-    def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada = None, int max_rounds=MAX_ROUNDS):
+    def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):
         """
         Initialize the FightField object.
         The function takes two fleets and the maximum number of rounds to simulate.
@@ -614,13 +614,13 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada
 
             # If the damage on the shield is not sufficient, the shots are deflected
             # and the shield is not depleted
-            if shielded_damage * DEFLECTION_RATIO > shield_value:
+            if shielded_damage * DEFLECTION_RATIO < shield_value:
                 shielded_damage = 0
 
             # Apply damage to the target ship
             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
-            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
 
             # Check if the attacker ship can attack again by rapid fire
             attack_continues = check_rapid_fire(

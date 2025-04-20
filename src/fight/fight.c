@@ -2941,6 +2941,8 @@ static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
+static const char __pyx_k_H[] = " (H: ";
+static const char __pyx_k_S[] = " - S: ";
 static const char __pyx_k_a[] = "a";
 static const char __pyx_k_10[] = " >10";
 static const char __pyx_k__7[] = "";
@@ -2982,6 +2984,7 @@ static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_fleet_1[] = "fleet_1";
 static const char __pyx_k_fleet_2[] = "fleet_2";
 static const char __pyx_k_randint[] = "randint";
+static const char __pyx_k_Attacker[] = "Attacker ";
 static const char __pyx_k_armada_2[] = "armada_";
 static const char __pyx_k_describe[] = "describe";
 static const char __pyx_k_getstate[] = "__getstate__";
@@ -3004,6 +3007,7 @@ static const char __pyx_k_rapid_fire[] = "rapid_fire";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_fight_field[] = "fight_field";
 static const char __pyx_k_target_type[] = "target_type";
+static const char __pyx_k_with_damage[] = " with damage ";
 static const char __pyx_k_CompactFleet[] = "CompactFleet";
 static const char __pyx_k_fight_fleets[] = "fight_fleets";
 static const char __pyx_k_fleet_target[] = "fleet_target";
@@ -3019,6 +3023,7 @@ static const char __pyx_k_nb_ship_types[] = "nb_ship_types";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_ship_type_idx[] = "ship_type_idx";
 static const char __pyx_k_Fleet_describe[] = "Fleet.describe";
+static const char __pyx_k_attacks_target[] = " attacks target ";
 static const char __pyx_k_fleet_attacker[] = "fleet_attacker";
 static const char __pyx_k_Number_of_ships[] = "Number of ships: ";
 static const char __pyx_k_compact_fleet_1[] = "compact_fleet_1";
@@ -3174,6 +3179,7 @@ typedef struct {
   PyObject *__pyx_n_s_Armada___reduce_cython;
   PyObject *__pyx_n_s_Armada___setstate_cython;
   PyObject *__pyx_n_s_Armada_from_array;
+  PyObject *__pyx_kp_u_Attacker;
   PyObject *__pyx_n_s_CompactFleet;
   PyObject *__pyx_n_s_CompactFleet___reduce_cython;
   PyObject *__pyx_n_s_CompactFleet___setstate_cython;
@@ -3193,8 +3199,10 @@ typedef struct {
   PyObject *__pyx_n_s_Fleet___reduce_cython;
   PyObject *__pyx_n_s_Fleet___setstate_cython;
   PyObject *__pyx_n_s_Fleet_describe;
+  PyObject *__pyx_kp_u_H;
   PyObject *__pyx_n_s_ImportError;
   PyObject *__pyx_kp_s_Number_of_ships;
+  PyObject *__pyx_kp_u_S;
   PyObject *__pyx_n_s_TypeError;
   PyObject *__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul;
   PyObject *__pyx_n_s_ValueError;
@@ -3209,6 +3217,7 @@ typedef struct {
   PyObject *__pyx_n_s_armada_2;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_attacker_type;
+  PyObject *__pyx_kp_u_attacks_target;
   PyObject *__pyx_n_s_check_rapid_fire;
   PyObject *__pyx_n_s_choose_target;
   PyObject *__pyx_n_s_cline_in_traceback;
@@ -3281,6 +3290,7 @@ typedef struct {
   PyObject *__pyx_n_s_target_type;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_to_array;
+  PyObject *__pyx_kp_u_with_damage;
   PyObject *__pyx_int_1;
   int __pyx_k__3;
   PyObject *__pyx_tuple_;
@@ -3400,6 +3410,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada___setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada_from_array);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Attacker);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet___setstate_cython);
@@ -3419,8 +3430,10 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet___setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet_describe);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_H);
   Py_CLEAR(clear_module_state->__pyx_n_s_ImportError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Number_of_ships);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_S);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
@@ -3435,6 +3448,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_armada_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_attacker_type);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_attacks_target);
   Py_CLEAR(clear_module_state->__pyx_n_s_check_rapid_fire);
   Py_CLEAR(clear_module_state->__pyx_n_s_choose_target);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
@@ -3507,6 +3521,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_target_type);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_to_array);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_with_damage);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__2);
@@ -3603,6 +3618,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada___setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada_from_array);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Attacker);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet___setstate_cython);
@@ -3622,8 +3638,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet___setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet_describe);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_H);
   Py_VISIT(traverse_module_state->__pyx_n_s_ImportError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Number_of_ships);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_S);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
@@ -3638,6 +3656,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_armada_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_attacker_type);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_attacks_target);
   Py_VISIT(traverse_module_state->__pyx_n_s_check_rapid_fire);
   Py_VISIT(traverse_module_state->__pyx_n_s_choose_target);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
@@ -3710,6 +3729,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_target_type);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_to_array);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_with_damage);
   Py_VISIT(traverse_module_state->__pyx_int_1);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__2);
@@ -3836,6 +3856,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Armada___reduce_cython __pyx_mstate_global->__pyx_n_s_Armada___reduce_cython
 #define __pyx_n_s_Armada___setstate_cython __pyx_mstate_global->__pyx_n_s_Armada___setstate_cython
 #define __pyx_n_s_Armada_from_array __pyx_mstate_global->__pyx_n_s_Armada_from_array
+#define __pyx_kp_u_Attacker __pyx_mstate_global->__pyx_kp_u_Attacker
 #define __pyx_n_s_CompactFleet __pyx_mstate_global->__pyx_n_s_CompactFleet
 #define __pyx_n_s_CompactFleet___reduce_cython __pyx_mstate_global->__pyx_n_s_CompactFleet___reduce_cython
 #define __pyx_n_s_CompactFleet___setstate_cython __pyx_mstate_global->__pyx_n_s_CompactFleet___setstate_cython
@@ -3855,8 +3876,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Fleet___reduce_cython __pyx_mstate_global->__pyx_n_s_Fleet___reduce_cython
 #define __pyx_n_s_Fleet___setstate_cython __pyx_mstate_global->__pyx_n_s_Fleet___setstate_cython
 #define __pyx_n_s_Fleet_describe __pyx_mstate_global->__pyx_n_s_Fleet_describe
+#define __pyx_kp_u_H __pyx_mstate_global->__pyx_kp_u_H
 #define __pyx_n_s_ImportError __pyx_mstate_global->__pyx_n_s_ImportError
 #define __pyx_kp_s_Number_of_ships __pyx_mstate_global->__pyx_kp_s_Number_of_ships
+#define __pyx_kp_u_S __pyx_mstate_global->__pyx_kp_u_S
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
 #define __pyx_kp_s_Type_Attack_Shield_Shield_g_Hul __pyx_mstate_global->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
@@ -3871,6 +3894,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_armada_2 __pyx_mstate_global->__pyx_n_s_armada_2
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_attacker_type __pyx_mstate_global->__pyx_n_s_attacker_type
+#define __pyx_kp_u_attacks_target __pyx_mstate_global->__pyx_kp_u_attacks_target
 #define __pyx_n_s_check_rapid_fire __pyx_mstate_global->__pyx_n_s_check_rapid_fire
 #define __pyx_n_s_choose_target __pyx_mstate_global->__pyx_n_s_choose_target
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
@@ -3943,6 +3967,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_target_type __pyx_mstate_global->__pyx_n_s_target_type
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_to_array __pyx_mstate_global->__pyx_n_s_to_array
+#define __pyx_kp_u_with_damage __pyx_mstate_global->__pyx_kp_u_with_damage
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
 #define __pyx_k__3 __pyx_mstate_global->__pyx_k__3
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
@@ -5686,7 +5711,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
 /* "fight.pyx":60
  *     cdef int max_rounds
  * 
- *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada = None, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
  *         """
  *         Initialize the FightField object.
  */
@@ -5715,7 +5740,6 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
   {
     PyObject **__pyx_pyargnames[] = {&__pyx_n_s_fleet_1,&__pyx_n_s_fleet_2,&__pyx_n_s_armada,&__pyx_n_s_max_rounds,0};
-    values[2] = __Pyx_Arg_NewRef_VARARGS((PyObject *)((struct __pyx_obj_5fight_Armada *)Py_None));
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
@@ -5747,14 +5771,17 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
         }
         else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 2, 4, 1); __PYX_ERR(0, 60, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 1); __PYX_ERR(0, 60, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada);
-          if (value) { values[2] = __Pyx_Arg_NewRef_VARARGS(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+        if (likely((values[2] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada)) != 0)) {
+          (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 2); __PYX_ERR(0, 60, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -5773,8 +5800,7 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
         case  4: values[3] = __Pyx_Arg_VARARGS(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = __Pyx_Arg_VARARGS(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = __Pyx_Arg_VARARGS(__pyx_args, 1);
+        values[1] = __Pyx_Arg_VARARGS(__pyx_args, 1);
         values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
         break;
         default: goto __pyx_L5_argtuple_error;
@@ -5791,7 +5817,7 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 2, 4, __pyx_nargs); __PYX_ERR(0, 60, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 60, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5881,7 +5907,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   /* "fight.pyx":60
  *     cdef int max_rounds
  * 
- *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada = None, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
  *         """
  *         Initialize the FightField object.
  */
@@ -11936,6 +11962,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_5fight_DTYPE_t __pyx_v_shielded_damage;
   __pyx_t_5fight_DTYPE_t __pyx_v_unshielded_damage;
   __pyx_t_5fight_DTYPE_t __pyx_v_shield_value;
+  __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
   int __pyx_t_3;
@@ -11945,9 +11972,15 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_5fight_DTYPE_t __pyx_t_7;
   int __pyx_t_8;
   long __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  Py_ssize_t __pyx_t_11;
+  Py_UCS4 __pyx_t_12;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("fight_one_way", 1);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_armada = __pyx_optional_args->armada;
@@ -12062,16 +12095,16 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       /* "fight.pyx":617
  *             # If the damage on the shield is not sufficient, the shots are deflected
  *             # and the shield is not depleted
- *             if shielded_damage * DEFLECTION_RATIO > shield_value:             # <<<<<<<<<<<<<<
+ *             if shielded_damage * DEFLECTION_RATIO < shield_value:             # <<<<<<<<<<<<<<
  *                 shielded_damage = 0
  * 
  */
-      __pyx_t_8 = ((__pyx_v_shielded_damage * __pyx_v_5fight_DEFLECTION_RATIO) > __pyx_v_shield_value);
+      __pyx_t_8 = ((__pyx_v_shielded_damage * __pyx_v_5fight_DEFLECTION_RATIO) < __pyx_v_shield_value);
       if (__pyx_t_8) {
 
         /* "fight.pyx":618
  *             # and the shield is not depleted
- *             if shielded_damage * DEFLECTION_RATIO > shield_value:
+ *             if shielded_damage * DEFLECTION_RATIO < shield_value:
  *                 shielded_damage = 0             # <<<<<<<<<<<<<<
  * 
  *             # Apply damage to the target ship
@@ -12081,7 +12114,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
         /* "fight.pyx":617
  *             # If the damage on the shield is not sufficient, the shots are deflected
  *             # and the shield is not depleted
- *             if shielded_damage * DEFLECTION_RATIO > shield_value:             # <<<<<<<<<<<<<<
+ *             if shielded_damage * DEFLECTION_RATIO < shield_value:             # <<<<<<<<<<<<<<
  *                 shielded_damage = 0
  * 
  */
@@ -12092,7 +12125,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
  *             # Apply damage to the target ship
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage             # <<<<<<<<<<<<<<
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+ *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
  */
       __pyx_t_4 = ((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX);
       (__pyx_v_fleet_target->ships[__pyx_t_4]) = ((__pyx_v_fleet_target->ships[__pyx_t_4]) - __pyx_v_shielded_damage);
@@ -12101,7 +12134,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
  *             # Apply damage to the target ship
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage             # <<<<<<<<<<<<<<
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])
+ *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
  * 
  */
       __pyx_t_4 = ((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX);
@@ -12110,11 +12143,11 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       /* "fight.pyx":623
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
  *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX])             # <<<<<<<<<<<<<<
+ *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])             # <<<<<<<<<<<<<<
  * 
- *             # Check if the attacker ship can attack again by rapid fire
+ *             print(f"Attacker {attacker_idx} attacks target {target_idx} with damage {damage} (H: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX]} - S: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]}).")
  */
-      __pyx_t_7 = (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]);
+      __pyx_t_7 = (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]);
       __pyx_t_9 = 0;
       __pyx_t_8 = (__pyx_t_7 > __pyx_t_9);
       if (__pyx_t_8) {
@@ -12122,16 +12155,101 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       } else {
         __pyx_t_5 = __pyx_t_9;
       }
-      (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]) = __pyx_t_5;
+      (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]) = __pyx_t_5;
 
-      /* "fight.pyx":626
+      /* "fight.pyx":625
+ *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
+ * 
+ *             print(f"Attacker {attacker_idx} attacks target {target_idx} with damage {damage} (H: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX]} - S: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]}).")             # <<<<<<<<<<<<<<
+ * 
+ *             # Check if the attacker ship can attack again by rapid fire
+ */
+      __pyx_t_10 = PyTuple_New(11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_11 = 0;
+      __pyx_t_12 = 127;
+      __Pyx_INCREF(__pyx_kp_u_Attacker);
+      __pyx_t_11 += 9;
+      __Pyx_GIVEREF(__pyx_kp_u_Attacker);
+      PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Attacker);
+      __pyx_t_13 = __Pyx_PyUnicode_From_int(__pyx_v_attacker_idx, 0, ' ', 'd'); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
+      __Pyx_GIVEREF(__pyx_t_13);
+      PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_13);
+      __pyx_t_13 = 0;
+      __Pyx_INCREF(__pyx_kp_u_attacks_target);
+      __pyx_t_11 += 16;
+      __Pyx_GIVEREF(__pyx_kp_u_attacks_target);
+      PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_kp_u_attacks_target);
+      __pyx_t_13 = __Pyx_PyUnicode_From_int(__pyx_v_target_idx, 0, ' ', 'd'); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
+      __Pyx_GIVEREF(__pyx_t_13);
+      PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13);
+      __pyx_t_13 = 0;
+      __Pyx_INCREF(__pyx_kp_u_with_damage);
+      __pyx_t_11 += 13;
+      __Pyx_GIVEREF(__pyx_kp_u_with_damage);
+      PyTuple_SET_ITEM(__pyx_t_10, 4, __pyx_kp_u_with_damage);
+      __pyx_t_13 = __Pyx_PyInt_From_npy_int64(__pyx_v_damage); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_14);
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) : __pyx_t_12;
+      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_14);
+      __Pyx_GIVEREF(__pyx_t_14);
+      PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_14);
+      __pyx_t_14 = 0;
+      __Pyx_INCREF(__pyx_kp_u_H);
+      __pyx_t_11 += 5;
+      __Pyx_GIVEREF(__pyx_kp_u_H);
+      PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_kp_u_H);
+      __pyx_t_14 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)])); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_14);
+      __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_14, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_12;
+      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
+      __Pyx_GIVEREF(__pyx_t_13);
+      PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_13);
+      __pyx_t_13 = 0;
+      __Pyx_INCREF(__pyx_kp_u_S);
+      __pyx_t_11 += 6;
+      __Pyx_GIVEREF(__pyx_kp_u_S);
+      PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_kp_u_S);
+      __pyx_t_13 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)])); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_14);
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) : __pyx_t_12;
+      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_14);
+      __Pyx_GIVEREF(__pyx_t_14);
+      PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_14);
+      __pyx_t_14 = 0;
+      __Pyx_INCREF(__pyx_kp_u__11);
+      __pyx_t_11 += 2;
+      __Pyx_GIVEREF(__pyx_kp_u__11);
+      PyTuple_SET_ITEM(__pyx_t_10, 10, __pyx_kp_u__11);
+      __pyx_t_14 = __Pyx_PyUnicode_Join(__pyx_t_10, 11, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_14);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+      /* "fight.pyx":628
  * 
  *             # Check if the attacker ship can attack again by rapid fire
  *             attack_continues = check_rapid_fire(             # <<<<<<<<<<<<<<
  *                 <int>fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + TYPE_IDX],
  *                 <int>fleet_target.ships[SHIP_CHAR_SIZE * target_idx + TYPE_IDX],
  */
-      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 626, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 628, __pyx_L1_error)
       __pyx_v_attack_continues = __pyx_t_8;
     }
   }
@@ -12147,8 +12265,12 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
   __Pyx_AddTraceback("fight.fight_one_way", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
@@ -12316,7 +12438,7 @@ static PyObject *__pyx_pf_5fight_12fight_one_way(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "fight.pyx":633
+/* "fight.pyx":635
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
@@ -12340,7 +12462,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":649
+  /* "fight.pyx":651
  *     """
  *     # bound is the maximum value of the random number so far generated
  *     cdef long bound = 1             # <<<<<<<<<<<<<<
@@ -12349,7 +12471,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   __pyx_v_bound = 1;
 
-  /* "fight.pyx":651
+  /* "fight.pyx":653
  *     cdef long bound = 1
  *     # x is the random number generated so far
  *     cdef int x = 0             # <<<<<<<<<<<<<<
@@ -12358,7 +12480,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   __pyx_v_x = 0;
 
-  /* "fight.pyx":657
+  /* "fight.pyx":659
  *     # To do so we generate a random number between 0 and N where
  *     # N is much greater than a.
  *     while bound < 100 * a:             # <<<<<<<<<<<<<<
@@ -12369,7 +12491,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
     __pyx_t_1 = (__pyx_v_bound < (0x64 * __pyx_v_a));
     if (!__pyx_t_1) break;
 
-    /* "fight.pyx":658
+    /* "fight.pyx":660
  *     # N is much greater than a.
  *     while bound < 100 * a:
  *         x *= RAND_MAX             # <<<<<<<<<<<<<<
@@ -12378,7 +12500,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
     __pyx_v_x = (__pyx_v_x * RAND_MAX);
 
-    /* "fight.pyx":659
+    /* "fight.pyx":661
  *     while bound < 100 * a:
  *         x *= RAND_MAX
  *         x += rand()             # <<<<<<<<<<<<<<
@@ -12387,7 +12509,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
     __pyx_v_x = (__pyx_v_x + rand());
 
-    /* "fight.pyx":661
+    /* "fight.pyx":663
  *         x += rand()
  * 
  *         bound *= RAND_MAX             # <<<<<<<<<<<<<<
@@ -12397,7 +12519,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
     __pyx_v_bound = (__pyx_v_bound * RAND_MAX);
   }
 
-  /* "fight.pyx":663
+  /* "fight.pyx":665
  *         bound *= RAND_MAX
  * 
  *     return x % a             # <<<<<<<<<<<<<<
@@ -12406,12 +12528,12 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   if (unlikely(__pyx_v_a == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 663, __pyx_L1_error)
+    __PYX_ERR(0, 665, __pyx_L1_error)
   }
   __pyx_r = __Pyx_mod_int(__pyx_v_x, __pyx_v_a);
   goto __pyx_L0;
 
-  /* "fight.pyx":633
+  /* "fight.pyx":635
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
@@ -12481,23 +12603,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 633, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") < 0)) __PYX_ERR(0, 633, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") < 0)) __PYX_ERR(0, 635, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_a = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_a == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 633, __pyx_L3_error)
+    __pyx_v_a = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_a == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("randint", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 633, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("randint", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 635, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12534,8 +12656,8 @@ static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("randint", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 633, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 633, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12552,7 +12674,7 @@ static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, i
   return __pyx_r;
 }
 
-/* "fight.pyx":666
+/* "fight.pyx":668
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
@@ -12574,18 +12696,18 @@ static int __pyx_f_5fight_choose_target(int __pyx_v_nb_ships_target, CYTHON_UNUS
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":680
+  /* "fight.pyx":682
  *         The index of the chosen target ship.
  *     """
  *     return randint(nb_ships_target)             # <<<<<<<<<<<<<<
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):
  */
-  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L1_error)
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "fight.pyx":666
+  /* "fight.pyx":668
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
@@ -12655,23 +12777,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 666, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") < 0)) __PYX_ERR(0, 666, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") < 0)) __PYX_ERR(0, 668, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_nb_ships_target = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 666, __pyx_L3_error)
+    __pyx_v_nb_ships_target = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("choose_target", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 666, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("choose_target", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 668, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12708,8 +12830,8 @@ static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("choose_target", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 666, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12726,7 +12848,7 @@ static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "fight.pyx":682
+/* "fight.pyx":684
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
@@ -12751,7 +12873,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":701
+  /* "fight.pyx":703
  *     """
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:             # <<<<<<<<<<<<<<
@@ -12761,7 +12883,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   __pyx_t_1 = (((PyObject *)__pyx_v_armada) == Py_None);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":702
+    /* "fight.pyx":704
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:
  *         return False             # <<<<<<<<<<<<<<
@@ -12771,7 +12893,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "fight.pyx":701
+    /* "fight.pyx":703
  *     """
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:             # <<<<<<<<<<<<<<
@@ -12780,7 +12902,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   }
 
-  /* "fight.pyx":704
+  /* "fight.pyx":706
  *         return False
  * 
  *     cdef int rapid_fire_count = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]             # <<<<<<<<<<<<<<
@@ -12789,7 +12911,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   __pyx_v_rapid_fire_count = (__pyx_v_armada->rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada->nb_ships) + __pyx_v_target_type)]);
 
-  /* "fight.pyx":707
+  /* "fight.pyx":709
  * 
  *     # Retrieve the rapid fire chance from the armada
  *     rapid_fire_chance = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]             # <<<<<<<<<<<<<<
@@ -12798,7 +12920,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   __pyx_v_rapid_fire_chance = (__pyx_v_armada->rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada->nb_ships) + __pyx_v_target_type)]);
 
-  /* "fight.pyx":710
+  /* "fight.pyx":712
  * 
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:             # <<<<<<<<<<<<<<
@@ -12808,7 +12930,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   __pyx_t_1 = (__pyx_v_rapid_fire_count <= 1);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":711
+    /* "fight.pyx":713
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:
  *         return False             # <<<<<<<<<<<<<<
@@ -12818,7 +12940,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "fight.pyx":710
+    /* "fight.pyx":712
  * 
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:             # <<<<<<<<<<<<<<
@@ -12827,16 +12949,16 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   }
 
-  /* "fight.pyx":716
+  /* "fight.pyx":718
  *     # There is a 1/rapid_fire_count chance that the rapid fire stops
  *     # and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues
  *     return randint(rapid_fire_count) > 0             # <<<<<<<<<<<<<<
  */
-  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 718, __pyx_L1_error)
   __pyx_r = (__pyx_t_2 > 0);
   goto __pyx_L0;
 
-  /* "fight.pyx":682
+  /* "fight.pyx":684
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
@@ -12912,7 +13034,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -12920,9 +13042,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 1); __PYX_ERR(0, 682, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 1); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -12930,14 +13052,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 2); __PYX_ERR(0, 682, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 2); __PYX_ERR(0, 684, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") < 0)) __PYX_ERR(0, 682, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") < 0)) __PYX_ERR(0, 684, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -12946,13 +13068,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
       values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
-    __pyx_v_attacker_type = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L3_error)
-    __pyx_v_target_type = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L3_error)
+    __pyx_v_attacker_type = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
+    __pyx_v_target_type = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
     __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 682, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 684, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12966,7 +13088,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 682, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 684, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_18check_rapid_fire(__pyx_self, __pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada);
 
   /* function exit code */
@@ -12994,8 +13116,8 @@ static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_rapid_fire", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -13726,6 +13848,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Armada___reduce_cython, __pyx_k_Armada___reduce_cython, sizeof(__pyx_k_Armada___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Armada___setstate_cython, __pyx_k_Armada___setstate_cython, sizeof(__pyx_k_Armada___setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Armada_from_array, __pyx_k_Armada_from_array, sizeof(__pyx_k_Armada_from_array), 0, 0, 1, 1},
+    {&__pyx_kp_u_Attacker, __pyx_k_Attacker, sizeof(__pyx_k_Attacker), 0, 1, 0, 0},
     {&__pyx_n_s_CompactFleet, __pyx_k_CompactFleet, sizeof(__pyx_k_CompactFleet), 0, 0, 1, 1},
     {&__pyx_n_s_CompactFleet___reduce_cython, __pyx_k_CompactFleet___reduce_cython, sizeof(__pyx_k_CompactFleet___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_CompactFleet___setstate_cython, __pyx_k_CompactFleet___setstate_cython, sizeof(__pyx_k_CompactFleet___setstate_cython), 0, 0, 1, 1},
@@ -13745,8 +13868,10 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Fleet___reduce_cython, __pyx_k_Fleet___reduce_cython, sizeof(__pyx_k_Fleet___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Fleet___setstate_cython, __pyx_k_Fleet___setstate_cython, sizeof(__pyx_k_Fleet___setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Fleet_describe, __pyx_k_Fleet_describe, sizeof(__pyx_k_Fleet_describe), 0, 0, 1, 1},
+    {&__pyx_kp_u_H, __pyx_k_H, sizeof(__pyx_k_H), 0, 1, 0, 0},
     {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
     {&__pyx_kp_s_Number_of_ships, __pyx_k_Number_of_ships, sizeof(__pyx_k_Number_of_ships), 0, 0, 1, 0},
+    {&__pyx_kp_u_S, __pyx_k_S, sizeof(__pyx_k_S), 0, 1, 0, 0},
     {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
     {&__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul, __pyx_k_Type_Attack_Shield_Shield_g_Hul, sizeof(__pyx_k_Type_Attack_Shield_Shield_g_Hul), 0, 0, 1, 0},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
@@ -13761,6 +13886,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_armada_2, __pyx_k_armada_2, sizeof(__pyx_k_armada_2), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_attacker_type, __pyx_k_attacker_type, sizeof(__pyx_k_attacker_type), 0, 0, 1, 1},
+    {&__pyx_kp_u_attacks_target, __pyx_k_attacks_target, sizeof(__pyx_k_attacks_target), 0, 1, 0, 0},
     {&__pyx_n_s_check_rapid_fire, __pyx_k_check_rapid_fire, sizeof(__pyx_k_check_rapid_fire), 0, 0, 1, 1},
     {&__pyx_n_s_choose_target, __pyx_k_choose_target, sizeof(__pyx_k_choose_target), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -13833,6 +13959,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_target_type, __pyx_k_target_type, sizeof(__pyx_k_target_type), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_to_array, __pyx_k_to_array, sizeof(__pyx_k_to_array), 0, 0, 1, 1},
+    {&__pyx_kp_u_with_damage, __pyx_k_with_damage, sizeof(__pyx_k_with_damage), 0, 1, 0, 0},
     {0, 0, 0, 0, 0, 0, 0}
   };
   return __Pyx_InitStrings(__pyx_string_tab);
@@ -14149,41 +14276,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__45);
   __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_one_way, 579, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 579, __pyx_L1_error)
 
-  /* "fight.pyx":633
+  /* "fight.pyx":635
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
  *     """
  *     Generate a random number between 0 and a given upper bound.
  */
-  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_a); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 633, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_a); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__47);
   __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 633, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 633, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 635, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 635, __pyx_L1_error)
 
-  /* "fight.pyx":666
+  /* "fight.pyx":668
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
  *     """
  *     Choose a random target from the target fleet.
  */
-  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_n_s_nb_ships_target); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_n_s_nb_ships_target); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 666, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 668, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 668, __pyx_L1_error)
 
-  /* "fight.pyx":682
+  /* "fight.pyx":684
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Checks if a rapid fire occured.
  */
-  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__51);
   __Pyx_GIVEREF(__pyx_tuple__51);
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_check_rapid_fire, 682, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_check_rapid_fire, 684, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14832,7 +14959,7 @@ if (!__Pyx_RefNanny) {
   /* "fight.pyx":60
  *     cdef int max_rounds
  * 
- *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada = None, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
  *         """
  *         Initialize the FightField object.
  */
@@ -15128,40 +15255,40 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_one_way, __pyx_t_3) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":633
+  /* "fight.pyx":635
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
  *     """
  *     Generate a random number between 0 and a given upper bound.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 633, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_3) < 0) __PYX_ERR(0, 633, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_3) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":666
+  /* "fight.pyx":668
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
  *     """
  *     Choose a random target from the target fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) < 0) __PYX_ERR(0, 666, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) < 0) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":682
+  /* "fight.pyx":684
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Checks if a rapid fire occured.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) < 0) __PYX_ERR(0, 682, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) < 0) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "fight.pyx":1

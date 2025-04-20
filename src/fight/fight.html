@@ -460,7 +460,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <pre class="cython line score-0">&#xA0;<span class="">057</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">Armada</span> <span class="nf">armada</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">058</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">max_rounds</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">059</span>: </pre>
-<pre class="cython line score-89" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:     <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_1</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_2</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="nb">int</span> <span class="n">max_rounds</span><span class="o">=</span><span class="n">MAX_ROUNDS</span><span class="p">):</span></pre>
+<pre class="cython line score-89" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:     <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_1</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_2</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span><span class="p">,</span> <span class="nb">int</span> <span class="n">max_rounds</span><span class="o">=</span><span class="n">MAX_ROUNDS</span><span class="p">):</span></pre>
 <pre class='cython code score-89 '>/* Python wrapper */
 static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
@@ -482,7 +482,6 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   {
     PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_fleet_1,&amp;__pyx_n_s_fleet_2,&amp;__pyx_n_s_armada,&amp;__pyx_n_s_max_rounds,0};
   PyObject* values[4] = {0,0,0,0};
-    values[2] = <span class='pyx_c_api'>__Pyx_Arg_NewRef_VARARGS</span>((PyObject *)((struct __pyx_obj_5fight_Armada *)Py_None));
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
@@ -514,14 +513,17 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
         }
         else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 2, 4, 1); <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 3, 4, 1); <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (kw_args &gt; 0) {
-          PyObject* value = <span class='pyx_c_api'>__Pyx_GetKwValue_VARARGS</span>(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada);
-          if (value) { values[2] = <span class='pyx_c_api'>__Pyx_Arg_NewRef_VARARGS</span>(value); kw_args--; }
-          else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
+        if (likely((values[2] = <span class='pyx_c_api'>__Pyx_GetKwValue_VARARGS</span>(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada)) != 0)) {
+          (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_VARARGS</span>(values[2]);
+          kw_args--;
+        }
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
+        else {
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 3, 4, 2); <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -540,8 +542,7 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
         case  4: values[3] = <span class='pyx_c_api'>__Pyx_Arg_VARARGS</span>(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = <span class='pyx_c_api'>__Pyx_Arg_VARARGS</span>(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = <span class='pyx_c_api'>__Pyx_Arg_VARARGS</span>(__pyx_args, 1);
+        values[1] = <span class='pyx_c_api'>__Pyx_Arg_VARARGS</span>(__pyx_args, 1);
         values[0] = <span class='pyx_c_api'>__Pyx_Arg_VARARGS</span>(__pyx_args, 0);
         break;
         default: goto __pyx_L5_argtuple_error;
@@ -558,7 +559,7 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 2, 4, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 3, 4, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L3_error)</span>
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -576,6 +577,9 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_fleet_2), __pyx_ptype_5fight_Fleet, 1, "fleet_2", 0))) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L1_error)</span>
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L1_error)</span>
   __pyx_r = __pyx_pf_5fight_10FightField___cinit__(((struct __pyx_obj_5fight_FightField *)__pyx_v_self), __pyx_v_fleet_1, __pyx_v_fleet_2, __pyx_v_armada, __pyx_v_max_rounds);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
 
   /* function exit code */
   goto __pyx_L0;
@@ -4535,8 +4539,8 @@ static PyObject *__pyx_pf_5fight_10fight_single_round(CYTHON_UNUSED PyObject *__
 </pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">577</span>:     <span class="n">remove_destroyed_ships</span><span class="p">(</span><span class="n">fleet_2</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet_2, 0);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 577, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">578</span>: </pre>
-<pre class="cython line score-93" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">579</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">void</span> <span class="nf">fight_one_way</span><span class="p">(</span><span class="n">Fleet</span> <span class="n">fleet_attacker</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_target</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span></pre>
-<pre class='cython code score-93 '>static PyObject *__pyx_pw_5fight_13fight_one_way(PyObject *__pyx_self, 
+<pre class="cython line score-96" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">579</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">void</span> <span class="nf">fight_one_way</span><span class="p">(</span><span class="n">Fleet</span> <span class="n">fleet_attacker</span><span class="p">,</span> <span class="n">Fleet</span> <span class="n">fleet_target</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span></pre>
+<pre class='cython code score-96 '>static PyObject *__pyx_pw_5fight_13fight_one_way(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4563,8 +4567,12 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_10);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_13);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_14);
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("fight.fight_one_way", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
 }
 
 /* Python wrapper */
@@ -4799,8 +4807,8 @@ struct __pyx_opt_args_5fight_fight_one_way {
 </pre><pre class="cython line score-0">&#xA0;<span class="">614</span>: </pre>
 <pre class="cython line score-0">&#xA0;<span class="">615</span>:             <span class="c"># If the damage on the shield is not sufficient, the shots are deflected</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">616</span>:             <span class="c"># and the shield is not depleted</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">617</span>:             <span class="k">if</span> <span class="n">shielded_damage</span> <span class="o">*</span> <span class="n">DEFLECTION_RATIO</span> <span class="o">&gt;</span> <span class="n">shield_value</span><span class="p">:</span></pre>
-<pre class='cython code score-0 '>      __pyx_t_8 = ((__pyx_v_shielded_damage * __pyx_v_5fight_DEFLECTION_RATIO) &gt; __pyx_v_shield_value);
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">617</span>:             <span class="k">if</span> <span class="n">shielded_damage</span> <span class="o">*</span> <span class="n">DEFLECTION_RATIO</span> <span class="o">&lt;</span> <span class="n">shield_value</span><span class="p">:</span></pre>
+<pre class='cython code score-0 '>      __pyx_t_8 = ((__pyx_v_shielded_damage * __pyx_v_5fight_DEFLECTION_RATIO) &lt; __pyx_v_shield_value);
       if (__pyx_t_8) {
 /* … */
       }
@@ -4814,8 +4822,8 @@ struct __pyx_opt_args_5fight_fight_one_way {
 </pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">622</span>:             <span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">HULL_IDX</span><span class="p">]</span> <span class="o">-=</span> <span class="n">unshielded_damage</span></pre>
 <pre class='cython code score-0 '>      __pyx_t_4 = ((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX);
       (__pyx_v_fleet_target-&gt;ships[__pyx_t_4]) = ((__pyx_v_fleet_target-&gt;ships[__pyx_t_4]) - __pyx_v_unshielded_damage);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">623</span>:             <span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">SHIELD_IDX</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">SHIELD_IDX</span><span class="p">])</span></pre>
-<pre class='cython code score-0 '>      __pyx_t_7 = (__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]);
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">623</span>:             <span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">HULL_IDX</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">HULL_IDX</span><span class="p">])</span></pre>
+<pre class='cython code score-0 '>      __pyx_t_7 = (__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]);
       __pyx_t_9 = 0;
       __pyx_t_8 = (__pyx_t_7 &gt; __pyx_t_9);
       if (__pyx_t_8) {
@@ -4823,21 +4831,100 @@ struct __pyx_opt_args_5fight_fight_one_way {
       } else {
         __pyx_t_5 = __pyx_t_9;
       }
-      (__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]) = __pyx_t_5;
+      (__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]) = __pyx_t_5;
 </pre><pre class="cython line score-0">&#xA0;<span class="">624</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">625</span>:             <span class="c"># Check if the attacker ship can attack again by rapid fire</span></pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">626</span>:             <span class="n">attack_continues</span> <span class="o">=</span> <span class="n">check_rapid_fire</span><span class="p">(</span></pre>
-<pre class='cython code score-5 '>      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 626, __pyx_L1_error)</span>
+<pre class="cython line score-64" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">625</span>:             <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">&quot;Attacker {attacker_idx} attacks target {target_idx} with damage {damage} (H: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX]} - S: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]}).&quot;</span><span class="p">)</span></pre>
+<pre class='cython code score-64 '>      __pyx_t_10 = <span class='py_c_api'>PyTuple_New</span>(11);<span class='error_goto'> if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_10);
+      __pyx_t_11 = 0;
+      __pyx_t_12 = 127;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u_Attacker);
+      __pyx_t_11 += 9;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u_Attacker);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 0, __pyx_kp_u_Attacker);
+      __pyx_t_13 = <span class='pyx_c_api'>__Pyx_PyUnicode_From_int</span>(__pyx_v_attacker_idx, 0, ' ', 'd');<span class='error_goto'> if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+      __pyx_t_11 += <span class='pyx_c_api'>__Pyx_PyUnicode_GET_LENGTH</span>(__pyx_t_13);
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_13);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 1, __pyx_t_13);
+      __pyx_t_13 = 0;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u_attacks_target);
+      __pyx_t_11 += 16;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u_attacks_target);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 2, __pyx_kp_u_attacks_target);
+      __pyx_t_13 = <span class='pyx_c_api'>__Pyx_PyUnicode_From_int</span>(__pyx_v_target_idx, 0, ' ', 'd');<span class='error_goto'> if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+      __pyx_t_11 += <span class='pyx_c_api'>__Pyx_PyUnicode_GET_LENGTH</span>(__pyx_t_13);
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_13);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 3, __pyx_t_13);
+      __pyx_t_13 = 0;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u_with_damage);
+      __pyx_t_11 += 13;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u_with_damage);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 4, __pyx_kp_u_with_damage);
+      __pyx_t_13 = __Pyx_PyInt_From_npy_int64(__pyx_v_damage);<span class='error_goto'> if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+      __pyx_t_14 = <span class='pyx_c_api'>__Pyx_PyObject_FormatSimple</span>(__pyx_t_13, __pyx_empty_unicode);<span class='error_goto'> if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_14);
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_13); __pyx_t_13 = 0;
+      __pyx_t_12 = (<span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_14) &gt; __pyx_t_12) ? <span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_14) : __pyx_t_12;
+      __pyx_t_11 += <span class='pyx_c_api'>__Pyx_PyUnicode_GET_LENGTH</span>(__pyx_t_14);
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_14);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 5, __pyx_t_14);
+      __pyx_t_14 = 0;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u_H);
+      __pyx_t_11 += 5;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u_H);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 6, __pyx_kp_u_H);
+      __pyx_t_14 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]));<span class='error_goto'> if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_14);
+      __pyx_t_13 = <span class='pyx_c_api'>__Pyx_PyObject_FormatSimple</span>(__pyx_t_14, __pyx_empty_unicode);<span class='error_goto'> if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_14); __pyx_t_14 = 0;
+      __pyx_t_12 = (<span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_13) &gt; __pyx_t_12) ? <span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_13) : __pyx_t_12;
+      __pyx_t_11 += <span class='pyx_c_api'>__Pyx_PyUnicode_GET_LENGTH</span>(__pyx_t_13);
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_13);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 7, __pyx_t_13);
+      __pyx_t_13 = 0;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u_S);
+      __pyx_t_11 += 6;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u_S);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 8, __pyx_kp_u_S);
+      __pyx_t_13 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]));<span class='error_goto'> if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_13);
+      __pyx_t_14 = <span class='pyx_c_api'>__Pyx_PyObject_FormatSimple</span>(__pyx_t_13, __pyx_empty_unicode);<span class='error_goto'> if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_14);
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_13); __pyx_t_13 = 0;
+      __pyx_t_12 = (<span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_14) &gt; __pyx_t_12) ? <span class='pyx_c_api'>__Pyx_PyUnicode_MAX_CHAR_VALUE</span>(__pyx_t_14) : __pyx_t_12;
+      __pyx_t_11 += <span class='pyx_c_api'>__Pyx_PyUnicode_GET_LENGTH</span>(__pyx_t_14);
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_14);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 9, __pyx_t_14);
+      __pyx_t_14 = 0;
+      <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_kp_u__11);
+      __pyx_t_11 += 2;
+      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_kp_u__11);
+      <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_10, 10, __pyx_kp_u__11);
+      __pyx_t_14 = <span class='pyx_c_api'>__Pyx_PyUnicode_Join</span>(__pyx_t_10, 11, __pyx_t_11, __pyx_t_12);<span class='error_goto'> if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_14);
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_10 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(__pyx_builtin_print, __pyx_t_14);<span class='error_goto'> if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)</span>
+      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_10);
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_14); __pyx_t_14 = 0;
+      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_10); __pyx_t_10 = 0;
+</pre><pre class="cython line score-0">&#xA0;<span class="">626</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">627</span>:             <span class="c"># Check if the attacker ship can attack again by rapid fire</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">628</span>:             <span class="n">attack_continues</span> <span class="o">=</span> <span class="n">check_rapid_fire</span><span class="p">(</span></pre>
+<pre class='cython code score-5 '>      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target-&gt;ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 628, __pyx_L1_error)</span>
       __pyx_v_attack_continues = __pyx_t_8;
     }
   }
-</pre><pre class="cython line score-0">&#xA0;<span class="">627</span>:                 <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">fleet_attacker</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">attacker_idx</span> <span class="o">+</span> <span class="n">TYPE_IDX</span><span class="p">],</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">628</span>:                 <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">TYPE_IDX</span><span class="p">],</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">629</span>:                 <span class="n">armada</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">630</span>:             <span class="p">)</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">631</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">632</span>: </pre>
-<pre class="cython line score-69" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">633</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">randint</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">629</span>:                 <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">fleet_attacker</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">attacker_idx</span> <span class="o">+</span> <span class="n">TYPE_IDX</span><span class="p">],</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">630</span>:                 <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">fleet_target</span><span class="o">.</span><span class="n">ships</span><span class="p">[</span><span class="n">SHIP_CHAR_SIZE</span> <span class="o">*</span> <span class="n">target_idx</span> <span class="o">+</span> <span class="n">TYPE_IDX</span><span class="p">],</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">631</span>:                 <span class="n">armada</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">632</span>:             <span class="p">)</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">633</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">634</span>: </pre>
+<pre class="cython line score-69" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">635</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">randint</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">):</span></pre>
 <pre class='cython code score-69 '>static PyObject *__pyx_pw_5fight_15randint(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
@@ -4909,23 +4996,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_FASTCALL</span>(values[0]);
           kw_args--;
         }
-        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L3_error)</span>
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L3_error)</span>
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args &gt; 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L3_error)</span>
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = <span class='pyx_c_api'>__Pyx_Arg_FASTCALL</span>(__pyx_args, 0);
     }
-    __pyx_v_a = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_a == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L3_error)</span>
+    __pyx_v_a = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_a == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L3_error)</span>
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("randint", 1, 1, 1, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("randint", 1, 1, 1, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L3_error)</span>
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4958,8 +5045,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
   PyObject *__pyx_r = NULL;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L1_error)</span>
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 633, __pyx_L1_error)</span>
+  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -4976,63 +5063,63 @@ static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, i
   return __pyx_r;
 }
 /* … */
-  __pyx_tuple__47 = <span class='py_c_api'>PyTuple_Pack</span>(1, __pyx_n_s_a);<span class='error_goto'> if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 633, __pyx_L1_error)</span>
+  __pyx_tuple__47 = <span class='py_c_api'>PyTuple_Pack</span>(1, __pyx_n_s_a);<span class='error_goto'> if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 635, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__47);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__47);
 /* … */
-  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 633, __pyx_L1_error)</span>
+  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 635, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_randint, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 633, __pyx_L1_error)</span>
+  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_randint, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 635, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_codeobj__48 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 633, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 633, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">634</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">635</span>: <span class="sd">    Generate a random number between 0 and a given upper bound.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">636</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">637</span>: <span class="sd">    Parameters</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">638</span>: <span class="sd">    ----------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">639</span>: <span class="sd">    a : int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">640</span>: <span class="sd">        The upper bound for the random number.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">641</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">642</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">643</span>: <span class="sd">    Returns</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">644</span>: <span class="sd">    -------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">645</span>: <span class="sd">    int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">646</span>: <span class="sd">        A random number between 0 and RAND_MAX.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">647</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">648</span>:     <span class="c"># bound is the maximum value of the random number so far generated</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">649</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">bound</span><span class="w"> </span><span class="o">=</span> <span class="mf">1</span></pre>
+  __pyx_codeobj__48 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 635, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 635, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">636</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">637</span>: <span class="sd">    Generate a random number between 0 and a given upper bound.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">638</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">639</span>: <span class="sd">    Parameters</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">640</span>: <span class="sd">    ----------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">641</span>: <span class="sd">    a : int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">642</span>: <span class="sd">        The upper bound for the random number.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">643</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">644</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">645</span>: <span class="sd">    Returns</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">646</span>: <span class="sd">    -------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">647</span>: <span class="sd">    int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">648</span>: <span class="sd">        A random number between 0 and RAND_MAX.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">649</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">650</span>:     <span class="c"># bound is the maximum value of the random number so far generated</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">651</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">bound</span><span class="w"> </span><span class="o">=</span> <span class="mf">1</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_bound = 1;
-</pre><pre class="cython line score-0">&#xA0;<span class="">650</span>:     <span class="c"># x is the random number generated so far</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">651</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">x</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">652</span>:     <span class="c"># x is the random number generated so far</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">653</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">x</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_x = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">652</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">653</span>:     <span class="c"># We need to tune the generated random number so that it gets</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">654</span>:     <span class="c"># uniformly distributed between 0 and a - 1</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">655</span>:     <span class="c"># To do so we generate a random number between 0 and N where</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">656</span>:     <span class="c"># N is much greater than a.</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">657</span>:     <span class="k">while</span> <span class="n">bound</span> <span class="o">&lt;</span> <span class="mf">100</span> <span class="o">*</span> <span class="n">a</span><span class="p">:</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">654</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">655</span>:     <span class="c"># We need to tune the generated random number so that it gets</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">656</span>:     <span class="c"># uniformly distributed between 0 and a - 1</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">657</span>:     <span class="c"># To do so we generate a random number between 0 and N where</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">658</span>:     <span class="c"># N is much greater than a.</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">659</span>:     <span class="k">while</span> <span class="n">bound</span> <span class="o">&lt;</span> <span class="mf">100</span> <span class="o">*</span> <span class="n">a</span><span class="p">:</span></pre>
 <pre class='cython code score-0 '>  while (1) {
     __pyx_t_1 = (__pyx_v_bound &lt; (0x64 * __pyx_v_a));
     if (!__pyx_t_1) break;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">658</span>:         <span class="n">x</span> <span class="o">*=</span> <span class="n">RAND_MAX</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">660</span>:         <span class="n">x</span> <span class="o">*=</span> <span class="n">RAND_MAX</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_x = (__pyx_v_x * RAND_MAX);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">659</span>:         <span class="n">x</span> <span class="o">+=</span> <span class="n">rand</span><span class="p">()</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">661</span>:         <span class="n">x</span> <span class="o">+=</span> <span class="n">rand</span><span class="p">()</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_x = (__pyx_v_x + rand());
-</pre><pre class="cython line score-0">&#xA0;<span class="">660</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">661</span>:         <span class="n">bound</span> <span class="o">*=</span> <span class="n">RAND_MAX</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">662</span>: </pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">663</span>:         <span class="n">bound</span> <span class="o">*=</span> <span class="n">RAND_MAX</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_bound = (__pyx_v_bound * RAND_MAX);
   }
-</pre><pre class="cython line score-0">&#xA0;<span class="">662</span>: </pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">663</span>:     <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="n">a</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">664</span>: </pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">665</span>:     <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="n">a</span></pre>
 <pre class='cython code score-5 '>  if (unlikely(__pyx_v_a == 0)) {
     <span class='py_c_api'>PyErr_SetString</span>(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    <span class='error_goto'>__PYX_ERR(0, 663, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(0, 665, __pyx_L1_error)</span>
   }
   __pyx_r = __Pyx_mod_int(__pyx_v_x, __pyx_v_a);
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">664</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">665</span>: </pre>
-<pre class="cython line score-69" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">666</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">choose_target</span><span class="p">(</span><span class="nb">int</span> <span class="n">nb_ships_target</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">666</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">667</span>: </pre>
+<pre class="cython line score-69" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">668</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">choose_target</span><span class="p">(</span><span class="nb">int</span> <span class="n">nb_ships_target</span><span class="p">):</span></pre>
 <pre class='cython code score-69 '>static PyObject *__pyx_pw_5fight_17choose_target(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
@@ -5102,23 +5189,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_FASTCALL</span>(values[0]);
           kw_args--;
         }
-        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L3_error)</span>
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L3_error)</span>
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args &gt; 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L3_error)</span>
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = <span class='pyx_c_api'>__Pyx_Arg_FASTCALL</span>(__pyx_args, 0);
     }
-    __pyx_v_nb_ships_target = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L3_error)</span>
+    __pyx_v_nb_ships_target = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L3_error)</span>
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("choose_target", 1, 1, 1, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("choose_target", 1, 1, 1, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L3_error)</span>
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5151,8 +5238,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_nb_ships_target) {
   PyObject *__pyx_r = NULL;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L1_error)</span>
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 666, __pyx_L1_error)</span>
+  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5169,34 +5256,34 @@ static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 /* … */
-  __pyx_tuple__49 = <span class='py_c_api'>PyTuple_Pack</span>(1, __pyx_n_s_nb_ships_target);<span class='error_goto'> if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 666, __pyx_L1_error)</span>
+  __pyx_tuple__49 = <span class='py_c_api'>PyTuple_Pack</span>(1, __pyx_n_s_nb_ships_target);<span class='error_goto'> if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 668, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__49);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__49);
 /* … */
-  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)</span>
+  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 668, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 666, __pyx_L1_error)</span>
+  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 668, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_codeobj__50 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 666, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 666, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">667</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">668</span>: <span class="sd">    Choose a random target from the target fleet.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">669</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">670</span>: <span class="sd">    Parameters</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">671</span>: <span class="sd">    ----------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">672</span>: <span class="sd">    nb_ships_target : int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">673</span>: <span class="sd">        The number of ships in the target fleet.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">674</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">675</span>: <span class="sd">    Returns</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">676</span>: <span class="sd">    -------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">677</span>: <span class="sd">    int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">678</span>: <span class="sd">        The index of the chosen target ship.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">679</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">680</span>:     <span class="k">return</span> <span class="n">randint</span><span class="p">(</span><span class="n">nb_ships_target</span><span class="p">)</span></pre>
-<pre class='cython code score-5 '>  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 680, __pyx_L1_error)</span>
+  __pyx_codeobj__50 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 668, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 668, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">669</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">670</span>: <span class="sd">    Choose a random target from the target fleet.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">671</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">672</span>: <span class="sd">    Parameters</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">673</span>: <span class="sd">    ----------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">674</span>: <span class="sd">    nb_ships_target : int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">675</span>: <span class="sd">        The number of ships in the target fleet.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">676</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">677</span>: <span class="sd">    Returns</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">678</span>: <span class="sd">    -------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">679</span>: <span class="sd">    int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">680</span>: <span class="sd">        The index of the chosen target ship.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">681</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">682</span>:     <span class="k">return</span> <span class="n">randint</span><span class="p">(</span><span class="n">nb_ships_target</span><span class="p">)</span></pre>
+<pre class='cython code score-5 '>  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L1_error)</span>
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">681</span>: </pre>
-<pre class="cython line score-106" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">682</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">bint</span> <span class="nf">check_rapid_fire</span><span class="p">(</span><span class="nb">int</span> <span class="n">attacker_type</span><span class="p">,</span> <span class="nb">int</span> <span class="n">target_type</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">683</span>: </pre>
+<pre class="cython line score-106" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">684</span>: <span class="k">cpdef</span><span class="w"> </span><span class="kt">bint</span> <span class="nf">check_rapid_fire</span><span class="p">(</span><span class="nb">int</span> <span class="n">attacker_type</span><span class="p">,</span> <span class="nb">int</span> <span class="n">target_type</span><span class="p">,</span> <span class="n">Armada</span> <span class="n">armada</span><span class="p">):</span></pre>
 <pre class='cython code score-106 '>static PyObject *__pyx_pw_5fight_19check_rapid_fire(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
@@ -5274,7 +5361,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_FASTCALL</span>(values[0]);
           kw_args--;
         }
-        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -5282,9 +5369,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_FASTCALL</span>(values[1]);
           kw_args--;
         }
-        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, 1); <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, 1); <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5292,14 +5379,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)<span class='pyx_c_api'>__Pyx_Arg_NewRef_FASTCALL</span>(values[2]);
           kw_args--;
         }
-        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+        else if (unlikely(<span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, 2); <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, 2); <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
         }
       }
       if (unlikely(kw_args &gt; 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -5308,13 +5395,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = <span class='pyx_c_api'>__Pyx_Arg_FASTCALL</span>(__pyx_args, 1);
       values[2] = <span class='pyx_c_api'>__Pyx_Arg_FASTCALL</span>(__pyx_args, 2);
     }
-    __pyx_v_attacker_type = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
-    __pyx_v_target_type = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+    __pyx_v_attacker_type = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
+    __pyx_v_target_type = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
     __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("check_rapid_fire", 1, 3, 3, __pyx_nargs); <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L3_error)</span>
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5328,7 +5415,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L1_error)</span>
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L1_error)</span>
   __pyx_r = __pyx_pf_5fight_18check_rapid_fire(__pyx_self, __pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -5352,8 +5439,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_attacker_type, int __pyx_v_target_type, struct __pyx_obj_5fight_Armada *__pyx_v_armada) {
   PyObject *__pyx_r = NULL;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L1_error)</span>
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 682, __pyx_L1_error)</span>
+  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 684, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5370,63 +5457,63 @@ static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__py
   return __pyx_r;
 }
 /* … */
-  __pyx_tuple__51 = <span class='py_c_api'>PyTuple_Pack</span>(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada);<span class='error_goto'> if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 682, __pyx_L1_error)</span>
+  __pyx_tuple__51 = <span class='py_c_api'>PyTuple_Pack</span>(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada);<span class='error_goto'> if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 684, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__51);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__51);
 /* … */
-  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)</span>
+  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_CyFunction_New</span>(&amp;__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 684, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 682, __pyx_L1_error)</span>
+  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 684, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">683</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">684</span>: <span class="sd">    Checks if a rapid fire occured.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">685</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">686</span>: <span class="sd">    Parameters</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">687</span>: <span class="sd">    ----------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">688</span>: <span class="sd">    attacker_type : int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">689</span>: <span class="sd">        The type of the attacking ship.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">690</span>: <span class="sd">    target_type : int</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">691</span>: <span class="sd">        The type of the target ship.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">692</span>: <span class="sd">    armada : Armada</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">693</span>: <span class="sd">        The armada containing rapid fire probabilities.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">694</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">695</span>: <span class="sd">    Returns</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">696</span>: <span class="sd">    -------</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">697</span>: <span class="sd">    bint</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">698</span>: <span class="sd">        True if rapid fire occurs, False otherwise.</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">699</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">700</span>:     <span class="c"># If no armada is provided, then no rapid fire is tolerated</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">701</span>:     <span class="k">if</span> <span class="n">armada</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">685</span>: <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">686</span>: <span class="sd">    Checks if a rapid fire occured.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">687</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">688</span>: <span class="sd">    Parameters</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">689</span>: <span class="sd">    ----------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">690</span>: <span class="sd">    attacker_type : int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">691</span>: <span class="sd">        The type of the attacking ship.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">692</span>: <span class="sd">    target_type : int</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">693</span>: <span class="sd">        The type of the target ship.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">694</span>: <span class="sd">    armada : Armada</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">695</span>: <span class="sd">        The armada containing rapid fire probabilities.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">696</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">697</span>: <span class="sd">    Returns</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">698</span>: <span class="sd">    -------</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">699</span>: <span class="sd">    bint</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">700</span>: <span class="sd">        True if rapid fire occurs, False otherwise.</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">701</span>: <span class="sd">    &quot;&quot;&quot;</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">702</span>:     <span class="c"># If no armada is provided, then no rapid fire is tolerated</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">703</span>:     <span class="k">if</span> <span class="n">armada</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_1 = (((PyObject *)__pyx_v_armada) == Py_None);
   if (__pyx_t_1) {
 /* … */
   }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">702</span>:         <span class="k">return</span> <span class="bp">False</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">704</span>:         <span class="k">return</span> <span class="bp">False</span></pre>
 <pre class='cython code score-0 '>    __pyx_r = 0;
     goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">703</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">704</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">rapid_fire_count</span><span class="w"> </span><span class="o">=</span> <span class="n">armada</span><span class="o">.</span><span class="n">rapid_fire</span><span class="p">[</span><span class="n">attacker_type</span> <span class="o">*</span> <span class="n">armada</span><span class="o">.</span><span class="n">nb_ships</span> <span class="o">+</span> <span class="n">target_type</span><span class="p">]</span></pre>
-<pre class='cython code score-0 '>  __pyx_v_rapid_fire_count = (__pyx_v_armada-&gt;rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada-&gt;nb_ships) + __pyx_v_target_type)]);
 </pre><pre class="cython line score-0">&#xA0;<span class="">705</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">706</span>:     <span class="c"># Retrieve the rapid fire chance from the armada</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">707</span>:     <span class="n">rapid_fire_chance</span> <span class="o">=</span> <span class="n">armada</span><span class="o">.</span><span class="n">rapid_fire</span><span class="p">[</span><span class="n">attacker_type</span> <span class="o">*</span> <span class="n">armada</span><span class="o">.</span><span class="n">nb_ships</span> <span class="o">+</span> <span class="n">target_type</span><span class="p">]</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">706</span>:     <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">rapid_fire_count</span><span class="w"> </span><span class="o">=</span> <span class="n">armada</span><span class="o">.</span><span class="n">rapid_fire</span><span class="p">[</span><span class="n">attacker_type</span> <span class="o">*</span> <span class="n">armada</span><span class="o">.</span><span class="n">nb_ships</span> <span class="o">+</span> <span class="n">target_type</span><span class="p">]</span></pre>
+<pre class='cython code score-0 '>  __pyx_v_rapid_fire_count = (__pyx_v_armada-&gt;rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada-&gt;nb_ships) + __pyx_v_target_type)]);
+</pre><pre class="cython line score-0">&#xA0;<span class="">707</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">708</span>:     <span class="c"># Retrieve the rapid fire chance from the armada</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">709</span>:     <span class="n">rapid_fire_chance</span> <span class="o">=</span> <span class="n">armada</span><span class="o">.</span><span class="n">rapid_fire</span><span class="p">[</span><span class="n">attacker_type</span> <span class="o">*</span> <span class="n">armada</span><span class="o">.</span><span class="n">nb_ships</span> <span class="o">+</span> <span class="n">target_type</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_rapid_fire_chance = (__pyx_v_armada-&gt;rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada-&gt;nb_ships) + __pyx_v_target_type)]);
-</pre><pre class="cython line score-0">&#xA0;<span class="">708</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">709</span>:     <span class="c"># If the rapid fire count is less than or equal to 1, no rapid fire occurs</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">710</span>:     <span class="k">if</span> <span class="n">rapid_fire_count</span> <span class="o">&lt;=</span> <span class="mf">1</span><span class="p">:</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">710</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">711</span>:     <span class="c"># If the rapid fire count is less than or equal to 1, no rapid fire occurs</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">712</span>:     <span class="k">if</span> <span class="n">rapid_fire_count</span> <span class="o">&lt;=</span> <span class="mf">1</span><span class="p">:</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_1 = (__pyx_v_rapid_fire_count &lt;= 1);
   if (__pyx_t_1) {
 /* … */
   }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">711</span>:         <span class="k">return</span> <span class="bp">False</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">713</span>:         <span class="k">return</span> <span class="bp">False</span></pre>
 <pre class='cython code score-0 '>    __pyx_r = 0;
     goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">712</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">713</span>:     <span class="c"># Generate a random number to determine if the rapid fire stops</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">714</span>:     <span class="c"># There is a 1/rapid_fire_count chance that the rapid fire stops</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">715</span>:     <span class="c"># and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues</span></pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">716</span>:     <span class="k">return</span> <span class="n">randint</span><span class="p">(</span><span class="n">rapid_fire_count</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0</span></pre>
-<pre class='cython code score-5 '>  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 716, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">714</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">715</span>:     <span class="c"># Generate a random number to determine if the rapid fire stops</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">716</span>:     <span class="c"># There is a 1/rapid_fire_count chance that the rapid fire stops</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">717</span>:     <span class="c"># and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">718</span>:     <span class="k">return</span> <span class="n">randint</span><span class="p">(</span><span class="n">rapid_fire_count</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0</span></pre>
+<pre class='cython code score-5 '>  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 718, __pyx_L1_error)</span>
   __pyx_r = (__pyx_t_2 &gt; 0);
   goto __pyx_L0;
 </pre></div></body></html>
