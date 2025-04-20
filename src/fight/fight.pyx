@@ -43,6 +43,7 @@ cdef int SHIP_CHAR_SIZE = 5
 cdef int MAX_ROUNDS = 6
 
 cdef DTYPE_t DEFLECTION_RATIO = 100
+cdef int EXPLOSION_HULL_RATIO_THRESHOLD = 70
 
 cdef class FightField:
     """
@@ -591,7 +592,7 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada
     armada : Armada, optional
         The armada containing rapid fire probabilities. If None, no rapid fire is tolerated.
     """
-    cdef int attacker_idx, target_idx
+    cdef int attacker_idx, target_idx, attacker_loc, target_loc
     cdef int nb_ships_attacker, nb_ships_target
     cdef bint attack_continues
     cdef DTYPE_t damage, shielded_damage, unshielded_damage, shield_value
@@ -602,13 +603,16 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada
     # Each ship fom the first fleet attacks a random ship of the second fleet
     for attacker_idx in range(nb_ships_attacker):
         attack_continues = True
+        attacker_loc = SHIP_CHAR_SIZE * attacker_idx
+
         while attack_continues:
             # Select a random target from the second fleet
             target_idx = choose_target(nb_ships_target)
+            target_loc = SHIP_CHAR_SIZE * target_idx
 
             # Calculate damage based on the attack value of the attacker and the shield value of the target
-            damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
-            shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+            damage = fleet_attacker.ships[attacker_loc + ATTACK_IDX]
+            shield_value = fleet_target.ships[target_loc + SHIELD_IDX]
             shielded_damage = min(damage, shield_value)
             unshielded_damage = damage - shielded_damage
 
@@ -618,14 +622,19 @@ cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada
                 shielded_damage = 0
 
             # Apply damage to the target ship
-            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
-            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
-            fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
+            fleet_target.ships[target_loc + SHIELD_IDX] -= shielded_damage
+            fleet_target.ships[target_loc + HULL_IDX] -= unshielded_damage
+            fleet_target.ships[target_loc + HULL_IDX] = max(0, fleet_target.ships[target_loc + HULL_IDX])
+
+            # After a hit, a ship can explode with some probability if it has less than 70% of hull remaining
+            if check_explosion(fleet_target.ships[target_loc + TYPE_IDX], fleet_target.ships[target_loc + HULL_IDX], armada):
+                # If the ship explodes, remove it from the fleet
+                fleet_target.ships[target_loc + HULL_IDX] = 0
 
             # Check if the attacker ship can attack again by rapid fire
             attack_continues = check_rapid_fire(
-                <int>fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + TYPE_IDX], 
-                <int>fleet_target.ships[SHIP_CHAR_SIZE * target_idx + TYPE_IDX], 
+                <int>fleet_attacker.ships[attacker_loc + TYPE_IDX], 
+                <int>fleet_target.ships[target_loc + TYPE_IDX], 
                 armada
             )
 
@@ -714,3 +723,31 @@ cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):
     # There is a 1/rapid_fire_count chance that the rapid fire stops
     # and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues
     return randint(rapid_fire_count) > 0
+
+cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):
+    """
+    Checks if the ship has exploded consequently to a hit.
+    After a hit, if a ship has less than 70% of hull remaining, it can explode with
+    probability 100% - (percentage of hull remaining).
+
+    Parameters
+    ----------
+    target_type : int
+        The type of the target ship.
+    hull_points : DTYPE_t
+        The current hull points of the target ship.
+    armada : Armada
+        The armada containing ship characteristics.
+
+    Returns
+    -------
+    bint
+        True if the ship explodes, False otherwise.
+    """
+    cdef int max_hull_points = armada.ships[target_type * (SHIP_CHAR_SIZE - 1) + HULL_IDX - 1]
+    cdef int hull_percentage = hull_points * 100 // max_hull_points
+
+    if hull_percentage <= EXPLOSION_HULL_RATIO_THRESHOLD:
+        return randint(100) >= hull_percentage
+    
+    return False

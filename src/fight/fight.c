@@ -1786,7 +1786,7 @@ typedef int (*__pyx_t_5numpy_NpyIter_IterNextFunc)(NpyIter *);
 typedef void (*__pyx_t_5numpy_NpyIter_GetMultiIndexFunc)(NpyIter *, npy_intp *);
 struct __pyx_opt_args_5fight_fight_one_way;
 
-/* "fight.pyx":579
+/* "fight.pyx":580
  *     remove_destroyed_ships(fleet_2)
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):             # <<<<<<<<<<<<<<
@@ -1798,8 +1798,8 @@ struct __pyx_opt_args_5fight_fight_one_way {
   struct __pyx_obj_5fight_Armada *armada;
 };
 
-/* "fight.pyx":47
- * cdef DTYPE_t DEFLECTION_RATIO = 100
+/* "fight.pyx":48
+ * cdef int EXPLOSION_HULL_RATIO_THRESHOLD = 70
  * 
  * cdef class FightField:             # <<<<<<<<<<<<<<
  *     """
@@ -1814,7 +1814,7 @@ struct __pyx_obj_5fight_FightField {
 };
 
 
-/* "fight.pyx":120
+/* "fight.pyx":121
  *         pass
  * 
  * cdef class Fleet:             # <<<<<<<<<<<<<<
@@ -1829,7 +1829,7 @@ struct __pyx_obj_5fight_Fleet {
 };
 
 
-/* "fight.pyx":186
+/* "fight.pyx":187
  *             free(self.ships)
  * 
  * cdef class Armada:             # <<<<<<<<<<<<<<
@@ -1845,7 +1845,7 @@ struct __pyx_obj_5fight_Armada {
 };
 
 
-/* "fight.pyx":320
+/* "fight.pyx":321
  * 
  * 
  * cdef class CompactFleet:             # <<<<<<<<<<<<<<
@@ -1861,7 +1861,7 @@ struct __pyx_obj_5fight_CompactFleet {
 
 
 
-/* "fight.pyx":120
+/* "fight.pyx":121
  *         pass
  * 
  * cdef class Fleet:             # <<<<<<<<<<<<<<
@@ -1877,7 +1877,7 @@ struct __pyx_vtabstruct_5fight_Fleet {
 static struct __pyx_vtabstruct_5fight_Fleet *__pyx_vtabptr_5fight_Fleet;
 
 
-/* "fight.pyx":186
+/* "fight.pyx":187
  *             free(self.ships)
  * 
  * cdef class Armada:             # <<<<<<<<<<<<<<
@@ -1894,7 +1894,7 @@ struct __pyx_vtabstruct_5fight_Armada {
 static struct __pyx_vtabstruct_5fight_Armada *__pyx_vtabptr_5fight_Armada;
 
 
-/* "fight.pyx":320
+/* "fight.pyx":321
  * 
  * 
  * cdef class CompactFleet:             # <<<<<<<<<<<<<<
@@ -2383,6 +2383,13 @@ static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long int
 /* ModInt[int].proto */
 static CYTHON_INLINE int __Pyx_mod_int(int, int);
 
+/* DivInt[__pyx_t_5fight_DTYPE_t].proto */
+static CYTHON_INLINE __pyx_t_5fight_DTYPE_t __Pyx_div___pyx_t_5fight_DTYPE_t(__pyx_t_5fight_DTYPE_t, __pyx_t_5fight_DTYPE_t);
+
+/* UnaryNegOverflows.proto */
+#define __Pyx_UNARY_NEG_WOULD_OVERFLOW(x)\
+        (((x) < 0) & ((unsigned long)(x) == 0-(unsigned long)(x)))
+
 /* IncludeStructmemberH.proto */
 #include <structmember.h>
 
@@ -2800,6 +2807,9 @@ static CYTHON_INLINE long __Pyx_pow_long(long, long);
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
+/* CIntFromPy.proto */
+static CYTHON_INLINE npy_int64 __Pyx_PyInt_As_npy_int64(PyObject *);
+
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
@@ -2811,9 +2821,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_int64(npy_int64 value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_intp(npy_intp value);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE npy_int64 __Pyx_PyInt_As_npy_int64(PyObject *);
 
 /* FormatTypeName.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API
@@ -2914,6 +2921,7 @@ static int __pyx_v_5fight_HULL_IDX;
 static int __pyx_v_5fight_SHIP_CHAR_SIZE;
 static int __pyx_v_5fight_MAX_ROUNDS;
 static __pyx_t_5fight_DTYPE_t __pyx_v_5fight_DEFLECTION_RATIO;
+static int __pyx_v_5fight_EXPLOSION_HULL_RATIO_THRESHOLD;
 static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *); /*proto*/
 static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_fleet(struct __pyx_obj_5fight_Fleet *, int __pyx_skip_dispatch); /*proto*/
 static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(struct __pyx_obj_5fight_CompactFleet *, struct __pyx_obj_5fight_Armada *, int __pyx_skip_dispatch); /*proto*/
@@ -2925,6 +2933,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *, struct
 static int __pyx_f_5fight_randint(int, int __pyx_skip_dispatch); /*proto*/
 static int __pyx_f_5fight_choose_target(int, int __pyx_skip_dispatch); /*proto*/
 static int __pyx_f_5fight_check_rapid_fire(int, int, struct __pyx_obj_5fight_Armada *, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_5fight_check_explosion(int, __pyx_t_5fight_DTYPE_t, struct __pyx_obj_5fight_Armada *, int __pyx_skip_dispatch); /*proto*/
 /* #### Code section: typeinfo ### */
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t = { "DTYPE_t", NULL, sizeof(__pyx_t_5fight_DTYPE_t), { 0 }, 0, __PYX_IS_UNSIGNED(__pyx_t_5fight_DTYPE_t) ? 'U' : 'I', __PYX_IS_UNSIGNED(__pyx_t_5fight_DTYPE_t), 0 };
 /* #### Code section: before_global_var ### */
@@ -2941,8 +2950,6 @@ static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
-static const char __pyx_k_H[] = " (H: ";
-static const char __pyx_k_S[] = " - S: ";
 static const char __pyx_k_a[] = "a";
 static const char __pyx_k_10[] = " >10";
 static const char __pyx_k__7[] = "";
@@ -2952,7 +2959,7 @@ static const char __pyx_k_np[] = "np";
 static const char __pyx_k__10[] = ", ";
 static const char __pyx_k__11[] = ").";
 static const char __pyx_k__12[] = "*";
-static const char __pyx_k__53[] = "?";
+static const char __pyx_k__55[] = "?";
 static const char __pyx_k_end[] = "end";
 static const char __pyx_k_got[] = "), got (";
 static const char __pyx_k_dict[] = "__dict__";
@@ -2984,7 +2991,6 @@ static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_fleet_1[] = "fleet_1";
 static const char __pyx_k_fleet_2[] = "fleet_2";
 static const char __pyx_k_randint[] = "randint";
-static const char __pyx_k_Attacker[] = "Attacker ";
 static const char __pyx_k_armada_2[] = "armada_";
 static const char __pyx_k_describe[] = "describe";
 static const char __pyx_k_getstate[] = "__getstate__";
@@ -3006,8 +3012,8 @@ static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_rapid_fire[] = "rapid_fire";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_fight_field[] = "fight_field";
+static const char __pyx_k_hull_points[] = "hull_points";
 static const char __pyx_k_target_type[] = "target_type";
-static const char __pyx_k_with_damage[] = " with damage ";
 static const char __pyx_k_CompactFleet[] = "CompactFleet";
 static const char __pyx_k_fight_fleets[] = "fight_fleets";
 static const char __pyx_k_fleet_target[] = "fleet_target";
@@ -3023,9 +3029,9 @@ static const char __pyx_k_nb_ship_types[] = "nb_ship_types";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_ship_type_idx[] = "ship_type_idx";
 static const char __pyx_k_Fleet_describe[] = "Fleet.describe";
-static const char __pyx_k_attacks_target[] = " attacks target ";
 static const char __pyx_k_fleet_attacker[] = "fleet_attacker";
 static const char __pyx_k_Number_of_ships[] = "Number of ships: ";
+static const char __pyx_k_check_explosion[] = "check_explosion";
 static const char __pyx_k_compact_fleet_1[] = "compact_fleet_1";
 static const char __pyx_k_compact_fleet_2[] = "compact_fleet_2";
 static const char __pyx_k_nb_ships_target[] = "nb_ships_target";
@@ -3097,6 +3103,7 @@ static PyObject *__pyx_pf_5fight_12fight_one_way(CYTHON_UNUSED PyObject *__pyx_s
 static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
 static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_nb_ships_target); /* proto */
 static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_attacker_type, int __pyx_v_target_type, struct __pyx_obj_5fight_Armada *__pyx_v_armada); /* proto */
+static PyObject *__pyx_pf_5fight_20check_explosion(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_target_type, __pyx_t_5fight_DTYPE_t __pyx_v_hull_points, struct __pyx_obj_5fight_Armada *__pyx_v_armada); /* proto */
 static PyObject *__pyx_tp_new_5fight_FightField(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_5fight_Fleet(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_5fight_Armada(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3179,7 +3186,6 @@ typedef struct {
   PyObject *__pyx_n_s_Armada___reduce_cython;
   PyObject *__pyx_n_s_Armada___setstate_cython;
   PyObject *__pyx_n_s_Armada_from_array;
-  PyObject *__pyx_kp_u_Attacker;
   PyObject *__pyx_n_s_CompactFleet;
   PyObject *__pyx_n_s_CompactFleet___reduce_cython;
   PyObject *__pyx_n_s_CompactFleet___setstate_cython;
@@ -3199,17 +3205,15 @@ typedef struct {
   PyObject *__pyx_n_s_Fleet___reduce_cython;
   PyObject *__pyx_n_s_Fleet___setstate_cython;
   PyObject *__pyx_n_s_Fleet_describe;
-  PyObject *__pyx_kp_u_H;
   PyObject *__pyx_n_s_ImportError;
   PyObject *__pyx_kp_s_Number_of_ships;
-  PyObject *__pyx_kp_u_S;
   PyObject *__pyx_n_s_TypeError;
   PyObject *__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul;
   PyObject *__pyx_n_s_ValueError;
   PyObject *__pyx_kp_u__10;
   PyObject *__pyx_kp_u__11;
   PyObject *__pyx_n_s__12;
-  PyObject *__pyx_n_s__53;
+  PyObject *__pyx_n_s__55;
   PyObject *__pyx_kp_s__7;
   PyObject *__pyx_kp_s__8;
   PyObject *__pyx_n_s_a;
@@ -3217,7 +3221,7 @@ typedef struct {
   PyObject *__pyx_n_s_armada_2;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_attacker_type;
-  PyObject *__pyx_kp_u_attacks_target;
+  PyObject *__pyx_n_s_check_explosion;
   PyObject *__pyx_n_s_check_rapid_fire;
   PyObject *__pyx_n_s_choose_target;
   PyObject *__pyx_n_s_cline_in_traceback;
@@ -3248,6 +3252,7 @@ typedef struct {
   PyObject *__pyx_kp_u_gc;
   PyObject *__pyx_n_s_getstate;
   PyObject *__pyx_kp_u_got;
+  PyObject *__pyx_n_s_hull_points;
   PyObject *__pyx_n_s_import;
   PyObject *__pyx_n_s_initializing;
   PyObject *__pyx_n_s_int64;
@@ -3290,7 +3295,6 @@ typedef struct {
   PyObject *__pyx_n_s_target_type;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_to_array;
-  PyObject *__pyx_kp_u_with_damage;
   PyObject *__pyx_int_1;
   int __pyx_k__3;
   PyObject *__pyx_tuple_;
@@ -3313,6 +3317,7 @@ typedef struct {
   PyObject *__pyx_tuple__47;
   PyObject *__pyx_tuple__49;
   PyObject *__pyx_tuple__51;
+  PyObject *__pyx_tuple__53;
   PyObject *__pyx_codeobj__14;
   PyObject *__pyx_codeobj__15;
   PyObject *__pyx_codeobj__16;
@@ -3339,6 +3344,7 @@ typedef struct {
   PyObject *__pyx_codeobj__48;
   PyObject *__pyx_codeobj__50;
   PyObject *__pyx_codeobj__52;
+  PyObject *__pyx_codeobj__54;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -3410,7 +3416,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada___setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Armada_from_array);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_Attacker);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_CompactFleet___setstate_cython);
@@ -3430,17 +3435,15 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet___setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Fleet_describe);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_H);
   Py_CLEAR(clear_module_state->__pyx_n_s_ImportError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Number_of_ships);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_S);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
   Py_CLEAR(clear_module_state->__pyx_kp_u__10);
   Py_CLEAR(clear_module_state->__pyx_kp_u__11);
   Py_CLEAR(clear_module_state->__pyx_n_s__12);
-  Py_CLEAR(clear_module_state->__pyx_n_s__53);
+  Py_CLEAR(clear_module_state->__pyx_n_s__55);
   Py_CLEAR(clear_module_state->__pyx_kp_s__7);
   Py_CLEAR(clear_module_state->__pyx_kp_s__8);
   Py_CLEAR(clear_module_state->__pyx_n_s_a);
@@ -3448,7 +3451,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_armada_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_attacker_type);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_attacks_target);
+  Py_CLEAR(clear_module_state->__pyx_n_s_check_explosion);
   Py_CLEAR(clear_module_state->__pyx_n_s_check_rapid_fire);
   Py_CLEAR(clear_module_state->__pyx_n_s_choose_target);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
@@ -3479,6 +3482,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_gc);
   Py_CLEAR(clear_module_state->__pyx_n_s_getstate);
   Py_CLEAR(clear_module_state->__pyx_kp_u_got);
+  Py_CLEAR(clear_module_state->__pyx_n_s_hull_points);
   Py_CLEAR(clear_module_state->__pyx_n_s_import);
   Py_CLEAR(clear_module_state->__pyx_n_s_initializing);
   Py_CLEAR(clear_module_state->__pyx_n_s_int64);
@@ -3521,7 +3525,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_target_type);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_to_array);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_with_damage);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__2);
@@ -3543,6 +3546,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__47);
   Py_CLEAR(clear_module_state->__pyx_tuple__49);
   Py_CLEAR(clear_module_state->__pyx_tuple__51);
+  Py_CLEAR(clear_module_state->__pyx_tuple__53);
   Py_CLEAR(clear_module_state->__pyx_codeobj__14);
   Py_CLEAR(clear_module_state->__pyx_codeobj__15);
   Py_CLEAR(clear_module_state->__pyx_codeobj__16);
@@ -3569,6 +3573,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__48);
   Py_CLEAR(clear_module_state->__pyx_codeobj__50);
   Py_CLEAR(clear_module_state->__pyx_codeobj__52);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__54);
   return 0;
 }
 #endif
@@ -3618,7 +3623,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada___setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Armada_from_array);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_Attacker);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_CompactFleet___setstate_cython);
@@ -3638,17 +3642,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet___setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Fleet_describe);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_H);
   Py_VISIT(traverse_module_state->__pyx_n_s_ImportError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Number_of_ships);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_S);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
   Py_VISIT(traverse_module_state->__pyx_kp_u__10);
   Py_VISIT(traverse_module_state->__pyx_kp_u__11);
   Py_VISIT(traverse_module_state->__pyx_n_s__12);
-  Py_VISIT(traverse_module_state->__pyx_n_s__53);
+  Py_VISIT(traverse_module_state->__pyx_n_s__55);
   Py_VISIT(traverse_module_state->__pyx_kp_s__7);
   Py_VISIT(traverse_module_state->__pyx_kp_s__8);
   Py_VISIT(traverse_module_state->__pyx_n_s_a);
@@ -3656,7 +3658,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_armada_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_attacker_type);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_attacks_target);
+  Py_VISIT(traverse_module_state->__pyx_n_s_check_explosion);
   Py_VISIT(traverse_module_state->__pyx_n_s_check_rapid_fire);
   Py_VISIT(traverse_module_state->__pyx_n_s_choose_target);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
@@ -3687,6 +3689,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_gc);
   Py_VISIT(traverse_module_state->__pyx_n_s_getstate);
   Py_VISIT(traverse_module_state->__pyx_kp_u_got);
+  Py_VISIT(traverse_module_state->__pyx_n_s_hull_points);
   Py_VISIT(traverse_module_state->__pyx_n_s_import);
   Py_VISIT(traverse_module_state->__pyx_n_s_initializing);
   Py_VISIT(traverse_module_state->__pyx_n_s_int64);
@@ -3729,7 +3732,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_target_type);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_to_array);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_with_damage);
   Py_VISIT(traverse_module_state->__pyx_int_1);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__2);
@@ -3751,6 +3753,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__47);
   Py_VISIT(traverse_module_state->__pyx_tuple__49);
   Py_VISIT(traverse_module_state->__pyx_tuple__51);
+  Py_VISIT(traverse_module_state->__pyx_tuple__53);
   Py_VISIT(traverse_module_state->__pyx_codeobj__14);
   Py_VISIT(traverse_module_state->__pyx_codeobj__15);
   Py_VISIT(traverse_module_state->__pyx_codeobj__16);
@@ -3777,6 +3780,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__48);
   Py_VISIT(traverse_module_state->__pyx_codeobj__50);
   Py_VISIT(traverse_module_state->__pyx_codeobj__52);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__54);
   return 0;
 }
 #endif
@@ -3856,7 +3860,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Armada___reduce_cython __pyx_mstate_global->__pyx_n_s_Armada___reduce_cython
 #define __pyx_n_s_Armada___setstate_cython __pyx_mstate_global->__pyx_n_s_Armada___setstate_cython
 #define __pyx_n_s_Armada_from_array __pyx_mstate_global->__pyx_n_s_Armada_from_array
-#define __pyx_kp_u_Attacker __pyx_mstate_global->__pyx_kp_u_Attacker
 #define __pyx_n_s_CompactFleet __pyx_mstate_global->__pyx_n_s_CompactFleet
 #define __pyx_n_s_CompactFleet___reduce_cython __pyx_mstate_global->__pyx_n_s_CompactFleet___reduce_cython
 #define __pyx_n_s_CompactFleet___setstate_cython __pyx_mstate_global->__pyx_n_s_CompactFleet___setstate_cython
@@ -3876,17 +3879,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Fleet___reduce_cython __pyx_mstate_global->__pyx_n_s_Fleet___reduce_cython
 #define __pyx_n_s_Fleet___setstate_cython __pyx_mstate_global->__pyx_n_s_Fleet___setstate_cython
 #define __pyx_n_s_Fleet_describe __pyx_mstate_global->__pyx_n_s_Fleet_describe
-#define __pyx_kp_u_H __pyx_mstate_global->__pyx_kp_u_H
 #define __pyx_n_s_ImportError __pyx_mstate_global->__pyx_n_s_ImportError
 #define __pyx_kp_s_Number_of_ships __pyx_mstate_global->__pyx_kp_s_Number_of_ships
-#define __pyx_kp_u_S __pyx_mstate_global->__pyx_kp_u_S
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
 #define __pyx_kp_s_Type_Attack_Shield_Shield_g_Hul __pyx_mstate_global->__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
 #define __pyx_kp_u__10 __pyx_mstate_global->__pyx_kp_u__10
 #define __pyx_kp_u__11 __pyx_mstate_global->__pyx_kp_u__11
 #define __pyx_n_s__12 __pyx_mstate_global->__pyx_n_s__12
-#define __pyx_n_s__53 __pyx_mstate_global->__pyx_n_s__53
+#define __pyx_n_s__55 __pyx_mstate_global->__pyx_n_s__55
 #define __pyx_kp_s__7 __pyx_mstate_global->__pyx_kp_s__7
 #define __pyx_kp_s__8 __pyx_mstate_global->__pyx_kp_s__8
 #define __pyx_n_s_a __pyx_mstate_global->__pyx_n_s_a
@@ -3894,7 +3895,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_armada_2 __pyx_mstate_global->__pyx_n_s_armada_2
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_attacker_type __pyx_mstate_global->__pyx_n_s_attacker_type
-#define __pyx_kp_u_attacks_target __pyx_mstate_global->__pyx_kp_u_attacks_target
+#define __pyx_n_s_check_explosion __pyx_mstate_global->__pyx_n_s_check_explosion
 #define __pyx_n_s_check_rapid_fire __pyx_mstate_global->__pyx_n_s_check_rapid_fire
 #define __pyx_n_s_choose_target __pyx_mstate_global->__pyx_n_s_choose_target
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
@@ -3925,6 +3926,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_gc __pyx_mstate_global->__pyx_kp_u_gc
 #define __pyx_n_s_getstate __pyx_mstate_global->__pyx_n_s_getstate
 #define __pyx_kp_u_got __pyx_mstate_global->__pyx_kp_u_got
+#define __pyx_n_s_hull_points __pyx_mstate_global->__pyx_n_s_hull_points
 #define __pyx_n_s_import __pyx_mstate_global->__pyx_n_s_import
 #define __pyx_n_s_initializing __pyx_mstate_global->__pyx_n_s_initializing
 #define __pyx_n_s_int64 __pyx_mstate_global->__pyx_n_s_int64
@@ -3967,7 +3969,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_target_type __pyx_mstate_global->__pyx_n_s_target_type
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_to_array __pyx_mstate_global->__pyx_n_s_to_array
-#define __pyx_kp_u_with_damage __pyx_mstate_global->__pyx_kp_u_with_damage
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
 #define __pyx_k__3 __pyx_mstate_global->__pyx_k__3
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
@@ -3990,6 +3991,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__47 __pyx_mstate_global->__pyx_tuple__47
 #define __pyx_tuple__49 __pyx_mstate_global->__pyx_tuple__49
 #define __pyx_tuple__51 __pyx_mstate_global->__pyx_tuple__51
+#define __pyx_tuple__53 __pyx_mstate_global->__pyx_tuple__53
 #define __pyx_codeobj__14 __pyx_mstate_global->__pyx_codeobj__14
 #define __pyx_codeobj__15 __pyx_mstate_global->__pyx_codeobj__15
 #define __pyx_codeobj__16 __pyx_mstate_global->__pyx_codeobj__16
@@ -4016,6 +4018,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__48 __pyx_mstate_global->__pyx_codeobj__48
 #define __pyx_codeobj__50 __pyx_mstate_global->__pyx_codeobj__50
 #define __pyx_codeobj__52 __pyx_mstate_global->__pyx_codeobj__52
+#define __pyx_codeobj__54 __pyx_mstate_global->__pyx_codeobj__54
 /* #### Code section: module_code ### */
 
 /* "../../../../../.virtualenvs/STELLAR-A8RjOOKP/Lib/site-packages/numpy/__init__.cython-30.pxd":287
@@ -5708,7 +5711,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "fight.pyx":60
+/* "fight.pyx":61
  *     cdef int max_rounds
  * 
  *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
@@ -5761,7 +5764,7 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -5769,9 +5772,9 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 1); __PYX_ERR(0, 60, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 1); __PYX_ERR(0, 61, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5779,21 +5782,21 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
           (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 2); __PYX_ERR(0, 60, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, 2); __PYX_ERR(0, 61, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_max_rounds);
           if (value) { values[3] = __Pyx_Arg_NewRef_VARARGS(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 60, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 61, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -5810,14 +5813,14 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
     __pyx_v_fleet_2 = ((struct __pyx_obj_5fight_Fleet *)values[1]);
     __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)values[2]);
     if (values[3]) {
-      __pyx_v_max_rounds = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_max_rounds == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+      __pyx_v_max_rounds = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_max_rounds == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
     } else {
       __pyx_v_max_rounds = __pyx_k__3;
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 60, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 61, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5831,9 +5834,9 @@ static int __pyx_pw_5fight_10FightField_1__cinit__(PyObject *__pyx_v_self, PyObj
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_1), __pyx_ptype_5fight_Fleet, 1, "fleet_1", 0))) __PYX_ERR(0, 60, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_2), __pyx_ptype_5fight_Fleet, 1, "fleet_2", 0))) __PYX_ERR(0, 60, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_1), __pyx_ptype_5fight_Fleet, 1, "fleet_1", 0))) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_2), __pyx_ptype_5fight_Fleet, 1, "fleet_2", 0))) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 61, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_10FightField___cinit__(((struct __pyx_obj_5fight_FightField *)__pyx_v_self), __pyx_v_fleet_1, __pyx_v_fleet_2, __pyx_v_armada, __pyx_v_max_rounds);
 
   /* function exit code */
@@ -5856,7 +5859,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 1);
 
-  /* "fight.pyx":67
+  /* "fight.pyx":68
  *         """
  *         # Copy the fleets to the allocated memory
  *         self.fleet_1 = fleet_1             # <<<<<<<<<<<<<<
@@ -5869,7 +5872,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   __Pyx_DECREF((PyObject *)__pyx_v_self->fleet_1);
   __pyx_v_self->fleet_1 = __pyx_v_fleet_1;
 
-  /* "fight.pyx":68
+  /* "fight.pyx":69
  *         # Copy the fleets to the allocated memory
  *         self.fleet_1 = fleet_1
  *         self.fleet_2 = fleet_2             # <<<<<<<<<<<<<<
@@ -5882,7 +5885,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   __Pyx_DECREF((PyObject *)__pyx_v_self->fleet_2);
   __pyx_v_self->fleet_2 = __pyx_v_fleet_2;
 
-  /* "fight.pyx":69
+  /* "fight.pyx":70
  *         self.fleet_1 = fleet_1
  *         self.fleet_2 = fleet_2
  *         self.armada = armada             # <<<<<<<<<<<<<<
@@ -5895,7 +5898,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   __Pyx_DECREF((PyObject *)__pyx_v_self->armada);
   __pyx_v_self->armada = __pyx_v_armada;
 
-  /* "fight.pyx":72
+  /* "fight.pyx":73
  * 
  *         # Store the additional parameters
  *         self.max_rounds = max_rounds             # <<<<<<<<<<<<<<
@@ -5904,7 +5907,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
  */
   __pyx_v_self->max_rounds = __pyx_v_max_rounds;
 
-  /* "fight.pyx":60
+  /* "fight.pyx":61
  *     cdef int max_rounds
  * 
  *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
@@ -5918,7 +5921,7 @@ static int __pyx_pf_5fight_10FightField___cinit__(struct __pyx_obj_5fight_FightF
   return __pyx_r;
 }
 
-/* "fight.pyx":74
+/* "fight.pyx":75
  *         self.max_rounds = max_rounds
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
@@ -5980,25 +5983,25 @@ static PyObject *__pyx_pf_5fight_10FightField_2describe(struct __pyx_obj_5fight_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("describe", 1);
 
-  /* "fight.pyx":78
+  /* "fight.pyx":79
  *         Prints the number of ships in each fleet and a sample of the fleets.
  *         """
  *         print("Fleet 1:")             # <<<<<<<<<<<<<<
  *         self.fleet_1.describe()
  *         print()
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":79
+  /* "fight.pyx":80
  *         """
  *         print("Fleet 1:")
  *         self.fleet_1.describe()             # <<<<<<<<<<<<<<
  *         print()
  *         print("Fleet 2:")
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->fleet_1), __pyx_n_s_describe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->fleet_1), __pyx_n_s_describe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -6018,42 +6021,42 @@ static PyObject *__pyx_pf_5fight_10FightField_2describe(struct __pyx_obj_5fight_
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":80
+  /* "fight.pyx":81
  *         print("Fleet 1:")
  *         self.fleet_1.describe()
  *         print()             # <<<<<<<<<<<<<<
  *         print("Fleet 2:")
  *         self.fleet_2.describe()
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":81
+  /* "fight.pyx":82
  *         self.fleet_1.describe()
  *         print()
  *         print("Fleet 2:")             # <<<<<<<<<<<<<<
  *         self.fleet_2.describe()
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":82
+  /* "fight.pyx":83
  *         print()
  *         print("Fleet 2:")
  *         self.fleet_2.describe()             # <<<<<<<<<<<<<<
  * 
  *     def compact_fleet_1(self):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->fleet_2), __pyx_n_s_describe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->fleet_2), __pyx_n_s_describe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -6073,13 +6076,13 @@ static PyObject *__pyx_pf_5fight_10FightField_2describe(struct __pyx_obj_5fight_
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":74
+  /* "fight.pyx":75
  *         self.max_rounds = max_rounds
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
@@ -6102,7 +6105,7 @@ static PyObject *__pyx_pf_5fight_10FightField_2describe(struct __pyx_obj_5fight_
   return __pyx_r;
 }
 
-/* "fight.pyx":84
+/* "fight.pyx":85
  *         self.fleet_2.describe()
  * 
  *     def compact_fleet_1(self):             # <<<<<<<<<<<<<<
@@ -6162,7 +6165,7 @@ static PyObject *__pyx_pf_5fight_10FightField_4compact_fleet_1(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compact_fleet_1", 1);
 
-  /* "fight.pyx":93
+  /* "fight.pyx":94
  *             The compact fleet of the first fleet.
  *         """
  *         return compact_fleet_from_fleet(self.fleet_1)             # <<<<<<<<<<<<<<
@@ -6172,14 +6175,14 @@ static PyObject *__pyx_pf_5fight_10FightField_4compact_fleet_1(struct __pyx_obj_
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = ((PyObject *)__pyx_v_self->fleet_1);
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(((struct __pyx_obj_5fight_Fleet *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(((struct __pyx_obj_5fight_Fleet *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fight.pyx":84
+  /* "fight.pyx":85
  *         self.fleet_2.describe()
  * 
  *     def compact_fleet_1(self):             # <<<<<<<<<<<<<<
@@ -6199,7 +6202,7 @@ static PyObject *__pyx_pf_5fight_10FightField_4compact_fleet_1(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "fight.pyx":95
+/* "fight.pyx":96
  *         return compact_fleet_from_fleet(self.fleet_1)
  * 
  *     def compact_fleet_2(self):             # <<<<<<<<<<<<<<
@@ -6259,7 +6262,7 @@ static PyObject *__pyx_pf_5fight_10FightField_6compact_fleet_2(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compact_fleet_2", 1);
 
-  /* "fight.pyx":104
+  /* "fight.pyx":105
  *             The compact fleet of the second fleet.
  *         """
  *         return compact_fleet_from_fleet(self.fleet_2)             # <<<<<<<<<<<<<<
@@ -6269,14 +6272,14 @@ static PyObject *__pyx_pf_5fight_10FightField_6compact_fleet_2(struct __pyx_obj_
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = ((PyObject *)__pyx_v_self->fleet_2);
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(((struct __pyx_obj_5fight_Fleet *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(((struct __pyx_obj_5fight_Fleet *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fight.pyx":95
+  /* "fight.pyx":96
  *         return compact_fleet_from_fleet(self.fleet_1)
  * 
  *     def compact_fleet_2(self):             # <<<<<<<<<<<<<<
@@ -6296,7 +6299,7 @@ static PyObject *__pyx_pf_5fight_10FightField_6compact_fleet_2(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "fight.pyx":106
+/* "fight.pyx":107
  *         return compact_fleet_from_fleet(self.fleet_2)
  * 
  *     def armada_(self):             # <<<<<<<<<<<<<<
@@ -6351,7 +6354,7 @@ static PyObject *__pyx_pf_5fight_10FightField_8armada_(struct __pyx_obj_5fight_F
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("armada_", 1);
 
-  /* "fight.pyx":115
+  /* "fight.pyx":116
  *             The armada of the fight field.
  *         """
  *         return self.armada             # <<<<<<<<<<<<<<
@@ -6363,7 +6366,7 @@ static PyObject *__pyx_pf_5fight_10FightField_8armada_(struct __pyx_obj_5fight_F
   __pyx_r = ((PyObject *)__pyx_v_self->armada);
   goto __pyx_L0;
 
-  /* "fight.pyx":106
+  /* "fight.pyx":107
  *         return compact_fleet_from_fleet(self.fleet_2)
  * 
  *     def armada_(self):             # <<<<<<<<<<<<<<
@@ -6378,7 +6381,7 @@ static PyObject *__pyx_pf_5fight_10FightField_8armada_(struct __pyx_obj_5fight_F
   return __pyx_r;
 }
 
-/* "fight.pyx":117
+/* "fight.pyx":118
  *         return self.armada
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -6618,7 +6621,7 @@ static PyObject *__pyx_pf_5fight_10FightField_14__setstate_cython__(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "fight.pyx":131
+/* "fight.pyx":132
  *     cdef int nb_ships
  * 
  *     def __cinit__(self, int nb_ships):             # <<<<<<<<<<<<<<
@@ -6662,23 +6665,23 @@ static int __pyx_pw_5fight_5Fleet_1__cinit__(PyObject *__pyx_v_self, PyObject *_
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 131, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 132, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
     }
-    __pyx_v_nb_ships = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
+    __pyx_v_nb_ships = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 131, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 132, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6708,7 +6711,7 @@ static int __pyx_pw_5fight_5Fleet_1__cinit__(PyObject *__pyx_v_self, PyObject *_
 static int __pyx_pf_5fight_5Fleet___cinit__(struct __pyx_obj_5fight_Fleet *__pyx_v_self, int __pyx_v_nb_ships) {
   int __pyx_r;
 
-  /* "fight.pyx":136
+  /* "fight.pyx":137
  *         The function takes a fleet as a 2D numpy array and stores it as a 1D array.
  *         """
  *         self.nb_ships = nb_ships             # <<<<<<<<<<<<<<
@@ -6717,7 +6720,7 @@ static int __pyx_pf_5fight_5Fleet___cinit__(struct __pyx_obj_5fight_Fleet *__pyx
  */
   __pyx_v_self->nb_ships = __pyx_v_nb_ships;
 
-  /* "fight.pyx":131
+  /* "fight.pyx":132
  *     cdef int nb_ships
  * 
  *     def __cinit__(self, int nb_ships):             # <<<<<<<<<<<<<<
@@ -6730,7 +6733,7 @@ static int __pyx_pf_5fight_5Fleet___cinit__(struct __pyx_obj_5fight_Fleet *__pyx
   return __pyx_r;
 }
 
-/* "fight.pyx":138
+/* "fight.pyx":139
  *         self.nb_ships = nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -6740,7 +6743,7 @@ static int __pyx_pf_5fight_5Fleet___cinit__(struct __pyx_obj_5fight_Fleet *__pyx
 
 static void __pyx_f_5fight_5Fleet_initialize(struct __pyx_obj_5fight_Fleet *__pyx_v_self) {
 
-  /* "fight.pyx":142
+  /* "fight.pyx":143
  *         Initialize the fleet with zeros.
  *         """
  *         self.ships = <DTYPE_t *> malloc(self.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))             # <<<<<<<<<<<<<<
@@ -6749,7 +6752,7 @@ static void __pyx_f_5fight_5Fleet_initialize(struct __pyx_obj_5fight_Fleet *__py
  */
   __pyx_v_self->ships = ((__pyx_t_5fight_DTYPE_t *)malloc(((__pyx_v_self->nb_ships * __pyx_v_5fight_SHIP_CHAR_SIZE) * (sizeof(__pyx_t_5fight_DTYPE_t)))));
 
-  /* "fight.pyx":138
+  /* "fight.pyx":139
  *         self.nb_ships = nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -6760,7 +6763,7 @@ static void __pyx_f_5fight_5Fleet_initialize(struct __pyx_obj_5fight_Fleet *__py
   /* function exit code */
 }
 
-/* "fight.pyx":144
+/* "fight.pyx":145
  *         self.ships = <DTYPE_t *> malloc(self.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  *     cdef void copy_2d_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):             # <<<<<<<<<<<<<<
@@ -6791,20 +6794,20 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
   __pyx_pybuffernd_ships.rcbuffer = &__pyx_pybuffer_ships;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 145, __pyx_L1_error)
   }
   __pyx_pybuffernd_ships.diminfo[0].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ships.diminfo[0].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ships.diminfo[1].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ships.diminfo[1].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[1];
 
-  /* "fight.pyx":148
+  /* "fight.pyx":149
  *         Copy the fleet to the allocated memory.
  *         """
  *         self.initialize()             # <<<<<<<<<<<<<<
  * 
  *         # Copy the fleet to the allocated memory
  */
-  ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_self->__pyx_vtab)->initialize(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_self->__pyx_vtab)->initialize(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
 
-  /* "fight.pyx":152
+  /* "fight.pyx":153
  *         # Copy the fleet to the allocated memory
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -6816,7 +6819,7 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_idx = __pyx_t_3;
 
-    /* "fight.pyx":153
+    /* "fight.pyx":154
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
@@ -6828,7 +6831,7 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_ship_char = __pyx_t_6;
 
-      /* "fight.pyx":154
+      /* "fight.pyx":155
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = ships[ship_char, ship_idx]             # <<<<<<<<<<<<<<
@@ -6848,13 +6851,13 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
       } else if (unlikely(__pyx_t_8 >= __pyx_pybuffernd_ships.diminfo[1].shape)) __pyx_t_9 = 1;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 154, __pyx_L1_error)
+        __PYX_ERR(0, 155, __pyx_L1_error)
       }
       (__pyx_v_self->ships[((__pyx_v_ship_idx * __pyx_v_5fight_SHIP_CHAR_SIZE) + __pyx_v_ship_char)]) = (*__Pyx_BufPtrStrided2d(__pyx_t_5fight_DTYPE_t *, __pyx_pybuffernd_ships.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_ships.diminfo[0].strides, __pyx_t_8, __pyx_pybuffernd_ships.diminfo[1].strides));
     }
   }
 
-  /* "fight.pyx":144
+  /* "fight.pyx":145
  *         self.ships = <DTYPE_t *> malloc(self.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  *     cdef void copy_2d_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):             # <<<<<<<<<<<<<<
@@ -6878,7 +6881,7 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
   __pyx_L2:;
 }
 
-/* "fight.pyx":156
+/* "fight.pyx":157
  *                 self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = ships[ship_char, ship_idx]
  * 
  *     cdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -6889,7 +6892,7 @@ static void __pyx_f_5fight_5Fleet_copy_2d_array(struct __pyx_obj_5fight_Fleet *_
 static int __pyx_f_5fight_5Fleet_is_empty(struct __pyx_obj_5fight_Fleet *__pyx_v_self) {
   int __pyx_r;
 
-  /* "fight.pyx":160
+  /* "fight.pyx":161
  *         Checks whether the fleet is empty
  *         """
  *         return self.nb_ships == 0             # <<<<<<<<<<<<<<
@@ -6899,7 +6902,7 @@ static int __pyx_f_5fight_5Fleet_is_empty(struct __pyx_obj_5fight_Fleet *__pyx_v
   __pyx_r = (__pyx_v_self->nb_ships == 0);
   goto __pyx_L0;
 
-  /* "fight.pyx":156
+  /* "fight.pyx":157
  *                 self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = ships[ship_char, ship_idx]
  * 
  *     cdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -6912,7 +6915,7 @@ static int __pyx_f_5fight_5Fleet_is_empty(struct __pyx_obj_5fight_Fleet *__pyx_v
   return __pyx_r;
 }
 
-/* "fight.pyx":162
+/* "fight.pyx":163
  *         return self.nb_ships == 0
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
@@ -6987,40 +6990,40 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("describe", 1);
 
-  /* "fight.pyx":166
+  /* "fight.pyx":167
  *         Prints the number of ships and a sample of the ships array
  *         """
  *         print("Number of ships: ", self.nb_ships)             # <<<<<<<<<<<<<<
  *         print("      Type    Attack    Shield Shield g.      Hull")
  *         for ship_idx in range(min(5, self.nb_ships)):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_s_Number_of_ships);
   __Pyx_GIVEREF(__pyx_kp_s_Number_of_ships);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Number_of_ships)) __PYX_ERR(0, 166, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Number_of_ships)) __PYX_ERR(0, 167, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":167
+  /* "fight.pyx":168
  *         """
  *         print("Number of ships: ", self.nb_ships)
  *         print("      Type    Attack    Shield Shield g.      Hull")             # <<<<<<<<<<<<<<
  *         for ship_idx in range(min(5, self.nb_ships)):
  *             for ship_char in range(SHIP_CHAR_SIZE):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":168
+  /* "fight.pyx":169
  *         print("Number of ships: ", self.nb_ships)
  *         print("      Type    Attack    Shield Shield g.      Hull")
  *         for ship_idx in range(min(5, self.nb_ships)):             # <<<<<<<<<<<<<<
@@ -7035,9 +7038,9 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   } else {
     __pyx_t_5 = __pyx_t_4;
   }
-  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
@@ -7045,9 +7048,9 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 169, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -7056,28 +7059,28 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
           #endif
           if (__pyx_t_7 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
         #else
-        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
           #endif
           if (__pyx_t_7 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
         #else
-        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -7087,7 +7090,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 168, __pyx_L1_error)
+          else __PYX_ERR(0, 169, __pyx_L1_error)
         }
         break;
       }
@@ -7096,16 +7099,16 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     __Pyx_XDECREF_SET(__pyx_v_ship_idx, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fight.pyx":169
+    /* "fight.pyx":170
  *         print("      Type    Attack    Shield Shield g.      Hull")
  *         for ship_idx in range(min(5, self.nb_ships)):
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")
  *             print()
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (likely(PyList_CheckExact(__pyx_t_9)) || PyTuple_CheckExact(__pyx_t_9)) {
@@ -7113,9 +7116,9 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
       __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
     } else {
-      __pyx_t_10 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_10 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 170, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     for (;;) {
@@ -7124,28 +7127,28 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 170, __pyx_L1_error)
             #endif
             if (__pyx_t_10 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_9 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_9); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+          __pyx_t_9 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_9); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 170, __pyx_L1_error)
           #else
-          __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 170, __pyx_L1_error)
             #endif
             if (__pyx_t_10 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_9); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+          __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_9); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 170, __pyx_L1_error)
           #else
-          __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
         }
@@ -7155,7 +7158,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 169, __pyx_L1_error)
+            else __PYX_ERR(0, 170, __pyx_L1_error)
           }
           break;
         }
@@ -7164,43 +7167,43 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
       __Pyx_XDECREF_SET(__pyx_v_ship_char, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "fight.pyx":170
+      /* "fight.pyx":171
  *         for ship_idx in range(min(5, self.nb_ships)):
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")             # <<<<<<<<<<<<<<
  *             print()
  * 
  */
-      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_12 = PyNumber_Multiply(__pyx_v_ship_idx, __pyx_t_9); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_12 = PyNumber_Multiply(__pyx_v_ship_idx, __pyx_t_9); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = PyNumber_Add(__pyx_t_12, __pyx_v_ship_char); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_9 = PyNumber_Add(__pyx_t_12, __pyx_v_ship_char); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[__pyx_t_13])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[__pyx_t_13])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_12 = __Pyx_PyObject_Format(__pyx_t_9, __pyx_kp_u_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_Format(__pyx_t_9, __pyx_kp_u_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_12);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_12)) __PYX_ERR(0, 170, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_12)) __PYX_ERR(0, 171, __pyx_L1_error);
       __pyx_t_12 = 0;
-      __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_end, __pyx_kp_s__7) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 170, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_end, __pyx_kp_s__7) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "fight.pyx":169
+      /* "fight.pyx":170
  *         print("      Type    Attack    Shield Shield g.      Hull")
  *         for ship_idx in range(min(5, self.nb_ships)):
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
@@ -7210,18 +7213,18 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fight.pyx":171
+    /* "fight.pyx":172
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")
  *             print()             # <<<<<<<<<<<<<<
  * 
  *         if self.nb_ships > 10:
  */
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fight.pyx":168
+    /* "fight.pyx":169
  *         print("Number of ships: ", self.nb_ships)
  *         print("      Type    Attack    Shield Shield g.      Hull")
  *         for ship_idx in range(min(5, self.nb_ships)):             # <<<<<<<<<<<<<<
@@ -7231,7 +7234,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":173
+  /* "fight.pyx":174
  *             print()
  * 
  *         if self.nb_ships > 10:             # <<<<<<<<<<<<<<
@@ -7241,18 +7244,18 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   __pyx_t_6 = (__pyx_v_self->nb_ships > 10);
   if (__pyx_t_6) {
 
-    /* "fight.pyx":174
+    /* "fight.pyx":175
  * 
  *         if self.nb_ships > 10:
  *             print("...")             # <<<<<<<<<<<<<<
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "fight.pyx":173
+    /* "fight.pyx":174
  *             print()
  * 
  *         if self.nb_ships > 10:             # <<<<<<<<<<<<<<
@@ -7261,7 +7264,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
  */
   }
 
-  /* "fight.pyx":176
+  /* "fight.pyx":177
  *             print("...")
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):             # <<<<<<<<<<<<<<
@@ -7276,19 +7279,19 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   } else {
     __pyx_t_15 = __pyx_t_4;
   }
-  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
@@ -7296,9 +7299,9 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_14 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_14 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -7307,28 +7310,28 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_14);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
           #endif
           if (__pyx_t_7 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
         #else
-        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_14, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_14, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_14);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
           #endif
           if (__pyx_t_7 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_14, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_14, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
         #else
-        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_14, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_14, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -7338,7 +7341,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 176, __pyx_L1_error)
+          else __PYX_ERR(0, 177, __pyx_L1_error)
         }
         break;
       }
@@ -7347,16 +7350,16 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     __Pyx_XDECREF_SET(__pyx_v_ship_idx, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fight.pyx":177
+    /* "fight.pyx":178
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")
  *             print()
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -7364,9 +7367,9 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
       __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
     } else {
-      __pyx_t_10 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_10 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 178, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     for (;;) {
@@ -7375,28 +7378,28 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
             #endif
             if (__pyx_t_10 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
           #else
-          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
             #endif
             if (__pyx_t_10 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
           #else
-          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
@@ -7406,7 +7409,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 177, __pyx_L1_error)
+            else __PYX_ERR(0, 178, __pyx_L1_error)
           }
           break;
         }
@@ -7415,43 +7418,43 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
       __Pyx_XDECREF_SET(__pyx_v_ship_char, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "fight.pyx":178
+      /* "fight.pyx":179
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")             # <<<<<<<<<<<<<<
  *             print()
  * 
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = PyNumber_Multiply(__pyx_v_ship_idx, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_12 = PyNumber_Multiply(__pyx_v_ship_idx, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyNumber_Add(__pyx_t_12, __pyx_v_ship_char); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_Add(__pyx_t_12, __pyx_v_ship_char); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[__pyx_t_13])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[__pyx_t_13])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_Format(__pyx_t_1, __pyx_kp_u_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_Format(__pyx_t_1, __pyx_kp_u_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_12);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_12)) __PYX_ERR(0, 178, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_12)) __PYX_ERR(0, 179, __pyx_L1_error);
       __pyx_t_12 = 0;
-      __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_end, __pyx_kp_s__7) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 178, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_end, __pyx_kp_s__7) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "fight.pyx":177
+      /* "fight.pyx":178
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
@@ -7461,18 +7464,18 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fight.pyx":179
+    /* "fight.pyx":180
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 print(f"{self.ships[ship_idx * SHIP_CHAR_SIZE + ship_char]: >10}", end="")
  *             print()             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_builtin_print); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fight.pyx":176
+    /* "fight.pyx":177
  *             print("...")
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):             # <<<<<<<<<<<<<<
@@ -7482,7 +7485,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   }
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-  /* "fight.pyx":162
+  /* "fight.pyx":163
  *         return self.nb_ships == 0
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
@@ -7509,7 +7512,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_2describe(struct __pyx_obj_5fight_Fleet 
   return __pyx_r;
 }
 
-/* "fight.pyx":181
+/* "fight.pyx":182
  *             print()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -7533,7 +7536,7 @@ static void __pyx_pw_5fight_5Fleet_5__dealloc__(PyObject *__pyx_v_self) {
 static void __pyx_pf_5fight_5Fleet_4__dealloc__(struct __pyx_obj_5fight_Fleet *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "fight.pyx":183
+  /* "fight.pyx":184
  *     def __dealloc__(self):
  *         # Deallocate the fleet
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -7543,7 +7546,7 @@ static void __pyx_pf_5fight_5Fleet_4__dealloc__(struct __pyx_obj_5fight_Fleet *_
   __pyx_t_1 = (__pyx_v_self->ships != NULL);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":184
+    /* "fight.pyx":185
  *         # Deallocate the fleet
  *         if self.ships is not NULL:
  *             free(self.ships)             # <<<<<<<<<<<<<<
@@ -7552,7 +7555,7 @@ static void __pyx_pf_5fight_5Fleet_4__dealloc__(struct __pyx_obj_5fight_Fleet *_
  */
     free(__pyx_v_self->ships);
 
-    /* "fight.pyx":183
+    /* "fight.pyx":184
  *     def __dealloc__(self):
  *         # Deallocate the fleet
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -7561,7 +7564,7 @@ static void __pyx_pf_5fight_5Fleet_4__dealloc__(struct __pyx_obj_5fight_Fleet *_
  */
   }
 
-  /* "fight.pyx":181
+  /* "fight.pyx":182
  *             print()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -7786,7 +7789,7 @@ static PyObject *__pyx_pf_5fight_5Fleet_8__setstate_cython__(CYTHON_UNUSED struc
   return __pyx_r;
 }
 
-/* "fight.pyx":191
+/* "fight.pyx":192
  *     cdef int nb_ships
  * 
  *     def __cinit__(self, int nb_ships):             # <<<<<<<<<<<<<<
@@ -7830,23 +7833,23 @@ static int __pyx_pw_5fight_6Armada_1__cinit__(PyObject *__pyx_v_self, PyObject *
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 191, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 192, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
     }
-    __pyx_v_nb_ships = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L3_error)
+    __pyx_v_nb_ships = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 191, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 192, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -7876,7 +7879,7 @@ static int __pyx_pw_5fight_6Armada_1__cinit__(PyObject *__pyx_v_self, PyObject *
 static int __pyx_pf_5fight_6Armada___cinit__(struct __pyx_obj_5fight_Armada *__pyx_v_self, int __pyx_v_nb_ships) {
   int __pyx_r;
 
-  /* "fight.pyx":196
+  /* "fight.pyx":197
  *         The function takes a fleet as a 2D numpy array and stores it as a 1D array.
  *         """
  *         self.nb_ships = nb_ships             # <<<<<<<<<<<<<<
@@ -7885,7 +7888,7 @@ static int __pyx_pf_5fight_6Armada___cinit__(struct __pyx_obj_5fight_Armada *__p
  */
   __pyx_v_self->nb_ships = __pyx_v_nb_ships;
 
-  /* "fight.pyx":191
+  /* "fight.pyx":192
  *     cdef int nb_ships
  * 
  *     def __cinit__(self, int nb_ships):             # <<<<<<<<<<<<<<
@@ -7898,7 +7901,7 @@ static int __pyx_pf_5fight_6Armada___cinit__(struct __pyx_obj_5fight_Armada *__p
   return __pyx_r;
 }
 
-/* "fight.pyx":198
+/* "fight.pyx":199
  *         self.nb_ships = nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -7912,7 +7915,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
   long __pyx_t_2;
   int __pyx_t_3;
 
-  /* "fight.pyx":203
+  /* "fight.pyx":204
  *         """
  *         # Allocate memory for the fleet
  *         self.ships = <DTYPE_t *> malloc(self.nb_ships * (SHIP_CHAR_SIZE - 1) * sizeof(DTYPE_t))             # <<<<<<<<<<<<<<
@@ -7921,7 +7924,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
  */
   __pyx_v_self->ships = ((__pyx_t_5fight_DTYPE_t *)malloc(((__pyx_v_self->nb_ships * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1)) * (sizeof(__pyx_t_5fight_DTYPE_t)))));
 
-  /* "fight.pyx":204
+  /* "fight.pyx":205
  *         # Allocate memory for the fleet
  *         self.ships = <DTYPE_t *> malloc(self.nb_ships * (SHIP_CHAR_SIZE - 1) * sizeof(DTYPE_t))
  *         self.rapid_fire = <int *> malloc(self.nb_ships**2 * sizeof(DTYPE_t))             # <<<<<<<<<<<<<<
@@ -7930,7 +7933,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
  */
   __pyx_v_self->rapid_fire = ((int *)malloc((__Pyx_pow_long(((long)__pyx_v_self->nb_ships), 2) * (sizeof(__pyx_t_5fight_DTYPE_t)))));
 
-  /* "fight.pyx":209
+  /* "fight.pyx":210
  * 
  *         # Initialize the rapid fire array with ones
  *         for i in range(self.nb_ships**2):             # <<<<<<<<<<<<<<
@@ -7942,7 +7945,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fight.pyx":210
+    /* "fight.pyx":211
  *         # Initialize the rapid fire array with ones
  *         for i in range(self.nb_ships**2):
  *             self.rapid_fire[i] = 1             # <<<<<<<<<<<<<<
@@ -7952,7 +7955,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
     (__pyx_v_self->rapid_fire[__pyx_v_i]) = 1;
   }
 
-  /* "fight.pyx":198
+  /* "fight.pyx":199
  *         self.nb_ships = nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -7963,7 +7966,7 @@ static void __pyx_f_5fight_6Armada_initialize(struct __pyx_obj_5fight_Armada *__
   /* function exit code */
 }
 
-/* "fight.pyx":212
+/* "fight.pyx":213
  *             self.rapid_fire[i] = 1
  * 
  *     cdef void ships_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):             # <<<<<<<<<<<<<<
@@ -7994,20 +7997,20 @@ static void __pyx_f_5fight_6Armada_ships_from_array(struct __pyx_obj_5fight_Arma
   __pyx_pybuffernd_ships.rcbuffer = &__pyx_pybuffer_ships;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 212, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 213, __pyx_L1_error)
   }
   __pyx_pybuffernd_ships.diminfo[0].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ships.diminfo[0].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ships.diminfo[1].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ships.diminfo[1].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[1];
 
-  /* "fight.pyx":219
+  /* "fight.pyx":220
  *         """
  *         # Initialize the fleet with zeros
  *         self.initialize()             # <<<<<<<<<<<<<<
  * 
  *         # Copy the fleet to the allocated memory
  */
-  ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_self->__pyx_vtab)->initialize(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_self->__pyx_vtab)->initialize(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
 
-  /* "fight.pyx":223
+  /* "fight.pyx":224
  *         # Copy the fleet to the allocated memory
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8019,7 +8022,7 @@ static void __pyx_f_5fight_6Armada_ships_from_array(struct __pyx_obj_5fight_Arma
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_idx = __pyx_t_3;
 
-    /* "fight.pyx":224
+    /* "fight.pyx":225
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range((SHIP_CHAR_SIZE - 1)):             # <<<<<<<<<<<<<<
@@ -8031,7 +8034,7 @@ static void __pyx_f_5fight_6Armada_ships_from_array(struct __pyx_obj_5fight_Arma
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_ship_char = __pyx_t_6;
 
-      /* "fight.pyx":225
+      /* "fight.pyx":226
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range((SHIP_CHAR_SIZE - 1)):
  *                 self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char] = ships[ship_char, ship_idx]             # <<<<<<<<<<<<<<
@@ -8051,13 +8054,13 @@ static void __pyx_f_5fight_6Armada_ships_from_array(struct __pyx_obj_5fight_Arma
       } else if (unlikely(__pyx_t_8 >= __pyx_pybuffernd_ships.diminfo[1].shape)) __pyx_t_9 = 1;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 225, __pyx_L1_error)
+        __PYX_ERR(0, 226, __pyx_L1_error)
       }
       (__pyx_v_self->ships[((__pyx_v_ship_idx * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1)) + __pyx_v_ship_char)]) = (*__Pyx_BufPtrStrided2d(__pyx_t_5fight_DTYPE_t *, __pyx_pybuffernd_ships.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_ships.diminfo[0].strides, __pyx_t_8, __pyx_pybuffernd_ships.diminfo[1].strides));
     }
   }
 
-  /* "fight.pyx":212
+  /* "fight.pyx":213
  *             self.rapid_fire[i] = 1
  * 
  *     cdef void ships_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] ships):             # <<<<<<<<<<<<<<
@@ -8081,7 +8084,7 @@ static void __pyx_f_5fight_6Armada_ships_from_array(struct __pyx_obj_5fight_Arma
   __pyx_L2:;
 }
 
-/* "fight.pyx":227
+/* "fight.pyx":228
  *                 self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char] = ships[ship_char, ship_idx]
  * 
  *     cdef void rapid_fire_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire):             # <<<<<<<<<<<<<<
@@ -8115,11 +8118,11 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
   __pyx_pybuffernd_rapid_fire.rcbuffer = &__pyx_pybuffer_rapid_fire;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer, (PyObject*)__pyx_v_rapid_fire, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 227, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer, (PyObject*)__pyx_v_rapid_fire, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 228, __pyx_L1_error)
   }
   __pyx_pybuffernd_rapid_fire.diminfo[0].strides = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rapid_fire.diminfo[0].shape = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_rapid_fire.diminfo[1].strides = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_rapid_fire.diminfo[1].shape = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.shape[1];
 
-  /* "fight.pyx":240
+  /* "fight.pyx":241
  *         # Copy the rapid fire array to the allocated memory
  *         cdef int attacker_type, target_type
  *         for attacker_type in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8131,7 +8134,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_attacker_type = __pyx_t_3;
 
-    /* "fight.pyx":241
+    /* "fight.pyx":242
  *         cdef int attacker_type, target_type
  *         for attacker_type in range(self.nb_ships):
  *             for target_type in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8143,7 +8146,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_target_type = __pyx_t_6;
 
-      /* "fight.pyx":242
+      /* "fight.pyx":243
  *         for attacker_type in range(self.nb_ships):
  *             for target_type in range(self.nb_ships):
  *                 self.rapid_fire[attacker_type * self.nb_ships + target_type] = max(<int>rapid_fire[attacker_type, target_type], 1)             # <<<<<<<<<<<<<<
@@ -8164,7 +8167,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
       } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_rapid_fire.diminfo[1].shape)) __pyx_t_10 = 1;
       if (unlikely(__pyx_t_10 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_10);
-        __PYX_ERR(0, 242, __pyx_L1_error)
+        __PYX_ERR(0, 243, __pyx_L1_error)
       }
       __pyx_t_10 = ((int)(*__Pyx_BufPtrStrided2d(__pyx_t_5fight_DTYPE_t *, __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_rapid_fire.diminfo[0].strides, __pyx_t_9, __pyx_pybuffernd_rapid_fire.diminfo[1].strides)));
       __pyx_t_12 = (__pyx_t_7 > __pyx_t_10);
@@ -8177,7 +8180,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
     }
   }
 
-  /* "fight.pyx":227
+  /* "fight.pyx":228
  *                 self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char] = ships[ship_char, ship_idx]
  * 
  *     cdef void rapid_fire_from_array(self, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire):             # <<<<<<<<<<<<<<
@@ -8201,7 +8204,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
   __pyx_L2:;
 }
 
-/* "fight.pyx":244
+/* "fight.pyx":245
  *                 self.rapid_fire[attacker_type * self.nb_ships + target_type] = max(<int>rapid_fire[attacker_type, target_type], 1)
  * 
  *     cdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -8212,7 +8215,7 @@ static void __pyx_f_5fight_6Armada_rapid_fire_from_array(struct __pyx_obj_5fight
 static int __pyx_f_5fight_6Armada_is_empty(struct __pyx_obj_5fight_Armada *__pyx_v_self) {
   int __pyx_r;
 
-  /* "fight.pyx":248
+  /* "fight.pyx":249
  *         Checks whether the fleet is empty
  *         """
  *         return self.nb_ships == 0             # <<<<<<<<<<<<<<
@@ -8222,7 +8225,7 @@ static int __pyx_f_5fight_6Armada_is_empty(struct __pyx_obj_5fight_Armada *__pyx
   __pyx_r = (__pyx_v_self->nb_ships == 0);
   goto __pyx_L0;
 
-  /* "fight.pyx":244
+  /* "fight.pyx":245
  *                 self.rapid_fire[attacker_type * self.nb_ships + target_type] = max(<int>rapid_fire[attacker_type, target_type], 1)
  * 
  *     cdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -8235,7 +8238,7 @@ static int __pyx_f_5fight_6Armada_is_empty(struct __pyx_obj_5fight_Armada *__pyx
   return __pyx_r;
 }
 
-/* "fight.pyx":250
+/* "fight.pyx":251
  *         return self.nb_ships == 0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -8284,7 +8287,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject **__pyx_pyargnames[] = {&__pyx_n_s_ships,&__pyx_n_s_rapid_fire,0};
 
-    /* "fight.pyx":251
+    /* "fight.pyx":252
  * 
  *     @staticmethod
  *     def from_array(cnp.ndarray[DTYPE_t, ndim=2] ships, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire = None):             # <<<<<<<<<<<<<<
@@ -8309,19 +8312,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 251, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rapid_fire);
           if (value) { values[1] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 251, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_array") < 0)) __PYX_ERR(0, 250, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_array") < 0)) __PYX_ERR(0, 251, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -8337,7 +8340,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("from_array", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 250, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("from_array", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 251, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -8351,11 +8354,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ships), __pyx_ptype_5numpy_ndarray, 1, "ships", 0))) __PYX_ERR(0, 251, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rapid_fire), __pyx_ptype_5numpy_ndarray, 1, "rapid_fire", 0))) __PYX_ERR(0, 251, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ships), __pyx_ptype_5numpy_ndarray, 1, "ships", 0))) __PYX_ERR(0, 252, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rapid_fire), __pyx_ptype_5numpy_ndarray, 1, "rapid_fire", 0))) __PYX_ERR(0, 252, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_6Armada_2from_array(__pyx_v_ships, __pyx_v_rapid_fire);
 
-  /* "fight.pyx":250
+  /* "fight.pyx":251
  *         return self.nb_ships == 0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -8408,16 +8411,16 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
   __pyx_pybuffernd_rapid_fire.rcbuffer = &__pyx_pybuffer_rapid_fire;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ships.rcbuffer->pybuffer, (PyObject*)__pyx_v_ships, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 251, __pyx_L1_error)
   }
   __pyx_pybuffernd_ships.diminfo[0].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ships.diminfo[0].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ships.diminfo[1].strides = __pyx_pybuffernd_ships.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ships.diminfo[1].shape = __pyx_pybuffernd_ships.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer, (PyObject*)__pyx_v_rapid_fire, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer, (PyObject*)__pyx_v_rapid_fire, &__Pyx_TypeInfo_nn___pyx_t_5fight_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 251, __pyx_L1_error)
   }
   __pyx_pybuffernd_rapid_fire.diminfo[0].strides = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rapid_fire.diminfo[0].shape = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_rapid_fire.diminfo[1].strides = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_rapid_fire.diminfo[1].shape = __pyx_pybuffernd_rapid_fire.rcbuffer->pybuffer.shape[1];
 
-  /* "fight.pyx":268
+  /* "fight.pyx":269
  *             The created Armada object.
  *         """
  *         cdef int nb_ships = ships.shape[1]             # <<<<<<<<<<<<<<
@@ -8426,22 +8429,22 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
  */
   __pyx_v_nb_ships = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_ships))[1]);
 
-  /* "fight.pyx":269
+  /* "fight.pyx":270
  *         """
  *         cdef int nb_ships = ships.shape[1]
  *         cdef Armada armada = Armada(nb_ships)             # <<<<<<<<<<<<<<
  * 
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_Armada), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_Armada), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "fight.pyx":271
+  /* "fight.pyx":272
  *         cdef Armada armada = Armada(nb_ships)
  * 
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:             # <<<<<<<<<<<<<<
@@ -8465,14 +8468,14 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_3)) {
 
-    /* "fight.pyx":273
+    /* "fight.pyx":274
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:
  *             raise ValueError(
  *                 "`rapid_fire` if provided should be square with `nb_ships` elements."             # <<<<<<<<<<<<<<
  *                 f"Expected shape: ({nb_ships}, {nb_ships}), got ({rapid_fire.shape[0]}, {rapid_fire.shape[1]})."
  *             )
  */
-    __pyx_t_2 = PyTuple_New(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -8481,14 +8484,14 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
     __Pyx_GIVEREF(__pyx_kp_u_rapid_fire_if_provided_should_b);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_u_rapid_fire_if_provided_should_b);
 
-    /* "fight.pyx":274
+    /* "fight.pyx":275
  *             raise ValueError(
  *                 "`rapid_fire` if provided should be square with `nb_ships` elements."
  *                 f"Expected shape: ({nb_ships}, {nb_ships}), got ({rapid_fire.shape[0]}, {rapid_fire.shape[1]})."             # <<<<<<<<<<<<<<
  *             )
  * 
  */
-    __pyx_t_1 = __Pyx_PyUnicode_From_int(__pyx_v_nb_ships, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_From_int(__pyx_v_nb_ships, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
@@ -8498,7 +8501,7 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__10);
     PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_kp_u__10);
-    __pyx_t_1 = __Pyx_PyUnicode_From_int(__pyx_v_nb_ships, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_From_int(__pyx_v_nb_ships, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
@@ -8508,9 +8511,9 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
     __pyx_t_5 += 8;
     __Pyx_GIVEREF(__pyx_kp_u_got);
     PyTuple_SET_ITEM(__pyx_t_2, 4, __pyx_kp_u_got);
-    __pyx_t_1 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_rapid_fire))[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_rapid_fire))[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_6;
@@ -8522,9 +8525,9 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__10);
     PyTuple_SET_ITEM(__pyx_t_2, 6, __pyx_kp_u__10);
-    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_rapid_fire))[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_rapid_fire))[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_6;
@@ -8537,32 +8540,32 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
     __Pyx_GIVEREF(__pyx_kp_u__11);
     PyTuple_SET_ITEM(__pyx_t_2, 8, __pyx_kp_u__11);
 
-    /* "fight.pyx":273
+    /* "fight.pyx":274
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:
  *             raise ValueError(
  *                 "`rapid_fire` if provided should be square with `nb_ships` elements."             # <<<<<<<<<<<<<<
  *                 f"Expected shape: ({nb_ships}, {nb_ships}), got ({rapid_fire.shape[0]}, {rapid_fire.shape[1]})."
  *             )
  */
-    __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_2, 9, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_2, 9, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fight.pyx":272
+    /* "fight.pyx":273
  * 
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:
  *             raise ValueError(             # <<<<<<<<<<<<<<
  *                 "`rapid_fire` if provided should be square with `nb_ships` elements."
  *                 f"Expected shape: ({nb_ships}, {nb_ships}), got ({rapid_fire.shape[0]}, {rapid_fire.shape[1]})."
  */
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 272, __pyx_L1_error)
+    __PYX_ERR(0, 273, __pyx_L1_error)
 
-    /* "fight.pyx":271
+    /* "fight.pyx":272
  *         cdef Armada armada = Armada(nb_ships)
  * 
  *         if rapid_fire is not None and rapid_fire.shape[0] != nb_ships and rapid_fire.shape[1] !=  nb_ships:             # <<<<<<<<<<<<<<
@@ -8571,16 +8574,16 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
  */
   }
 
-  /* "fight.pyx":277
+  /* "fight.pyx":278
  *             )
  * 
  *         armada.ships_from_array(ships)             # <<<<<<<<<<<<<<
  *         armada.rapid_fire_from_array(rapid_fire) if rapid_fire is not None else None
  *         return armada
  */
-  ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_armada->__pyx_vtab)->ships_from_array(__pyx_v_armada, ((PyArrayObject *)__pyx_v_ships)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_armada->__pyx_vtab)->ships_from_array(__pyx_v_armada, ((PyArrayObject *)__pyx_v_ships)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
 
-  /* "fight.pyx":278
+  /* "fight.pyx":279
  * 
  *         armada.ships_from_array(ships)
  *         armada.rapid_fire_from_array(rapid_fire) if rapid_fire is not None else None             # <<<<<<<<<<<<<<
@@ -8589,8 +8592,8 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
  */
   __pyx_t_3 = (((PyObject *)__pyx_v_rapid_fire) != Py_None);
   if (__pyx_t_3) {
-    ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_armada->__pyx_vtab)->rapid_fire_from_array(__pyx_v_armada, ((PyArrayObject *)__pyx_v_rapid_fire)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_5fight_Armada *)__pyx_v_armada->__pyx_vtab)->rapid_fire_from_array(__pyx_v_armada, ((PyArrayObject *)__pyx_v_rapid_fire)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_t_1;
     __pyx_t_1 = 0;
@@ -8600,7 +8603,7 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fight.pyx":279
+  /* "fight.pyx":280
  *         armada.ships_from_array(ships)
  *         armada.rapid_fire_from_array(rapid_fire) if rapid_fire is not None else None
  *         return armada             # <<<<<<<<<<<<<<
@@ -8612,7 +8615,7 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
   __pyx_r = ((PyObject *)__pyx_v_armada);
   goto __pyx_L0;
 
-  /* "fight.pyx":250
+  /* "fight.pyx":251
  *         return self.nb_ships == 0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -8645,7 +8648,7 @@ static PyObject *__pyx_pf_5fight_6Armada_2from_array(PyArrayObject *__pyx_v_ship
   return __pyx_r;
 }
 
-/* "fight.pyx":281
+/* "fight.pyx":282
  *         return armada
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8677,7 +8680,7 @@ static PyObject *__pyx_pf_5fight_6Armada_9nb_ships____get__(struct __pyx_obj_5fi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "fight.pyx":283
+  /* "fight.pyx":284
  *     @property
  *     def nb_ships_(self):
  *         return self.nb_ships             # <<<<<<<<<<<<<<
@@ -8685,13 +8688,13 @@ static PyObject *__pyx_pf_5fight_6Armada_9nb_ships____get__(struct __pyx_obj_5fi
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fight.pyx":281
+  /* "fight.pyx":282
  *         return armada
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8710,7 +8713,7 @@ static PyObject *__pyx_pf_5fight_6Armada_9nb_ships____get__(struct __pyx_obj_5fi
   return __pyx_r;
 }
 
-/* "fight.pyx":285
+/* "fight.pyx":286
  *         return self.nb_ships
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8754,42 +8757,42 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "fight.pyx":287
+  /* "fight.pyx":288
  *     @property
  *     def ships_(self):
  *         ships = np.empty((self.nb_ships, SHIP_CHAR_SIZE - 1), dtype=DTYPE)             # <<<<<<<<<<<<<<
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_v_5fight_SHIP_CHAR_SIZE - 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_v_5fight_SHIP_CHAR_SIZE - 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 287, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8797,7 +8800,7 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
   __pyx_v_ships = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fight.pyx":289
+  /* "fight.pyx":290
  *         ships = np.empty((self.nb_ships, SHIP_CHAR_SIZE - 1), dtype=DTYPE)
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8809,7 +8812,7 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_ship_idx = __pyx_t_7;
 
-    /* "fight.pyx":290
+    /* "fight.pyx":291
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE - 1):             # <<<<<<<<<<<<<<
@@ -8821,34 +8824,34 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_ship_char = __pyx_t_10;
 
-      /* "fight.pyx":291
+      /* "fight.pyx":292
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(SHIP_CHAR_SIZE - 1):
  *                 ships[ship_idx, ship_char] = self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char]             # <<<<<<<<<<<<<<
  * 
  *         return ships
  */
-      __pyx_t_1 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[((__pyx_v_ship_idx * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1)) + __pyx_v_ship_char)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_npy_int64((__pyx_v_self->ships[((__pyx_v_ship_idx * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1)) + __pyx_v_ship_char)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ship_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ship_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_ship_char); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_ship_char); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_4);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_3);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error);
       __pyx_t_4 = 0;
       __pyx_t_3 = 0;
-      if (unlikely((PyObject_SetItem(__pyx_v_ships, __pyx_t_2, __pyx_t_1) < 0))) __PYX_ERR(0, 291, __pyx_L1_error)
+      if (unlikely((PyObject_SetItem(__pyx_v_ships, __pyx_t_2, __pyx_t_1) < 0))) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
 
-  /* "fight.pyx":293
+  /* "fight.pyx":294
  *                 ships[ship_idx, ship_char] = self.ships[ship_idx * (SHIP_CHAR_SIZE - 1) + ship_char]
  * 
  *         return ships             # <<<<<<<<<<<<<<
@@ -8860,7 +8863,7 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
   __pyx_r = __pyx_v_ships;
   goto __pyx_L0;
 
-  /* "fight.pyx":285
+  /* "fight.pyx":286
  *         return self.nb_ships
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8883,7 +8886,7 @@ static PyObject *__pyx_pf_5fight_6Armada_6ships____get__(struct __pyx_obj_5fight
   return __pyx_r;
 }
 
-/* "fight.pyx":295
+/* "fight.pyx":296
  *         return ships
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8927,39 +8930,39 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "fight.pyx":305
+  /* "fight.pyx":306
  *             The rapid fire array.
  *         """
  *         rapid_fire = np.empty((self.nb_ships, self.nb_ships), dtype=int)             # <<<<<<<<<<<<<<
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ships); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 305, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3)) __PYX_ERR(0, 306, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8967,7 +8970,7 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
   __pyx_v_rapid_fire = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fight.pyx":307
+  /* "fight.pyx":308
  *         rapid_fire = np.empty((self.nb_ships, self.nb_ships), dtype=int)
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8979,7 +8982,7 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_ship_idx = __pyx_t_7;
 
-    /* "fight.pyx":308
+    /* "fight.pyx":309
  *         cdef int ship_idx, ship_char
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(self.nb_ships):             # <<<<<<<<<<<<<<
@@ -8991,34 +8994,34 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_ship_char = __pyx_t_10;
 
-      /* "fight.pyx":309
+      /* "fight.pyx":310
  *         for ship_idx in range(self.nb_ships):
  *             for ship_char in range(self.nb_ships):
  *                 rapid_fire[ship_idx, ship_char] = self.rapid_fire[ship_idx * self.nb_ships + ship_char]             # <<<<<<<<<<<<<<
  * 
  *         return rapid_fire
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->rapid_fire[((__pyx_v_ship_idx * __pyx_v_self->nb_ships) + __pyx_v_ship_char)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->rapid_fire[((__pyx_v_ship_idx * __pyx_v_self->nb_ships) + __pyx_v_ship_char)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ship_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ship_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_ship_char); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_ship_char); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_4);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_3);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error);
       __pyx_t_4 = 0;
       __pyx_t_3 = 0;
-      if (unlikely((PyObject_SetItem(__pyx_v_rapid_fire, __pyx_t_2, __pyx_t_1) < 0))) __PYX_ERR(0, 309, __pyx_L1_error)
+      if (unlikely((PyObject_SetItem(__pyx_v_rapid_fire, __pyx_t_2, __pyx_t_1) < 0))) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
 
-  /* "fight.pyx":311
+  /* "fight.pyx":312
  *                 rapid_fire[ship_idx, ship_char] = self.rapid_fire[ship_idx * self.nb_ships + ship_char]
  * 
  *         return rapid_fire             # <<<<<<<<<<<<<<
@@ -9030,7 +9033,7 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
   __pyx_r = __pyx_v_rapid_fire;
   goto __pyx_L0;
 
-  /* "fight.pyx":295
+  /* "fight.pyx":296
  *         return ships
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -9053,7 +9056,7 @@ static PyObject *__pyx_pf_5fight_6Armada_11rapid_fire____get__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "fight.pyx":313
+/* "fight.pyx":314
  *         return rapid_fire
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -9077,7 +9080,7 @@ static void __pyx_pw_5fight_6Armada_5__dealloc__(PyObject *__pyx_v_self) {
 static void __pyx_pf_5fight_6Armada_4__dealloc__(struct __pyx_obj_5fight_Armada *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "fight.pyx":315
+  /* "fight.pyx":316
  *     def __dealloc__(self):
  *         # Deallocate the fleet
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -9087,7 +9090,7 @@ static void __pyx_pf_5fight_6Armada_4__dealloc__(struct __pyx_obj_5fight_Armada 
   __pyx_t_1 = (__pyx_v_self->ships != NULL);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":316
+    /* "fight.pyx":317
  *         # Deallocate the fleet
  *         if self.ships is not NULL:
  *             free(self.ships)             # <<<<<<<<<<<<<<
@@ -9096,7 +9099,7 @@ static void __pyx_pf_5fight_6Armada_4__dealloc__(struct __pyx_obj_5fight_Armada 
  */
     free(__pyx_v_self->ships);
 
-    /* "fight.pyx":315
+    /* "fight.pyx":316
  *     def __dealloc__(self):
  *         # Deallocate the fleet
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -9105,7 +9108,7 @@ static void __pyx_pf_5fight_6Armada_4__dealloc__(struct __pyx_obj_5fight_Armada 
  */
   }
 
-  /* "fight.pyx":313
+  /* "fight.pyx":314
  *         return rapid_fire
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -9330,7 +9333,7 @@ static PyObject *__pyx_pf_5fight_6Armada_8__setstate_cython__(CYTHON_UNUSED stru
   return __pyx_r;
 }
 
-/* "fight.pyx":329
+/* "fight.pyx":330
  *     cdef int* ships
  * 
  *     def __cinit__(self, int nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9374,23 +9377,23 @@ static int __pyx_pw_5fight_12CompactFleet_1__cinit__(PyObject *__pyx_v_self, PyO
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 329, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 330, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 329, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 330, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
     }
-    __pyx_v_nb_ship_types = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ship_types == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 329, __pyx_L3_error)
+    __pyx_v_nb_ship_types = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ship_types == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 330, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 329, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 330, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -9420,7 +9423,7 @@ static int __pyx_pw_5fight_12CompactFleet_1__cinit__(PyObject *__pyx_v_self, PyO
 static int __pyx_pf_5fight_12CompactFleet___cinit__(struct __pyx_obj_5fight_CompactFleet *__pyx_v_self, int __pyx_v_nb_ship_types) {
   int __pyx_r;
 
-  /* "fight.pyx":330
+  /* "fight.pyx":331
  * 
  *     def __cinit__(self, int nb_ship_types):
  *         self.nb_ship_types = nb_ship_types             # <<<<<<<<<<<<<<
@@ -9429,7 +9432,7 @@ static int __pyx_pf_5fight_12CompactFleet___cinit__(struct __pyx_obj_5fight_Comp
  */
   __pyx_v_self->nb_ship_types = __pyx_v_nb_ship_types;
 
-  /* "fight.pyx":329
+  /* "fight.pyx":330
  *     cdef int* ships
  * 
  *     def __cinit__(self, int nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9442,7 +9445,7 @@ static int __pyx_pf_5fight_12CompactFleet___cinit__(struct __pyx_obj_5fight_Comp
   return __pyx_r;
 }
 
-/* "fight.pyx":332
+/* "fight.pyx":333
  *         self.nb_ship_types = nb_ship_types
  * 
  *     cdef int nb_ships(self):             # <<<<<<<<<<<<<<
@@ -9458,7 +9461,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
   int __pyx_t_2;
   int __pyx_t_3;
 
-  /* "fight.pyx":341
+  /* "fight.pyx":342
  *             The number of ships in the fleet.
  *         """
  *         cdef int ship_type_idx, nb_ships = 0             # <<<<<<<<<<<<<<
@@ -9467,7 +9470,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
  */
   __pyx_v_nb_ships = 0;
 
-  /* "fight.pyx":344
+  /* "fight.pyx":345
  * 
  *         # Count the number of ships in the fleet
  *         for ship_type_idx in range(self.nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9479,7 +9482,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_type_idx = __pyx_t_3;
 
-    /* "fight.pyx":345
+    /* "fight.pyx":346
  *         # Count the number of ships in the fleet
  *         for ship_type_idx in range(self.nb_ship_types):
  *             nb_ships += self.ships[ship_type_idx]             # <<<<<<<<<<<<<<
@@ -9489,7 +9492,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
     __pyx_v_nb_ships = (__pyx_v_nb_ships + (__pyx_v_self->ships[__pyx_v_ship_type_idx]));
   }
 
-  /* "fight.pyx":347
+  /* "fight.pyx":348
  *             nb_ships += self.ships[ship_type_idx]
  * 
  *         return nb_ships             # <<<<<<<<<<<<<<
@@ -9499,7 +9502,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
   __pyx_r = __pyx_v_nb_ships;
   goto __pyx_L0;
 
-  /* "fight.pyx":332
+  /* "fight.pyx":333
  *         self.nb_ship_types = nb_ship_types
  * 
  *     cdef int nb_ships(self):             # <<<<<<<<<<<<<<
@@ -9512,7 +9515,7 @@ static int __pyx_f_5fight_12CompactFleet_nb_ships(struct __pyx_obj_5fight_Compac
   return __pyx_r;
 }
 
-/* "fight.pyx":349
+/* "fight.pyx":350
  *         return nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -9526,7 +9529,7 @@ static void __pyx_f_5fight_12CompactFleet_initialize(struct __pyx_obj_5fight_Com
   int __pyx_t_2;
   int __pyx_t_3;
 
-  /* "fight.pyx":353
+  /* "fight.pyx":354
  *         Initialize the compact fleet with zeros.
  *         """
  *         self.ships = <int *> malloc(self.nb_ship_types * sizeof(int))             # <<<<<<<<<<<<<<
@@ -9535,7 +9538,7 @@ static void __pyx_f_5fight_12CompactFleet_initialize(struct __pyx_obj_5fight_Com
  */
   __pyx_v_self->ships = ((int *)malloc((__pyx_v_self->nb_ship_types * (sizeof(int)))));
 
-  /* "fight.pyx":355
+  /* "fight.pyx":356
  *         self.ships = <int *> malloc(self.nb_ship_types * sizeof(int))
  *         cdef int ship_type_idx
  *         for ship_type_idx in range(self.nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9547,7 +9550,7 @@ static void __pyx_f_5fight_12CompactFleet_initialize(struct __pyx_obj_5fight_Com
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_type_idx = __pyx_t_3;
 
-    /* "fight.pyx":356
+    /* "fight.pyx":357
  *         cdef int ship_type_idx
  *         for ship_type_idx in range(self.nb_ship_types):
  *             self.ships[ship_type_idx] = 0             # <<<<<<<<<<<<<<
@@ -9557,7 +9560,7 @@ static void __pyx_f_5fight_12CompactFleet_initialize(struct __pyx_obj_5fight_Com
     (__pyx_v_self->ships[__pyx_v_ship_type_idx]) = 0;
   }
 
-  /* "fight.pyx":349
+  /* "fight.pyx":350
  *         return nb_ships
  * 
  *     cdef void initialize(self):             # <<<<<<<<<<<<<<
@@ -9568,7 +9571,7 @@ static void __pyx_f_5fight_12CompactFleet_initialize(struct __pyx_obj_5fight_Com
   /* function exit code */
 }
 
-/* "fight.pyx":358
+/* "fight.pyx":359
  *             self.ships[ship_type_idx] = 0
  * 
  *     def to_array(self):             # <<<<<<<<<<<<<<
@@ -9635,29 +9638,29 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_2to_array(struct __pyx_obj_5figh
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("to_array", 1);
 
-  /* "fight.pyx":368
+  /* "fight.pyx":369
  *         """
  *         # Create a numpy array to store the compact fleet
  *         cdef ships = np.empty(self.nb_ship_types, dtype=int)             # <<<<<<<<<<<<<<
  *         cdef int ship_type_idx
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ship_types); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nb_ship_types); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 368, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 368, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9665,7 +9668,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_2to_array(struct __pyx_obj_5figh
   __pyx_v_ships = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "fight.pyx":372
+  /* "fight.pyx":373
  * 
  *         # Populate the numpy array with the ships from the compact fleet
  *         for ship_type_idx in range(self.nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9677,20 +9680,20 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_2to_array(struct __pyx_obj_5figh
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_ship_type_idx = __pyx_t_7;
 
-    /* "fight.pyx":373
+    /* "fight.pyx":374
  *         # Populate the numpy array with the ships from the compact fleet
  *         for ship_type_idx in range(self.nb_ship_types):
  *             ships[ship_type_idx] = self.ships[ship_type_idx]             # <<<<<<<<<<<<<<
  * 
  *         return ships
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_self->ships[__pyx_v_ship_type_idx])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_self->ships[__pyx_v_ship_type_idx])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (unlikely((__Pyx_SetItemInt(__pyx_v_ships, __pyx_v_ship_type_idx, __pyx_t_4, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0))) __PYX_ERR(0, 373, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(__pyx_v_ships, __pyx_v_ship_type_idx, __pyx_t_4, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0))) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
 
-  /* "fight.pyx":375
+  /* "fight.pyx":376
  *             ships[ship_type_idx] = self.ships[ship_type_idx]
  * 
  *         return ships             # <<<<<<<<<<<<<<
@@ -9702,7 +9705,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_2to_array(struct __pyx_obj_5figh
   __pyx_r = __pyx_v_ships;
   goto __pyx_L0;
 
-  /* "fight.pyx":358
+  /* "fight.pyx":359
  *             self.ships[ship_type_idx] = 0
  * 
  *     def to_array(self):             # <<<<<<<<<<<<<<
@@ -9725,7 +9728,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_2to_array(struct __pyx_obj_5figh
   return __pyx_r;
 }
 
-/* "fight.pyx":377
+/* "fight.pyx":378
  *         return ships
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -9787,12 +9790,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 377, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 378, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_array") < 0)) __PYX_ERR(0, 377, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_array") < 0)) __PYX_ERR(0, 378, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -9803,7 +9806,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("from_array", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 377, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("from_array", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 378, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -9847,47 +9850,47 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_4from_array(PyObject *__pyx_v_sh
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_array", 1);
 
-  /* "fight.pyx":389
+  /* "fight.pyx":390
  *         # Create a new compact fleet with the number of ship types
  *         cdef int ship_type_idx, nb_ship_types
  *         nb_ship_types = ships.shape[0]             # <<<<<<<<<<<<<<
  * 
  *         cdef CompactFleet compact_fleet = CompactFleet(nb_ship_types)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ships, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ships, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_nb_ship_types = __pyx_t_3;
 
-  /* "fight.pyx":391
+  /* "fight.pyx":392
  *         nb_ship_types = ships.shape[0]
  * 
  *         cdef CompactFleet compact_fleet = CompactFleet(nb_ship_types)             # <<<<<<<<<<<<<<
  *         compact_fleet.initialize()
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_nb_ship_types); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_nb_ship_types); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_CompactFleet), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_CompactFleet), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_compact_fleet = ((struct __pyx_obj_5fight_CompactFleet *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fight.pyx":392
+  /* "fight.pyx":393
  * 
  *         cdef CompactFleet compact_fleet = CompactFleet(nb_ship_types)
  *         compact_fleet.initialize()             # <<<<<<<<<<<<<<
  * 
  *         # Populate the compact fleet with the ships from the numpy array
  */
-  ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->initialize(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 392, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->initialize(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 393, __pyx_L1_error)
 
-  /* "fight.pyx":395
+  /* "fight.pyx":396
  * 
  *         # Populate the compact fleet with the ships from the numpy array
  *         for ship_type_idx in range(nb_ship_types):             # <<<<<<<<<<<<<<
@@ -9899,21 +9902,21 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_4from_array(PyObject *__pyx_v_sh
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_ship_type_idx = __pyx_t_5;
 
-    /* "fight.pyx":396
+    /* "fight.pyx":397
  *         # Populate the compact fleet with the ships from the numpy array
  *         for ship_type_idx in range(nb_ship_types):
  *             compact_fleet.ships[ship_type_idx] = ships[ship_type_idx]             # <<<<<<<<<<<<<<
  * 
  *         return compact_fleet
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_ships, __pyx_v_ship_type_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_ships, __pyx_v_ship_type_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 397, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 397, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_compact_fleet->ships[__pyx_v_ship_type_idx]) = __pyx_t_6;
   }
 
-  /* "fight.pyx":398
+  /* "fight.pyx":399
  *             compact_fleet.ships[ship_type_idx] = ships[ship_type_idx]
  * 
  *         return compact_fleet             # <<<<<<<<<<<<<<
@@ -9925,7 +9928,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_4from_array(PyObject *__pyx_v_sh
   __pyx_r = ((PyObject *)__pyx_v_compact_fleet);
   goto __pyx_L0;
 
-  /* "fight.pyx":377
+  /* "fight.pyx":378
  *         return ships
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -9946,7 +9949,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_4from_array(PyObject *__pyx_v_sh
   return __pyx_r;
 }
 
-/* "fight.pyx":400
+/* "fight.pyx":401
  *         return compact_fleet
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -9970,7 +9973,7 @@ static void __pyx_pw_5fight_12CompactFleet_7__dealloc__(PyObject *__pyx_v_self) 
 static void __pyx_pf_5fight_12CompactFleet_6__dealloc__(struct __pyx_obj_5fight_CompactFleet *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "fight.pyx":404
+  /* "fight.pyx":405
  *         Deallocate the fleet
  *         """
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -9980,7 +9983,7 @@ static void __pyx_pf_5fight_12CompactFleet_6__dealloc__(struct __pyx_obj_5fight_
   __pyx_t_1 = (__pyx_v_self->ships != NULL);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":405
+    /* "fight.pyx":406
  *         """
  *         if self.ships is not NULL:
  *             free(self.ships)             # <<<<<<<<<<<<<<
@@ -9989,7 +9992,7 @@ static void __pyx_pf_5fight_12CompactFleet_6__dealloc__(struct __pyx_obj_5fight_
  */
     free(__pyx_v_self->ships);
 
-    /* "fight.pyx":404
+    /* "fight.pyx":405
  *         Deallocate the fleet
  *         """
  *         if self.ships is not NULL:             # <<<<<<<<<<<<<<
@@ -9998,7 +10001,7 @@ static void __pyx_pf_5fight_12CompactFleet_6__dealloc__(struct __pyx_obj_5fight_
  */
   }
 
-  /* "fight.pyx":400
+  /* "fight.pyx":401
  *         return compact_fleet
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -10223,7 +10226,7 @@ static PyObject *__pyx_pf_5fight_12CompactFleet_10__setstate_cython__(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "fight.pyx":407
+/* "fight.pyx":408
  *             free(self.ships)
  * 
  * cdef int nb_fleet_types(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -10243,7 +10246,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_5fight_DTYPE_t __pyx_t_6;
   int __pyx_t_7;
 
-  /* "fight.pyx":422
+  /* "fight.pyx":423
  *     """
  *     cdef int ship_idx
  *     cdef DTYPE_t ship_types = -1             # <<<<<<<<<<<<<<
@@ -10252,7 +10255,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
  */
   __pyx_v_ship_types = -1LL;
 
-  /* "fight.pyx":425
+  /* "fight.pyx":426
  * 
  *     # Find the maximum ship type in the fleet
  *     for ship_idx in range(fleet.nb_ships):             # <<<<<<<<<<<<<<
@@ -10264,7 +10267,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_idx = __pyx_t_3;
 
-    /* "fight.pyx":426
+    /* "fight.pyx":427
  *     # Find the maximum ship type in the fleet
  *     for ship_idx in range(fleet.nb_ships):
  *         ship_types = max(ship_types, fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX])             # <<<<<<<<<<<<<<
@@ -10282,7 +10285,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
     __pyx_v_ship_types = __pyx_t_6;
   }
 
-  /* "fight.pyx":428
+  /* "fight.pyx":429
  *         ship_types = max(ship_types, fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX])
  * 
  *     return <int>ship_types + 1             # <<<<<<<<<<<<<<
@@ -10292,7 +10295,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_r = (((int)__pyx_v_ship_types) + 1);
   goto __pyx_L0;
 
-  /* "fight.pyx":407
+  /* "fight.pyx":408
  *             free(self.ships)
  * 
  * cdef int nb_fleet_types(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -10305,7 +10308,7 @@ static int __pyx_f_5fight_nb_fleet_types(struct __pyx_obj_5fight_Fleet *__pyx_v_
   return __pyx_r;
 }
 
-/* "fight.pyx":430
+/* "fight.pyx":431
  *     return <int>ship_types + 1
  * 
  * cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -10340,41 +10343,41 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compact_fleet_from_fleet", 1);
 
-  /* "fight.pyx":434
+  /* "fight.pyx":435
  * 
  *     """
  *     cdef int nb_ship_types = nb_fleet_types(fleet)             # <<<<<<<<<<<<<<
  *     cdef CompactFleet compact_fleet = CompactFleet(nb_ship_types)
  *     cdef int ship_idx, ship_type
  */
-  __pyx_t_1 = __pyx_f_5fight_nb_fleet_types(__pyx_v_fleet); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_nb_fleet_types(__pyx_v_fleet); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L1_error)
   __pyx_v_nb_ship_types = __pyx_t_1;
 
-  /* "fight.pyx":435
+  /* "fight.pyx":436
  *     """
  *     cdef int nb_ship_types = nb_fleet_types(fleet)
  *     cdef CompactFleet compact_fleet = CompactFleet(nb_ship_types)             # <<<<<<<<<<<<<<
  *     cdef int ship_idx, ship_type
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_nb_ship_types); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_nb_ship_types); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_CompactFleet), __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_CompactFleet), __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_compact_fleet = ((struct __pyx_obj_5fight_CompactFleet *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fight.pyx":440
+  /* "fight.pyx":441
  *     cdef DTYPE_t ship_type_idx
  * 
  *     compact_fleet.initialize()             # <<<<<<<<<<<<<<
  * 
  *     # Initialize the compact fleet with zeros
  */
-  ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->initialize(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 440, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->initialize(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
 
-  /* "fight.pyx":443
+  /* "fight.pyx":444
  * 
  *     # Initialize the compact fleet with zeros
  *     for ship_type_idx in range(nb_ship_types):             # <<<<<<<<<<<<<<
@@ -10386,7 +10389,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_ship_type_idx = __pyx_t_5;
 
-    /* "fight.pyx":444
+    /* "fight.pyx":445
  *     # Initialize the compact fleet with zeros
  *     for ship_type_idx in range(nb_ship_types):
  *         compact_fleet.ships[ship_type_idx] = 0             # <<<<<<<<<<<<<<
@@ -10396,7 +10399,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
     (__pyx_v_compact_fleet->ships[__pyx_v_ship_type_idx]) = 0;
   }
 
-  /* "fight.pyx":447
+  /* "fight.pyx":448
  * 
  *     # Count the number of ships of each type in the fleet
  *     for ship_idx in range(fleet.nb_ships):             # <<<<<<<<<<<<<<
@@ -10408,7 +10411,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_4; __pyx_t_6+=1) {
     __pyx_v_ship_idx = __pyx_t_6;
 
-    /* "fight.pyx":448
+    /* "fight.pyx":449
  *     # Count the number of ships of each type in the fleet
  *     for ship_idx in range(fleet.nb_ships):
  *         ship_type = <int> fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX]             # <<<<<<<<<<<<<<
@@ -10417,7 +10420,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
  */
     __pyx_v_ship_type = ((int)(__pyx_v_fleet->ships[((__pyx_v_ship_idx * __pyx_v_5fight_SHIP_CHAR_SIZE) + __pyx_v_5fight_TYPE_IDX)]));
 
-    /* "fight.pyx":449
+    /* "fight.pyx":450
  *     for ship_idx in range(fleet.nb_ships):
  *         ship_type = <int> fleet.ships[ship_idx * SHIP_CHAR_SIZE + TYPE_IDX]
  *         compact_fleet.ships[ship_type] += 1             # <<<<<<<<<<<<<<
@@ -10428,7 +10431,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
     (__pyx_v_compact_fleet->ships[__pyx_t_7]) = ((__pyx_v_compact_fleet->ships[__pyx_t_7]) + 1);
   }
 
-  /* "fight.pyx":451
+  /* "fight.pyx":452
  *         compact_fleet.ships[ship_type] += 1
  * 
  *     return compact_fleet             # <<<<<<<<<<<<<<
@@ -10440,7 +10443,7 @@ static struct __pyx_obj_5fight_CompactFleet *__pyx_f_5fight_compact_fleet_from_f
   __pyx_r = __pyx_v_compact_fleet;
   goto __pyx_L0;
 
-  /* "fight.pyx":430
+  /* "fight.pyx":431
  *     return <int>ship_types + 1
  * 
  * cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -10515,12 +10518,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 430, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 431, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compact_fleet_from_fleet") < 0)) __PYX_ERR(0, 430, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compact_fleet_from_fleet") < 0)) __PYX_ERR(0, 431, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -10531,7 +10534,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compact_fleet_from_fleet", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 430, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compact_fleet_from_fleet", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 431, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10545,7 +10548,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 430, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 431, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_compact_fleet_from_fleet(__pyx_self, __pyx_v_fleet);
 
   /* function exit code */
@@ -10572,7 +10575,7 @@ static PyObject *__pyx_pf_5fight_compact_fleet_from_fleet(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compact_fleet_from_fleet", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(__pyx_v_fleet, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_5fight_compact_fleet_from_fleet(__pyx_v_fleet, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10589,7 +10592,7 @@ static PyObject *__pyx_pf_5fight_compact_fleet_from_fleet(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "fight.pyx":453
+/* "fight.pyx":454
  *     return compact_fleet
  * 
  * cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):             # <<<<<<<<<<<<<<
@@ -10630,32 +10633,32 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fleet_from_compact_fleet", 1);
 
-  /* "fight.pyx":471
+  /* "fight.pyx":472
  * 
  *     # Create a new fleet with the number of ships in the compact fleet
  *     cdef Fleet fleet = Fleet(compact_fleet.nb_ships())             # <<<<<<<<<<<<<<
  *     fleet.initialize()
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->nb_ships(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 471, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5fight_CompactFleet *)__pyx_v_compact_fleet->__pyx_vtab)->nb_ships(__pyx_v_compact_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_Fleet), __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_5fight_Fleet), __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_fleet = ((struct __pyx_obj_5fight_Fleet *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fight.pyx":472
+  /* "fight.pyx":473
  *     # Create a new fleet with the number of ships in the compact fleet
  *     cdef Fleet fleet = Fleet(compact_fleet.nb_ships())
  *     fleet.initialize()             # <<<<<<<<<<<<<<
  * 
  *     cdef int ship_type_idx, ship_idx
  */
-  ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fleet->__pyx_vtab)->initialize(__pyx_v_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 472, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fleet->__pyx_vtab)->initialize(__pyx_v_fleet); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 473, __pyx_L1_error)
 
-  /* "fight.pyx":475
+  /* "fight.pyx":476
  * 
  *     cdef int ship_type_idx, ship_idx
  *     ship_idx = 0             # <<<<<<<<<<<<<<
@@ -10664,7 +10667,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
  */
   __pyx_v_ship_idx = 0;
 
-  /* "fight.pyx":478
+  /* "fight.pyx":479
  * 
  *     # Fill the fleet with ships from the armada
  *     for ship_type_idx in range(compact_fleet.nb_ship_types):             # <<<<<<<<<<<<<<
@@ -10676,7 +10679,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_ship_type_idx = __pyx_t_5;
 
-    /* "fight.pyx":479
+    /* "fight.pyx":480
  *     # Fill the fleet with ships from the armada
  *     for ship_type_idx in range(compact_fleet.nb_ship_types):
  *         for _ in range(compact_fleet.ships[ship_type_idx]):             # <<<<<<<<<<<<<<
@@ -10688,7 +10691,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v__ = __pyx_t_8;
 
-      /* "fight.pyx":481
+      /* "fight.pyx":482
  *         for _ in range(compact_fleet.ships[ship_type_idx]):
  *             # Copy the ship type
  *             fleet.ships[ship_idx * SHIP_CHAR_SIZE] = ship_type_idx             # <<<<<<<<<<<<<<
@@ -10697,24 +10700,24 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
  */
       (__pyx_v_fleet->ships[(__pyx_v_ship_idx * __pyx_v_5fight_SHIP_CHAR_SIZE)]) = __pyx_v_ship_type_idx;
 
-      /* "fight.pyx":484
+      /* "fight.pyx":485
  * 
  *             # Copy the ship characteristics from the armada to the fleet
  *             for ship_char in range(1, SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
  *                 fleet.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = armada.ships[ship_type_idx * (SHIP_CHAR_SIZE - 1) + ship_char - 1]
  *             ship_idx += 1
  */
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_5fight_SHIP_CHAR_SIZE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_int_1);
       __Pyx_GIVEREF(__pyx_int_1);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_int_1)) __PYX_ERR(0, 484, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_int_1)) __PYX_ERR(0, 485, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_3);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
@@ -10722,9 +10725,9 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
         __pyx_t_9 = 0;
         __pyx_t_10 = NULL;
       } else {
-        __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
+        __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_10 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 484, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 485, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       for (;;) {
@@ -10733,28 +10736,28 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 484, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
               #endif
               if (__pyx_t_9 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 484, __pyx_L1_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
             #else
-            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 484, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
               #endif
               if (__pyx_t_9 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 484, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
             #else
-            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           }
@@ -10764,7 +10767,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 484, __pyx_L1_error)
+              else __PYX_ERR(0, 485, __pyx_L1_error)
             }
             break;
           }
@@ -10773,33 +10776,33 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
         __Pyx_XDECREF_SET(__pyx_v_ship_char, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "fight.pyx":485
+        /* "fight.pyx":486
  *             # Copy the ship characteristics from the armada to the fleet
  *             for ship_char in range(1, SHIP_CHAR_SIZE):
  *                 fleet.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = armada.ships[ship_type_idx * (SHIP_CHAR_SIZE - 1) + ship_char - 1]             # <<<<<<<<<<<<<<
  *             ship_idx += 1
  * 
  */
-        __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_v_ship_type_idx * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_v_ship_type_idx * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_v_ship_char); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_v_ship_char); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_11, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_11, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_3); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_3); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_ship_idx * __pyx_v_5fight_SHIP_CHAR_SIZE)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_ship_idx * __pyx_v_5fight_SHIP_CHAR_SIZE)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_v_ship_char); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_v_ship_char); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_11); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_11); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         (__pyx_v_fleet->ships[__pyx_t_13]) = (__pyx_v_armada->ships[__pyx_t_12]);
 
-        /* "fight.pyx":484
+        /* "fight.pyx":485
  * 
  *             # Copy the ship characteristics from the armada to the fleet
  *             for ship_char in range(1, SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
@@ -10809,7 +10812,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "fight.pyx":486
+      /* "fight.pyx":487
  *             for ship_char in range(1, SHIP_CHAR_SIZE):
  *                 fleet.ships[ship_idx * SHIP_CHAR_SIZE + ship_char] = armada.ships[ship_type_idx * (SHIP_CHAR_SIZE - 1) + ship_char - 1]
  *             ship_idx += 1             # <<<<<<<<<<<<<<
@@ -10820,7 +10823,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
     }
   }
 
-  /* "fight.pyx":488
+  /* "fight.pyx":489
  *             ship_idx += 1
  * 
  *     return fleet             # <<<<<<<<<<<<<<
@@ -10832,7 +10835,7 @@ static struct __pyx_obj_5fight_Fleet *__pyx_f_5fight_fleet_from_compact_fleet(st
   __pyx_r = __pyx_v_fleet;
   goto __pyx_L0;
 
-  /* "fight.pyx":453
+  /* "fight.pyx":454
  *     return compact_fleet
  * 
  * cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):             # <<<<<<<<<<<<<<
@@ -10912,7 +10915,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 453, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 454, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -10920,14 +10923,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 453, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 454, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("fleet_from_compact_fleet", 1, 2, 2, 1); __PYX_ERR(0, 453, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fleet_from_compact_fleet", 1, 2, 2, 1); __PYX_ERR(0, 454, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fleet_from_compact_fleet") < 0)) __PYX_ERR(0, 453, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fleet_from_compact_fleet") < 0)) __PYX_ERR(0, 454, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -10940,7 +10943,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fleet_from_compact_fleet", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 453, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fleet_from_compact_fleet", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 454, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10954,8 +10957,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_compact_fleet), __pyx_ptype_5fight_CompactFleet, 1, "compact_fleet", 0))) __PYX_ERR(0, 453, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 453, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_compact_fleet), __pyx_ptype_5fight_CompactFleet, 1, "compact_fleet", 0))) __PYX_ERR(0, 454, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 454, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_2fleet_from_compact_fleet(__pyx_self, __pyx_v_compact_fleet, __pyx_v_armada);
 
   /* function exit code */
@@ -10982,7 +10985,7 @@ static PyObject *__pyx_pf_5fight_2fleet_from_compact_fleet(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fleet_from_compact_fleet", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_5fight_fleet_from_compact_fleet(__pyx_v_compact_fleet, __pyx_v_armada, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_5fight_fleet_from_compact_fleet(__pyx_v_compact_fleet, __pyx_v_armada, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10999,7 +11002,7 @@ static PyObject *__pyx_pf_5fight_2fleet_from_compact_fleet(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "fight.pyx":492
+/* "fight.pyx":493
  * 
  * 
  * cpdef void fight_fleets(FightField fight_field):             # <<<<<<<<<<<<<<
@@ -11026,7 +11029,7 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fight_fleets", 1);
 
-  /* "fight.pyx":503
+  /* "fight.pyx":504
  *     """
  * 
  *     cdef int rounds = 0             # <<<<<<<<<<<<<<
@@ -11035,7 +11038,7 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
  */
   __pyx_v_rounds = 0;
 
-  /* "fight.pyx":505
+  /* "fight.pyx":506
  *     cdef int rounds = 0
  * 
  *     while rounds < fight_field.max_rounds and not (fight_field.fleet_1.is_empty() or fight_field.fleet_2.is_empty()):             # <<<<<<<<<<<<<<
@@ -11049,13 +11052,13 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L5_bool_binop_done;
     }
-    __pyx_t_3 = ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fight_field->fleet_1->__pyx_vtab)->is_empty(__pyx_v_fight_field->fleet_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 505, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fight_field->fleet_1->__pyx_vtab)->is_empty(__pyx_v_fight_field->fleet_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 506, __pyx_L1_error)
     if (!__pyx_t_3) {
     } else {
       __pyx_t_2 = __pyx_t_3;
       goto __pyx_L7_bool_binop_done;
     }
-    __pyx_t_3 = ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fight_field->fleet_2->__pyx_vtab)->is_empty(__pyx_v_fight_field->fleet_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 505, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_5fight_Fleet *)__pyx_v_fight_field->fleet_2->__pyx_vtab)->is_empty(__pyx_v_fight_field->fleet_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 506, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_3;
     __pyx_L7_bool_binop_done:;
     __pyx_t_3 = (!__pyx_t_2);
@@ -11063,7 +11066,7 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
     __pyx_L5_bool_binop_done:;
     if (!__pyx_t_1) break;
 
-    /* "fight.pyx":507
+    /* "fight.pyx":508
  *     while rounds < fight_field.max_rounds and not (fight_field.fleet_1.is_empty() or fight_field.fleet_2.is_empty()):
  *         # Restore all shields
  *         restore_shields(fight_field.fleet_1)             # <<<<<<<<<<<<<<
@@ -11072,10 +11075,10 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
  */
     __pyx_t_4 = ((PyObject *)__pyx_v_fight_field->fleet_1);
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_f_5fight_restore_shields(((struct __pyx_obj_5fight_Fleet *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 507, __pyx_L1_error)
+    __pyx_f_5fight_restore_shields(((struct __pyx_obj_5fight_Fleet *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "fight.pyx":508
+    /* "fight.pyx":509
  *         # Restore all shields
  *         restore_shields(fight_field.fleet_1)
  *         restore_shields(fight_field.fleet_2)             # <<<<<<<<<<<<<<
@@ -11084,19 +11087,19 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
  */
     __pyx_t_4 = ((PyObject *)__pyx_v_fight_field->fleet_2);
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_f_5fight_restore_shields(((struct __pyx_obj_5fight_Fleet *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
+    __pyx_f_5fight_restore_shields(((struct __pyx_obj_5fight_Fleet *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 509, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "fight.pyx":511
+    /* "fight.pyx":512
  * 
  *         # Simulate a single round of fight
  *         fight_single_round(fight_field)             # <<<<<<<<<<<<<<
  * 
  *         rounds += 1
  */
-    __pyx_f_5fight_fight_single_round(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 511, __pyx_L1_error)
+    __pyx_f_5fight_fight_single_round(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 512, __pyx_L1_error)
 
-    /* "fight.pyx":513
+    /* "fight.pyx":514
  *         fight_single_round(fight_field)
  * 
  *         rounds += 1             # <<<<<<<<<<<<<<
@@ -11106,7 +11109,7 @@ static void __pyx_f_5fight_fight_fleets(struct __pyx_obj_5fight_FightField *__py
     __pyx_v_rounds = (__pyx_v_rounds + 1);
   }
 
-  /* "fight.pyx":492
+  /* "fight.pyx":493
  * 
  * 
  * cpdef void fight_fleets(FightField fight_field):             # <<<<<<<<<<<<<<
@@ -11177,12 +11180,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_fleets") < 0)) __PYX_ERR(0, 492, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_fleets") < 0)) __PYX_ERR(0, 493, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -11193,7 +11196,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fight_fleets", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 492, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fight_fleets", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 493, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11207,7 +11210,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fight_field), __pyx_ptype_5fight_FightField, 1, "fight_field", 0))) __PYX_ERR(0, 492, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fight_field), __pyx_ptype_5fight_FightField, 1, "fight_field", 0))) __PYX_ERR(0, 493, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_4fight_fleets(__pyx_self, __pyx_v_fight_field);
 
   /* function exit code */
@@ -11234,8 +11237,8 @@ static PyObject *__pyx_pf_5fight_4fight_fleets(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fight_fleets", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5fight_fight_fleets(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_f_5fight_fight_fleets(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11252,7 +11255,7 @@ static PyObject *__pyx_pf_5fight_4fight_fleets(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "fight.pyx":515
+/* "fight.pyx":516
  *         rounds += 1
  * 
  * cpdef void remove_destroyed_ships(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -11279,7 +11282,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
   int __pyx_t_6;
   int __pyx_t_7;
 
-  /* "fight.pyx":524
+  /* "fight.pyx":525
  *         The fleet of ships with optionally destroyed ships in its midst to remove
  *     """
  *     cdef int intact_ships = 0             # <<<<<<<<<<<<<<
@@ -11288,7 +11291,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
  */
   __pyx_v_intact_ships = 0;
 
-  /* "fight.pyx":528
+  /* "fight.pyx":529
  * 
  *     # Move the intact ships to the start of the fleet
  *     for current_ship in range(fleet.nb_ships):             # <<<<<<<<<<<<<<
@@ -11300,7 +11303,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_current_ship = __pyx_t_3;
 
-    /* "fight.pyx":529
+    /* "fight.pyx":530
  *     # Move the intact ships to the start of the fleet
  *     for current_ship in range(fleet.nb_ships):
  *         if fleet.ships[current_ship * SHIP_CHAR_SIZE + HULL_IDX] > 0:             # <<<<<<<<<<<<<<
@@ -11310,7 +11313,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
     __pyx_t_4 = ((__pyx_v_fleet->ships[((__pyx_v_current_ship * __pyx_v_5fight_SHIP_CHAR_SIZE) + __pyx_v_5fight_HULL_IDX)]) > 0);
     if (__pyx_t_4) {
 
-      /* "fight.pyx":531
+      /* "fight.pyx":532
  *         if fleet.ships[current_ship * SHIP_CHAR_SIZE + HULL_IDX] > 0:
  *             # Move the intact ship to the start of the fleet
  *             for ship_char in range(SHIP_CHAR_SIZE):             # <<<<<<<<<<<<<<
@@ -11322,7 +11325,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
       for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
         __pyx_v_ship_char = __pyx_t_7;
 
-        /* "fight.pyx":532
+        /* "fight.pyx":533
  *             # Move the intact ship to the start of the fleet
  *             for ship_char in range(SHIP_CHAR_SIZE):
  *                 fleet.ships[intact_ships * SHIP_CHAR_SIZE + ship_char] = fleet.ships[current_ship * SHIP_CHAR_SIZE + ship_char]             # <<<<<<<<<<<<<<
@@ -11332,7 +11335,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
         (__pyx_v_fleet->ships[((__pyx_v_intact_ships * __pyx_v_5fight_SHIP_CHAR_SIZE) + __pyx_v_ship_char)]) = (__pyx_v_fleet->ships[((__pyx_v_current_ship * __pyx_v_5fight_SHIP_CHAR_SIZE) + __pyx_v_ship_char)]);
       }
 
-      /* "fight.pyx":534
+      /* "fight.pyx":535
  *                 fleet.ships[intact_ships * SHIP_CHAR_SIZE + ship_char] = fleet.ships[current_ship * SHIP_CHAR_SIZE + ship_char]
  * 
  *             intact_ships += 1             # <<<<<<<<<<<<<<
@@ -11341,7 +11344,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
  */
       __pyx_v_intact_ships = (__pyx_v_intact_ships + 1);
 
-      /* "fight.pyx":529
+      /* "fight.pyx":530
  *     # Move the intact ships to the start of the fleet
  *     for current_ship in range(fleet.nb_ships):
  *         if fleet.ships[current_ship * SHIP_CHAR_SIZE + HULL_IDX] > 0:             # <<<<<<<<<<<<<<
@@ -11351,7 +11354,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
     }
   }
 
-  /* "fight.pyx":536
+  /* "fight.pyx":537
  *             intact_ships += 1
  * 
  *     fleet.nb_ships = intact_ships             # <<<<<<<<<<<<<<
@@ -11360,7 +11363,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
  */
   __pyx_v_fleet->nb_ships = __pyx_v_intact_ships;
 
-  /* "fight.pyx":539
+  /* "fight.pyx":540
  * 
  *     # Resize the fleet to remove the destroyed ships
  *     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))             # <<<<<<<<<<<<<<
@@ -11369,7 +11372,7 @@ static void __pyx_f_5fight_remove_destroyed_ships(struct __pyx_obj_5fight_Fleet 
  */
   __pyx_v_fleet->ships = ((__pyx_t_5fight_DTYPE_t *)realloc(__pyx_v_fleet->ships, ((__pyx_v_fleet->nb_ships * __pyx_v_5fight_SHIP_CHAR_SIZE) * (sizeof(__pyx_t_5fight_DTYPE_t)))));
 
-  /* "fight.pyx":515
+  /* "fight.pyx":516
  *         rounds += 1
  * 
  * cpdef void remove_destroyed_ships(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -11434,12 +11437,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 515, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 516, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "remove_destroyed_ships") < 0)) __PYX_ERR(0, 515, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "remove_destroyed_ships") < 0)) __PYX_ERR(0, 516, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -11450,7 +11453,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("remove_destroyed_ships", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 515, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("remove_destroyed_ships", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 516, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11464,7 +11467,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 515, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 516, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_6remove_destroyed_ships(__pyx_self, __pyx_v_fleet);
 
   /* function exit code */
@@ -11491,8 +11494,8 @@ static PyObject *__pyx_pf_5fight_6remove_destroyed_ships(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("remove_destroyed_ships", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 515, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 516, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 516, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11509,7 +11512,7 @@ static PyObject *__pyx_pf_5fight_6remove_destroyed_ships(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "fight.pyx":541
+/* "fight.pyx":542
  *     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  * cpdef void restore_shields(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -11530,7 +11533,7 @@ static void __pyx_f_5fight_restore_shields(struct __pyx_obj_5fight_Fleet *__pyx_
   int __pyx_t_2;
   int __pyx_t_3;
 
-  /* "fight.pyx":553
+  /* "fight.pyx":554
  * 
  *     # Restore the shields of each ship in the fleet to its shield generator value
  *     for ship_idx in range(fleet.nb_ships):             # <<<<<<<<<<<<<<
@@ -11542,7 +11545,7 @@ static void __pyx_f_5fight_restore_shields(struct __pyx_obj_5fight_Fleet *__pyx_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_ship_idx = __pyx_t_3;
 
-    /* "fight.pyx":554
+    /* "fight.pyx":555
  *     # Restore the shields of each ship in the fleet to its shield generator value
  *     for ship_idx in range(fleet.nb_ships):
  *         fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]             # <<<<<<<<<<<<<<
@@ -11552,7 +11555,7 @@ static void __pyx_f_5fight_restore_shields(struct __pyx_obj_5fight_Fleet *__pyx_
     (__pyx_v_fleet->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_ship_idx) + __pyx_v_5fight_SHIELD_IDX)]) = (__pyx_v_fleet->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_ship_idx) + __pyx_v_5fight_SHIELD_GENERATOR_IDX)]);
   }
 
-  /* "fight.pyx":541
+  /* "fight.pyx":542
  *     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  * cpdef void restore_shields(Fleet fleet):             # <<<<<<<<<<<<<<
@@ -11617,12 +11620,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 541, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 542, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "restore_shields") < 0)) __PYX_ERR(0, 541, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "restore_shields") < 0)) __PYX_ERR(0, 542, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -11633,7 +11636,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("restore_shields", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 541, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("restore_shields", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 542, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11647,7 +11650,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 541, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet), __pyx_ptype_5fight_Fleet, 1, "fleet", 0))) __PYX_ERR(0, 542, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_8restore_shields(__pyx_self, __pyx_v_fleet);
 
   /* function exit code */
@@ -11674,8 +11677,8 @@ static PyObject *__pyx_pf_5fight_8restore_shields(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("restore_shields", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5fight_restore_shields(__pyx_v_fleet, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 541, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_f_5fight_restore_shields(__pyx_v_fleet, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11692,7 +11695,7 @@ static PyObject *__pyx_pf_5fight_8restore_shields(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "fight.pyx":556
+/* "fight.pyx":557
  *         fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
  * 
  * cpdef void fight_single_round(FightField fight_field):             # <<<<<<<<<<<<<<
@@ -11718,7 +11721,7 @@ static void __pyx_f_5fight_fight_single_round(struct __pyx_obj_5fight_FightField
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fight_single_round", 1);
 
-  /* "fight.pyx":568
+  /* "fight.pyx":569
  *         The second fleet.
  *     """
  *     cdef Fleet fleet_1 = fight_field.fleet_1             # <<<<<<<<<<<<<<
@@ -11730,7 +11733,7 @@ static void __pyx_f_5fight_fight_single_round(struct __pyx_obj_5fight_FightField
   __pyx_v_fleet_1 = ((struct __pyx_obj_5fight_Fleet *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fight.pyx":569
+  /* "fight.pyx":570
  *     """
  *     cdef Fleet fleet_1 = fight_field.fleet_1
  *     cdef Fleet fleet_2 = fight_field.fleet_2             # <<<<<<<<<<<<<<
@@ -11742,7 +11745,7 @@ static void __pyx_f_5fight_fight_single_round(struct __pyx_obj_5fight_FightField
   __pyx_v_fleet_2 = ((struct __pyx_obj_5fight_Fleet *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fight.pyx":572
+  /* "fight.pyx":573
  * 
  *     # Each fleet attacks the other fleet
  *     fight_one_way(fleet_1, fleet_2, fight_field.armada)             # <<<<<<<<<<<<<<
@@ -11753,10 +11756,10 @@ static void __pyx_f_5fight_fight_single_round(struct __pyx_obj_5fight_FightField
   __Pyx_INCREF(__pyx_t_1);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.armada = ((struct __pyx_obj_5fight_Armada *)__pyx_t_1);
-  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_1, __pyx_v_fleet_2, 0, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 572, __pyx_L1_error)
+  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_1, __pyx_v_fleet_2, 0, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 573, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":573
+  /* "fight.pyx":574
  *     # Each fleet attacks the other fleet
  *     fight_one_way(fleet_1, fleet_2, fight_field.armada)
  *     fight_one_way(fleet_2, fleet_1, fight_field.armada)             # <<<<<<<<<<<<<<
@@ -11767,28 +11770,28 @@ static void __pyx_f_5fight_fight_single_round(struct __pyx_obj_5fight_FightField
   __Pyx_INCREF(__pyx_t_1);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.armada = ((struct __pyx_obj_5fight_Armada *)__pyx_t_1);
-  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_2, __pyx_v_fleet_1, 0, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 573, __pyx_L1_error)
+  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_2, __pyx_v_fleet_1, 0, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 574, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fight.pyx":576
+  /* "fight.pyx":577
  * 
  *     # Remove destroyed ships from both fleets
  *     remove_destroyed_ships(fleet_1)             # <<<<<<<<<<<<<<
  *     remove_destroyed_ships(fleet_2)
  * 
  */
-  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet_1, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 576, __pyx_L1_error)
+  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet_1, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 577, __pyx_L1_error)
 
-  /* "fight.pyx":577
+  /* "fight.pyx":578
  *     # Remove destroyed ships from both fleets
  *     remove_destroyed_ships(fleet_1)
  *     remove_destroyed_ships(fleet_2)             # <<<<<<<<<<<<<<
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):
  */
-  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet_2, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_f_5fight_remove_destroyed_ships(__pyx_v_fleet_2, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 578, __pyx_L1_error)
 
-  /* "fight.pyx":556
+  /* "fight.pyx":557
  *         fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
  * 
  * cpdef void fight_single_round(FightField fight_field):             # <<<<<<<<<<<<<<
@@ -11861,12 +11864,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 557, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_single_round") < 0)) __PYX_ERR(0, 556, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_single_round") < 0)) __PYX_ERR(0, 557, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -11877,7 +11880,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fight_single_round", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 556, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fight_single_round", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 557, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11891,7 +11894,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fight_field), __pyx_ptype_5fight_FightField, 1, "fight_field", 0))) __PYX_ERR(0, 556, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fight_field), __pyx_ptype_5fight_FightField, 1, "fight_field", 0))) __PYX_ERR(0, 557, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_10fight_single_round(__pyx_self, __pyx_v_fight_field);
 
   /* function exit code */
@@ -11918,8 +11921,8 @@ static PyObject *__pyx_pf_5fight_10fight_single_round(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fight_single_round", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5fight_fight_single_round(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 556, __pyx_L1_error)
+  __pyx_f_5fight_fight_single_round(__pyx_v_fight_field, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11936,7 +11939,7 @@ static PyObject *__pyx_pf_5fight_10fight_single_round(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "fight.pyx":579
+/* "fight.pyx":580
  *     remove_destroyed_ships(fleet_2)
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):             # <<<<<<<<<<<<<<
@@ -11955,6 +11958,8 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   struct __pyx_obj_5fight_Armada *__pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)Py_None);
   int __pyx_v_attacker_idx;
   int __pyx_v_target_idx;
+  int __pyx_v_attacker_loc;
+  int __pyx_v_target_loc;
   int __pyx_v_nb_ships_attacker;
   int __pyx_v_nb_ships_target;
   int __pyx_v_attack_continues;
@@ -11962,7 +11967,6 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_5fight_DTYPE_t __pyx_v_shielded_damage;
   __pyx_t_5fight_DTYPE_t __pyx_v_unshielded_damage;
   __pyx_t_5fight_DTYPE_t __pyx_v_shield_value;
-  __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
   int __pyx_t_3;
@@ -11972,22 +11976,16 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_5fight_DTYPE_t __pyx_t_7;
   int __pyx_t_8;
   long __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  Py_ssize_t __pyx_t_11;
-  Py_UCS4 __pyx_t_12;
-  PyObject *__pyx_t_13 = NULL;
-  PyObject *__pyx_t_14 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("fight_one_way", 1);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_armada = __pyx_optional_args->armada;
     }
   }
 
-  /* "fight.pyx":599
+  /* "fight.pyx":600
  *     cdef DTYPE_t damage, shielded_damage, unshielded_damage, shield_value
  * 
  *     nb_ships_attacker = fleet_attacker.nb_ships             # <<<<<<<<<<<<<<
@@ -11997,7 +11995,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_1 = __pyx_v_fleet_attacker->nb_ships;
   __pyx_v_nb_ships_attacker = __pyx_t_1;
 
-  /* "fight.pyx":600
+  /* "fight.pyx":601
  * 
  *     nb_ships_attacker = fleet_attacker.nb_ships
  *     nb_ships_target = fleet_target.nb_ships             # <<<<<<<<<<<<<<
@@ -12007,30 +12005,39 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   __pyx_t_1 = __pyx_v_fleet_target->nb_ships;
   __pyx_v_nb_ships_target = __pyx_t_1;
 
-  /* "fight.pyx":603
+  /* "fight.pyx":604
  * 
  *     # Each ship fom the first fleet attacks a random ship of the second fleet
  *     for attacker_idx in range(nb_ships_attacker):             # <<<<<<<<<<<<<<
  *         attack_continues = True
- *         while attack_continues:
+ *         attacker_loc = SHIP_CHAR_SIZE * attacker_idx
  */
   __pyx_t_1 = __pyx_v_nb_ships_attacker;
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_attacker_idx = __pyx_t_3;
 
-    /* "fight.pyx":604
+    /* "fight.pyx":605
  *     # Each ship fom the first fleet attacks a random ship of the second fleet
  *     for attacker_idx in range(nb_ships_attacker):
  *         attack_continues = True             # <<<<<<<<<<<<<<
- *         while attack_continues:
- *             # Select a random target from the second fleet
+ *         attacker_loc = SHIP_CHAR_SIZE * attacker_idx
+ * 
  */
     __pyx_v_attack_continues = 1;
 
-    /* "fight.pyx":605
+    /* "fight.pyx":606
  *     for attacker_idx in range(nb_ships_attacker):
  *         attack_continues = True
+ *         attacker_loc = SHIP_CHAR_SIZE * attacker_idx             # <<<<<<<<<<<<<<
+ * 
+ *         while attack_continues:
+ */
+    __pyx_v_attacker_loc = (__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx);
+
+    /* "fight.pyx":608
+ *         attacker_loc = SHIP_CHAR_SIZE * attacker_idx
+ * 
  *         while attack_continues:             # <<<<<<<<<<<<<<
  *             # Select a random target from the second fleet
  *             target_idx = choose_target(nb_ships_target)
@@ -12038,37 +12045,46 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
     while (1) {
       if (!__pyx_v_attack_continues) break;
 
-      /* "fight.pyx":607
+      /* "fight.pyx":610
  *         while attack_continues:
  *             # Select a random target from the second fleet
  *             target_idx = choose_target(nb_ships_target)             # <<<<<<<<<<<<<<
+ *             target_loc = SHIP_CHAR_SIZE * target_idx
  * 
- *             # Calculate damage based on the attack value of the attacker and the shield value of the target
  */
-      __pyx_t_4 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_4 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 607, __pyx_L1_error)
+      __pyx_t_4 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_4 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 610, __pyx_L1_error)
       __pyx_v_target_idx = __pyx_t_4;
 
-      /* "fight.pyx":610
+      /* "fight.pyx":611
+ *             # Select a random target from the second fleet
+ *             target_idx = choose_target(nb_ships_target)
+ *             target_loc = SHIP_CHAR_SIZE * target_idx             # <<<<<<<<<<<<<<
  * 
  *             # Calculate damage based on the attack value of the attacker and the shield value of the target
- *             damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]             # <<<<<<<<<<<<<<
- *             shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+ */
+      __pyx_v_target_loc = (__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx);
+
+      /* "fight.pyx":614
+ * 
+ *             # Calculate damage based on the attack value of the attacker and the shield value of the target
+ *             damage = fleet_attacker.ships[attacker_loc + ATTACK_IDX]             # <<<<<<<<<<<<<<
+ *             shield_value = fleet_target.ships[target_loc + SHIELD_IDX]
  *             shielded_damage = min(damage, shield_value)
  */
-      __pyx_v_damage = (__pyx_v_fleet_attacker->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_ATTACK_IDX)]);
+      __pyx_v_damage = (__pyx_v_fleet_attacker->ships[(__pyx_v_attacker_loc + __pyx_v_5fight_ATTACK_IDX)]);
 
-      /* "fight.pyx":611
+      /* "fight.pyx":615
  *             # Calculate damage based on the attack value of the attacker and the shield value of the target
- *             damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
- *             shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]             # <<<<<<<<<<<<<<
+ *             damage = fleet_attacker.ships[attacker_loc + ATTACK_IDX]
+ *             shield_value = fleet_target.ships[target_loc + SHIELD_IDX]             # <<<<<<<<<<<<<<
  *             shielded_damage = min(damage, shield_value)
  *             unshielded_damage = damage - shielded_damage
  */
-      __pyx_v_shield_value = (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)]);
+      __pyx_v_shield_value = (__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_SHIELD_IDX)]);
 
-      /* "fight.pyx":612
- *             damage = fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + ATTACK_IDX]
- *             shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+      /* "fight.pyx":616
+ *             damage = fleet_attacker.ships[attacker_loc + ATTACK_IDX]
+ *             shield_value = fleet_target.ships[target_loc + SHIELD_IDX]
  *             shielded_damage = min(damage, shield_value)             # <<<<<<<<<<<<<<
  *             unshielded_damage = damage - shielded_damage
  * 
@@ -12083,8 +12099,8 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       }
       __pyx_v_shielded_damage = __pyx_t_7;
 
-      /* "fight.pyx":613
- *             shield_value = fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]
+      /* "fight.pyx":617
+ *             shield_value = fleet_target.ships[target_loc + SHIELD_IDX]
  *             shielded_damage = min(damage, shield_value)
  *             unshielded_damage = damage - shielded_damage             # <<<<<<<<<<<<<<
  * 
@@ -12092,7 +12108,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
  */
       __pyx_v_unshielded_damage = (__pyx_v_damage - __pyx_v_shielded_damage);
 
-      /* "fight.pyx":617
+      /* "fight.pyx":621
  *             # If the damage on the shield is not sufficient, the shots are deflected
  *             # and the shield is not depleted
  *             if shielded_damage * DEFLECTION_RATIO < shield_value:             # <<<<<<<<<<<<<<
@@ -12102,7 +12118,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       __pyx_t_8 = ((__pyx_v_shielded_damage * __pyx_v_5fight_DEFLECTION_RATIO) < __pyx_v_shield_value);
       if (__pyx_t_8) {
 
-        /* "fight.pyx":618
+        /* "fight.pyx":622
  *             # and the shield is not depleted
  *             if shielded_damage * DEFLECTION_RATIO < shield_value:
  *                 shielded_damage = 0             # <<<<<<<<<<<<<<
@@ -12111,7 +12127,7 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
  */
         __pyx_v_shielded_damage = 0;
 
-        /* "fight.pyx":617
+        /* "fight.pyx":621
  *             # If the damage on the shield is not sufficient, the shots are deflected
  *             # and the shield is not depleted
  *             if shielded_damage * DEFLECTION_RATIO < shield_value:             # <<<<<<<<<<<<<<
@@ -12120,34 +12136,34 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
  */
       }
 
-      /* "fight.pyx":621
+      /* "fight.pyx":625
  * 
  *             # Apply damage to the target ship
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage             # <<<<<<<<<<<<<<
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
+ *             fleet_target.ships[target_loc + SHIELD_IDX] -= shielded_damage             # <<<<<<<<<<<<<<
+ *             fleet_target.ships[target_loc + HULL_IDX] -= unshielded_damage
+ *             fleet_target.ships[target_loc + HULL_IDX] = max(0, fleet_target.ships[target_loc + HULL_IDX])
  */
-      __pyx_t_4 = ((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX);
+      __pyx_t_4 = (__pyx_v_target_loc + __pyx_v_5fight_SHIELD_IDX);
       (__pyx_v_fleet_target->ships[__pyx_t_4]) = ((__pyx_v_fleet_target->ships[__pyx_t_4]) - __pyx_v_shielded_damage);
 
-      /* "fight.pyx":622
+      /* "fight.pyx":626
  *             # Apply damage to the target ship
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage             # <<<<<<<<<<<<<<
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
+ *             fleet_target.ships[target_loc + SHIELD_IDX] -= shielded_damage
+ *             fleet_target.ships[target_loc + HULL_IDX] -= unshielded_damage             # <<<<<<<<<<<<<<
+ *             fleet_target.ships[target_loc + HULL_IDX] = max(0, fleet_target.ships[target_loc + HULL_IDX])
  * 
  */
-      __pyx_t_4 = ((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX);
+      __pyx_t_4 = (__pyx_v_target_loc + __pyx_v_5fight_HULL_IDX);
       (__pyx_v_fleet_target->ships[__pyx_t_4]) = ((__pyx_v_fleet_target->ships[__pyx_t_4]) - __pyx_v_unshielded_damage);
 
-      /* "fight.pyx":623
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX] -= shielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] -= unshielded_damage
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])             # <<<<<<<<<<<<<<
+      /* "fight.pyx":627
+ *             fleet_target.ships[target_loc + SHIELD_IDX] -= shielded_damage
+ *             fleet_target.ships[target_loc + HULL_IDX] -= unshielded_damage
+ *             fleet_target.ships[target_loc + HULL_IDX] = max(0, fleet_target.ships[target_loc + HULL_IDX])             # <<<<<<<<<<<<<<
  * 
- *             print(f"Attacker {attacker_idx} attacks target {target_idx} with damage {damage} (H: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX]} - S: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]}).")
+ *             # After a hit, a ship can explode with some probability if it has less than 70% of hull remaining
  */
-      __pyx_t_7 = (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]);
+      __pyx_t_7 = (__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_HULL_IDX)]);
       __pyx_t_9 = 0;
       __pyx_t_8 = (__pyx_t_7 > __pyx_t_9);
       if (__pyx_t_8) {
@@ -12155,106 +12171,49 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
       } else {
         __pyx_t_5 = __pyx_t_9;
       }
-      (__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)]) = __pyx_t_5;
+      (__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_HULL_IDX)]) = __pyx_t_5;
 
-      /* "fight.pyx":625
- *             fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX] = max(0, fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX])
+      /* "fight.pyx":630
  * 
- *             print(f"Attacker {attacker_idx} attacks target {target_idx} with damage {damage} (H: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + HULL_IDX]} - S: {fleet_target.ships[SHIP_CHAR_SIZE * target_idx + SHIELD_IDX]}).")             # <<<<<<<<<<<<<<
+ *             # After a hit, a ship can explode with some probability if it has less than 70% of hull remaining
+ *             if check_explosion(fleet_target.ships[target_loc + TYPE_IDX], fleet_target.ships[target_loc + HULL_IDX], armada):             # <<<<<<<<<<<<<<
+ *                 # If the ship explodes, remove it from the fleet
+ *                 fleet_target.ships[target_loc + HULL_IDX] = 0
+ */
+      __pyx_t_8 = __pyx_f_5fight_check_explosion((__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_TYPE_IDX)]), (__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_HULL_IDX)]), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 630, __pyx_L1_error)
+      if (__pyx_t_8) {
+
+        /* "fight.pyx":632
+ *             if check_explosion(fleet_target.ships[target_loc + TYPE_IDX], fleet_target.ships[target_loc + HULL_IDX], armada):
+ *                 # If the ship explodes, remove it from the fleet
+ *                 fleet_target.ships[target_loc + HULL_IDX] = 0             # <<<<<<<<<<<<<<
  * 
  *             # Check if the attacker ship can attack again by rapid fire
  */
-      __pyx_t_10 = PyTuple_New(11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = 0;
-      __pyx_t_12 = 127;
-      __Pyx_INCREF(__pyx_kp_u_Attacker);
-      __pyx_t_11 += 9;
-      __Pyx_GIVEREF(__pyx_kp_u_Attacker);
-      PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Attacker);
-      __pyx_t_13 = __Pyx_PyUnicode_From_int(__pyx_v_attacker_idx, 0, ' ', 'd'); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
-      __Pyx_GIVEREF(__pyx_t_13);
-      PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_13);
-      __pyx_t_13 = 0;
-      __Pyx_INCREF(__pyx_kp_u_attacks_target);
-      __pyx_t_11 += 16;
-      __Pyx_GIVEREF(__pyx_kp_u_attacks_target);
-      PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_kp_u_attacks_target);
-      __pyx_t_13 = __Pyx_PyUnicode_From_int(__pyx_v_target_idx, 0, ' ', 'd'); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
-      __Pyx_GIVEREF(__pyx_t_13);
-      PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13);
-      __pyx_t_13 = 0;
-      __Pyx_INCREF(__pyx_kp_u_with_damage);
-      __pyx_t_11 += 13;
-      __Pyx_GIVEREF(__pyx_kp_u_with_damage);
-      PyTuple_SET_ITEM(__pyx_t_10, 4, __pyx_kp_u_with_damage);
-      __pyx_t_13 = __Pyx_PyInt_From_npy_int64(__pyx_v_damage); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) : __pyx_t_12;
-      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_14);
-      __Pyx_GIVEREF(__pyx_t_14);
-      PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_14);
-      __pyx_t_14 = 0;
-      __Pyx_INCREF(__pyx_kp_u_H);
-      __pyx_t_11 += 5;
-      __Pyx_GIVEREF(__pyx_kp_u_H);
-      PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_kp_u_H);
-      __pyx_t_14 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_HULL_IDX)])); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_14, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_12;
-      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
-      __Pyx_GIVEREF(__pyx_t_13);
-      PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_13);
-      __pyx_t_13 = 0;
-      __Pyx_INCREF(__pyx_kp_u_S);
-      __pyx_t_11 += 6;
-      __Pyx_GIVEREF(__pyx_kp_u_S);
-      PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_kp_u_S);
-      __pyx_t_13 = __Pyx_PyInt_From_npy_int64((__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_SHIELD_IDX)])); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14) : __pyx_t_12;
-      __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_14);
-      __Pyx_GIVEREF(__pyx_t_14);
-      PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_14);
-      __pyx_t_14 = 0;
-      __Pyx_INCREF(__pyx_kp_u__11);
-      __pyx_t_11 += 2;
-      __Pyx_GIVEREF(__pyx_kp_u__11);
-      PyTuple_SET_ITEM(__pyx_t_10, 10, __pyx_kp_u__11);
-      __pyx_t_14 = __Pyx_PyUnicode_Join(__pyx_t_10, 11, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 625, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        (__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_HULL_IDX)]) = 0;
 
-      /* "fight.pyx":628
+        /* "fight.pyx":630
+ * 
+ *             # After a hit, a ship can explode with some probability if it has less than 70% of hull remaining
+ *             if check_explosion(fleet_target.ships[target_loc + TYPE_IDX], fleet_target.ships[target_loc + HULL_IDX], armada):             # <<<<<<<<<<<<<<
+ *                 # If the ship explodes, remove it from the fleet
+ *                 fleet_target.ships[target_loc + HULL_IDX] = 0
+ */
+      }
+
+      /* "fight.pyx":635
  * 
  *             # Check if the attacker ship can attack again by rapid fire
  *             attack_continues = check_rapid_fire(             # <<<<<<<<<<<<<<
- *                 <int>fleet_attacker.ships[SHIP_CHAR_SIZE * attacker_idx + TYPE_IDX],
- *                 <int>fleet_target.ships[SHIP_CHAR_SIZE * target_idx + TYPE_IDX],
+ *                 <int>fleet_attacker.ships[attacker_loc + TYPE_IDX],
+ *                 <int>fleet_target.ships[target_loc + TYPE_IDX],
  */
-      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_attacker_idx) + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target->ships[((__pyx_v_5fight_SHIP_CHAR_SIZE * __pyx_v_target_idx) + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 628, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_5fight_check_rapid_fire(((int)(__pyx_v_fleet_attacker->ships[(__pyx_v_attacker_loc + __pyx_v_5fight_TYPE_IDX)])), ((int)(__pyx_v_fleet_target->ships[(__pyx_v_target_loc + __pyx_v_5fight_TYPE_IDX)])), __pyx_v_armada, 0); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L1_error)
       __pyx_v_attack_continues = __pyx_t_8;
     }
   }
 
-  /* "fight.pyx":579
+  /* "fight.pyx":580
  *     remove_destroyed_ships(fleet_2)
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):             # <<<<<<<<<<<<<<
@@ -12265,12 +12224,8 @@ static void __pyx_f_5fight_fight_one_way(struct __pyx_obj_5fight_Fleet *__pyx_v_
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_XDECREF(__pyx_t_14);
   __Pyx_AddTraceback("fight.fight_one_way", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
@@ -12334,7 +12289,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 579, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 580, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -12342,21 +12297,21 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 579, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 580, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("fight_one_way", 0, 2, 3, 1); __PYX_ERR(0, 579, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fight_one_way", 0, 2, 3, 1); __PYX_ERR(0, 580, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada);
           if (value) { values[2] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 579, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 580, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_one_way") < 0)) __PYX_ERR(0, 579, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fight_one_way") < 0)) __PYX_ERR(0, 580, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -12374,7 +12329,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fight_one_way", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 579, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fight_one_way", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 580, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12388,9 +12343,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_attacker), __pyx_ptype_5fight_Fleet, 1, "fleet_attacker", 0))) __PYX_ERR(0, 579, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_target), __pyx_ptype_5fight_Fleet, 1, "fleet_target", 0))) __PYX_ERR(0, 579, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 579, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_attacker), __pyx_ptype_5fight_Fleet, 1, "fleet_attacker", 0))) __PYX_ERR(0, 580, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fleet_target), __pyx_ptype_5fight_Fleet, 1, "fleet_target", 0))) __PYX_ERR(0, 580, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 580, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_12fight_one_way(__pyx_self, __pyx_v_fleet_attacker, __pyx_v_fleet_target, __pyx_v_armada);
 
   /* function exit code */
@@ -12420,8 +12375,8 @@ static PyObject *__pyx_pf_5fight_12fight_one_way(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.armada = __pyx_v_armada;
-  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_attacker, __pyx_v_fleet_target, 0, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 579, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_f_5fight_fight_one_way(__pyx_v_fleet_attacker, __pyx_v_fleet_target, 0, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 580, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12438,7 +12393,7 @@ static PyObject *__pyx_pf_5fight_12fight_one_way(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "fight.pyx":635
+/* "fight.pyx":642
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
@@ -12462,7 +12417,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":651
+  /* "fight.pyx":658
  *     """
  *     # bound is the maximum value of the random number so far generated
  *     cdef long bound = 1             # <<<<<<<<<<<<<<
@@ -12471,7 +12426,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   __pyx_v_bound = 1;
 
-  /* "fight.pyx":653
+  /* "fight.pyx":660
  *     cdef long bound = 1
  *     # x is the random number generated so far
  *     cdef int x = 0             # <<<<<<<<<<<<<<
@@ -12480,7 +12435,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   __pyx_v_x = 0;
 
-  /* "fight.pyx":659
+  /* "fight.pyx":666
  *     # To do so we generate a random number between 0 and N where
  *     # N is much greater than a.
  *     while bound < 100 * a:             # <<<<<<<<<<<<<<
@@ -12491,7 +12446,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
     __pyx_t_1 = (__pyx_v_bound < (0x64 * __pyx_v_a));
     if (!__pyx_t_1) break;
 
-    /* "fight.pyx":660
+    /* "fight.pyx":667
  *     # N is much greater than a.
  *     while bound < 100 * a:
  *         x *= RAND_MAX             # <<<<<<<<<<<<<<
@@ -12500,7 +12455,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
     __pyx_v_x = (__pyx_v_x * RAND_MAX);
 
-    /* "fight.pyx":661
+    /* "fight.pyx":668
  *     while bound < 100 * a:
  *         x *= RAND_MAX
  *         x += rand()             # <<<<<<<<<<<<<<
@@ -12509,7 +12464,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
     __pyx_v_x = (__pyx_v_x + rand());
 
-    /* "fight.pyx":663
+    /* "fight.pyx":670
  *         x += rand()
  * 
  *         bound *= RAND_MAX             # <<<<<<<<<<<<<<
@@ -12519,7 +12474,7 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
     __pyx_v_bound = (__pyx_v_bound * RAND_MAX);
   }
 
-  /* "fight.pyx":665
+  /* "fight.pyx":672
  *         bound *= RAND_MAX
  * 
  *     return x % a             # <<<<<<<<<<<<<<
@@ -12528,12 +12483,12 @@ static int __pyx_f_5fight_randint(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_di
  */
   if (unlikely(__pyx_v_a == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 665, __pyx_L1_error)
+    __PYX_ERR(0, 672, __pyx_L1_error)
   }
   __pyx_r = __Pyx_mod_int(__pyx_v_x, __pyx_v_a);
   goto __pyx_L0;
 
-  /* "fight.pyx":635
+  /* "fight.pyx":642
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
@@ -12603,23 +12558,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 642, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") < 0)) __PYX_ERR(0, 635, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "randint") < 0)) __PYX_ERR(0, 642, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_a = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_a == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L3_error)
+    __pyx_v_a = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_a == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 642, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("randint", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 635, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("randint", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 642, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12656,8 +12611,8 @@ static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("randint", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 635, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12674,7 +12629,7 @@ static PyObject *__pyx_pf_5fight_14randint(CYTHON_UNUSED PyObject *__pyx_self, i
   return __pyx_r;
 }
 
-/* "fight.pyx":668
+/* "fight.pyx":675
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
@@ -12696,18 +12651,18 @@ static int __pyx_f_5fight_choose_target(int __pyx_v_nb_ships_target, CYTHON_UNUS
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":682
+  /* "fight.pyx":689
  *         The index of the chosen target ship.
  *     """
  *     return randint(nb_ships_target)             # <<<<<<<<<<<<<<
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):
  */
-  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_randint(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 689, __pyx_L1_error)
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "fight.pyx":668
+  /* "fight.pyx":675
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
@@ -12777,23 +12732,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") < 0)) __PYX_ERR(0, 668, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "choose_target") < 0)) __PYX_ERR(0, 675, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_nb_ships_target = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L3_error)
+    __pyx_v_nb_ships_target = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nb_ships_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("choose_target", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 668, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("choose_target", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 675, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12830,8 +12785,8 @@ static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("choose_target", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 668, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_choose_target(__pyx_v_nb_ships_target, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 675, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12848,7 +12803,7 @@ static PyObject *__pyx_pf_5fight_16choose_target(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "fight.pyx":684
+/* "fight.pyx":691
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
@@ -12873,7 +12828,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fight.pyx":703
+  /* "fight.pyx":710
  *     """
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:             # <<<<<<<<<<<<<<
@@ -12883,7 +12838,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   __pyx_t_1 = (((PyObject *)__pyx_v_armada) == Py_None);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":704
+    /* "fight.pyx":711
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:
  *         return False             # <<<<<<<<<<<<<<
@@ -12893,7 +12848,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "fight.pyx":703
+    /* "fight.pyx":710
  *     """
  *     # If no armada is provided, then no rapid fire is tolerated
  *     if armada is None:             # <<<<<<<<<<<<<<
@@ -12902,7 +12857,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   }
 
-  /* "fight.pyx":706
+  /* "fight.pyx":713
  *         return False
  * 
  *     cdef int rapid_fire_count = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]             # <<<<<<<<<<<<<<
@@ -12911,7 +12866,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   __pyx_v_rapid_fire_count = (__pyx_v_armada->rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada->nb_ships) + __pyx_v_target_type)]);
 
-  /* "fight.pyx":709
+  /* "fight.pyx":716
  * 
  *     # Retrieve the rapid fire chance from the armada
  *     rapid_fire_chance = armada.rapid_fire[attacker_type * armada.nb_ships + target_type]             # <<<<<<<<<<<<<<
@@ -12920,7 +12875,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   __pyx_v_rapid_fire_chance = (__pyx_v_armada->rapid_fire[((__pyx_v_attacker_type * __pyx_v_armada->nb_ships) + __pyx_v_target_type)]);
 
-  /* "fight.pyx":712
+  /* "fight.pyx":719
  * 
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:             # <<<<<<<<<<<<<<
@@ -12930,7 +12885,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
   __pyx_t_1 = (__pyx_v_rapid_fire_count <= 1);
   if (__pyx_t_1) {
 
-    /* "fight.pyx":713
+    /* "fight.pyx":720
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:
  *         return False             # <<<<<<<<<<<<<<
@@ -12940,7 +12895,7 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "fight.pyx":712
+    /* "fight.pyx":719
  * 
  *     # If the rapid fire count is less than or equal to 1, no rapid fire occurs
  *     if rapid_fire_count <= 1:             # <<<<<<<<<<<<<<
@@ -12949,16 +12904,18 @@ static int __pyx_f_5fight_check_rapid_fire(int __pyx_v_attacker_type, int __pyx_
  */
   }
 
-  /* "fight.pyx":718
+  /* "fight.pyx":725
  *     # There is a 1/rapid_fire_count chance that the rapid fire stops
  *     # and a (rapid_fire_count - 1)/rapid_fire_count chance that it continues
  *     return randint(rapid_fire_count) > 0             # <<<<<<<<<<<<<<
+ * 
+ * cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):
  */
-  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_5fight_randint(__pyx_v_rapid_fire_count, 0); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 725, __pyx_L1_error)
   __pyx_r = (__pyx_t_2 > 0);
   goto __pyx_L0;
 
-  /* "fight.pyx":684
+  /* "fight.pyx":691
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
@@ -13034,7 +12991,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -13042,9 +12999,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 1); __PYX_ERR(0, 684, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 1); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -13052,14 +13009,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 2); __PYX_ERR(0, 684, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, 2); __PYX_ERR(0, 691, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") < 0)) __PYX_ERR(0, 684, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_rapid_fire") < 0)) __PYX_ERR(0, 691, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -13068,13 +13025,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
       values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
-    __pyx_v_attacker_type = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
-    __pyx_v_target_type = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
+    __pyx_v_attacker_type = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_attacker_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
+    __pyx_v_target_type = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_target_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
     __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 684, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("check_rapid_fire", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 691, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13088,7 +13045,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 684, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 691, __pyx_L1_error)
   __pyx_r = __pyx_pf_5fight_18check_rapid_fire(__pyx_self, __pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada);
 
   /* function exit code */
@@ -13116,8 +13073,8 @@ static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_rapid_fire", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5fight_check_rapid_fire(__pyx_v_attacker_type, __pyx_v_target_type, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -13127,6 +13084,273 @@ static PyObject *__pyx_pf_5fight_18check_rapid_fire(CYTHON_UNUSED PyObject *__py
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("fight.check_rapid_fire", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fight.pyx":727
+ *     return randint(rapid_fire_count) > 0
+ * 
+ * cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):             # <<<<<<<<<<<<<<
+ *     """
+ *     Checks if the ship has exploded consequently to a hit.
+ */
+
+static PyObject *__pyx_pw_5fight_21check_explosion(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static int __pyx_f_5fight_check_explosion(int __pyx_v_target_type, __pyx_t_5fight_DTYPE_t __pyx_v_hull_points, struct __pyx_obj_5fight_Armada *__pyx_v_armada, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  int __pyx_v_max_hull_points;
+  int __pyx_v_hull_percentage;
+  int __pyx_r;
+  __pyx_t_5fight_DTYPE_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "fight.pyx":747
+ *         True if the ship explodes, False otherwise.
+ *     """
+ *     cdef int max_hull_points = armada.ships[target_type * (SHIP_CHAR_SIZE - 1) + HULL_IDX - 1]             # <<<<<<<<<<<<<<
+ *     cdef int hull_percentage = hull_points * 100 // max_hull_points
+ * 
+ */
+  __pyx_v_max_hull_points = (__pyx_v_armada->ships[(((__pyx_v_target_type * (__pyx_v_5fight_SHIP_CHAR_SIZE - 1)) + __pyx_v_5fight_HULL_IDX) - 1)]);
+
+  /* "fight.pyx":748
+ *     """
+ *     cdef int max_hull_points = armada.ships[target_type * (SHIP_CHAR_SIZE - 1) + HULL_IDX - 1]
+ *     cdef int hull_percentage = hull_points * 100 // max_hull_points             # <<<<<<<<<<<<<<
+ * 
+ *     if hull_percentage <= EXPLOSION_HULL_RATIO_THRESHOLD:
+ */
+  __pyx_t_1 = (__pyx_v_hull_points * 0x64);
+  if (unlikely(__pyx_v_max_hull_points == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
+    __PYX_ERR(0, 748, __pyx_L1_error)
+  }
+  else if (sizeof(__pyx_t_5fight_DTYPE_t) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_max_hull_points == (int)-1)  && unlikely(__Pyx_UNARY_NEG_WOULD_OVERFLOW(__pyx_t_1))) {
+    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
+    __PYX_ERR(0, 748, __pyx_L1_error)
+  }
+  __pyx_v_hull_percentage = __Pyx_div___pyx_t_5fight_DTYPE_t(__pyx_t_1, __pyx_v_max_hull_points);
+
+  /* "fight.pyx":750
+ *     cdef int hull_percentage = hull_points * 100 // max_hull_points
+ * 
+ *     if hull_percentage <= EXPLOSION_HULL_RATIO_THRESHOLD:             # <<<<<<<<<<<<<<
+ *         return randint(100) >= hull_percentage
+ * 
+ */
+  __pyx_t_2 = (__pyx_v_hull_percentage <= __pyx_v_5fight_EXPLOSION_HULL_RATIO_THRESHOLD);
+  if (__pyx_t_2) {
+
+    /* "fight.pyx":751
+ * 
+ *     if hull_percentage <= EXPLOSION_HULL_RATIO_THRESHOLD:
+ *         return randint(100) >= hull_percentage             # <<<<<<<<<<<<<<
+ * 
+ *     return False
+ */
+    __pyx_t_3 = __pyx_f_5fight_randint(0x64, 0); if (unlikely(__pyx_t_3 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 751, __pyx_L1_error)
+    __pyx_r = (__pyx_t_3 >= __pyx_v_hull_percentage);
+    goto __pyx_L0;
+
+    /* "fight.pyx":750
+ *     cdef int hull_percentage = hull_points * 100 // max_hull_points
+ * 
+ *     if hull_percentage <= EXPLOSION_HULL_RATIO_THRESHOLD:             # <<<<<<<<<<<<<<
+ *         return randint(100) >= hull_percentage
+ * 
+ */
+  }
+
+  /* "fight.pyx":753
+ *         return randint(100) >= hull_percentage
+ * 
+ *     return False             # <<<<<<<<<<<<<<
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  /* "fight.pyx":727
+ *     return randint(rapid_fire_count) > 0
+ * 
+ * cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):             # <<<<<<<<<<<<<<
+ *     """
+ *     Checks if the ship has exploded consequently to a hit.
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("fight.check_explosion", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5fight_21check_explosion(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_5fight_20check_explosion, "\n    Checks if the ship has exploded consequently to a hit.\n    After a hit, if a ship has less than 70% of hull remaining, it can explode with\n    probability 100% - (percentage of hull remaining).\n\n    Parameters\n    ----------\n    target_type : int\n        The type of the target ship.\n    hull_points : DTYPE_t\n        The current hull points of the target ship.\n    armada : Armada\n        The armada containing ship characteristics.\n\n    Returns\n    -------\n    bint\n        True if the ship explodes, False otherwise.\n    ");
+static PyMethodDef __pyx_mdef_5fight_21check_explosion = {"check_explosion", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5fight_21check_explosion, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_5fight_20check_explosion};
+static PyObject *__pyx_pw_5fight_21check_explosion(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  int __pyx_v_target_type;
+  __pyx_t_5fight_DTYPE_t __pyx_v_hull_points;
+  struct __pyx_obj_5fight_Armada *__pyx_v_armada = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("check_explosion (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_MACROS
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_target_type,&__pyx_n_s_hull_points,&__pyx_n_s_armada,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_target_type)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_hull_points)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("check_explosion", 1, 3, 3, 1); __PYX_ERR(0, 727, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_armada)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("check_explosion", 1, 3, 3, 2); __PYX_ERR(0, 727, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "check_explosion") < 0)) __PYX_ERR(0, 727, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+      values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+    }
+    __pyx_v_target_type = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_target_type == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+    __pyx_v_hull_points = __Pyx_PyInt_As_npy_int64(values[1]); if (unlikely((__pyx_v_hull_points == ((npy_int64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+    __pyx_v_armada = ((struct __pyx_obj_5fight_Armada *)values[2]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("check_explosion", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 727, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_AddTraceback("fight.check_explosion", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_armada), __pyx_ptype_5fight_Armada, 1, "armada", 0))) __PYX_ERR(0, 727, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5fight_20check_explosion(__pyx_self, __pyx_v_target_type, __pyx_v_hull_points, __pyx_v_armada);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5fight_20check_explosion(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_target_type, __pyx_t_5fight_DTYPE_t __pyx_v_hull_points, struct __pyx_obj_5fight_Armada *__pyx_v_armada) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("check_explosion", 1);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_5fight_check_explosion(__pyx_v_target_type, __pyx_v_hull_points, __pyx_v_armada, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("fight.check_explosion", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -13848,7 +14072,6 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Armada___reduce_cython, __pyx_k_Armada___reduce_cython, sizeof(__pyx_k_Armada___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Armada___setstate_cython, __pyx_k_Armada___setstate_cython, sizeof(__pyx_k_Armada___setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Armada_from_array, __pyx_k_Armada_from_array, sizeof(__pyx_k_Armada_from_array), 0, 0, 1, 1},
-    {&__pyx_kp_u_Attacker, __pyx_k_Attacker, sizeof(__pyx_k_Attacker), 0, 1, 0, 0},
     {&__pyx_n_s_CompactFleet, __pyx_k_CompactFleet, sizeof(__pyx_k_CompactFleet), 0, 0, 1, 1},
     {&__pyx_n_s_CompactFleet___reduce_cython, __pyx_k_CompactFleet___reduce_cython, sizeof(__pyx_k_CompactFleet___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_CompactFleet___setstate_cython, __pyx_k_CompactFleet___setstate_cython, sizeof(__pyx_k_CompactFleet___setstate_cython), 0, 0, 1, 1},
@@ -13868,17 +14091,15 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Fleet___reduce_cython, __pyx_k_Fleet___reduce_cython, sizeof(__pyx_k_Fleet___reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Fleet___setstate_cython, __pyx_k_Fleet___setstate_cython, sizeof(__pyx_k_Fleet___setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Fleet_describe, __pyx_k_Fleet_describe, sizeof(__pyx_k_Fleet_describe), 0, 0, 1, 1},
-    {&__pyx_kp_u_H, __pyx_k_H, sizeof(__pyx_k_H), 0, 1, 0, 0},
     {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
     {&__pyx_kp_s_Number_of_ships, __pyx_k_Number_of_ships, sizeof(__pyx_k_Number_of_ships), 0, 0, 1, 0},
-    {&__pyx_kp_u_S, __pyx_k_S, sizeof(__pyx_k_S), 0, 1, 0, 0},
     {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
     {&__pyx_kp_s_Type_Attack_Shield_Shield_g_Hul, __pyx_k_Type_Attack_Shield_Shield_g_Hul, sizeof(__pyx_k_Type_Attack_Shield_Shield_g_Hul), 0, 0, 1, 0},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
     {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
     {&__pyx_kp_u__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 1, 0, 0},
     {&__pyx_n_s__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 0, 1, 1},
-    {&__pyx_n_s__53, __pyx_k__53, sizeof(__pyx_k__53), 0, 0, 1, 1},
+    {&__pyx_n_s__55, __pyx_k__55, sizeof(__pyx_k__55), 0, 0, 1, 1},
     {&__pyx_kp_s__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 1, 0},
     {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
     {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
@@ -13886,7 +14107,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_armada_2, __pyx_k_armada_2, sizeof(__pyx_k_armada_2), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_attacker_type, __pyx_k_attacker_type, sizeof(__pyx_k_attacker_type), 0, 0, 1, 1},
-    {&__pyx_kp_u_attacks_target, __pyx_k_attacks_target, sizeof(__pyx_k_attacks_target), 0, 1, 0, 0},
+    {&__pyx_n_s_check_explosion, __pyx_k_check_explosion, sizeof(__pyx_k_check_explosion), 0, 0, 1, 1},
     {&__pyx_n_s_check_rapid_fire, __pyx_k_check_rapid_fire, sizeof(__pyx_k_check_rapid_fire), 0, 0, 1, 1},
     {&__pyx_n_s_choose_target, __pyx_k_choose_target, sizeof(__pyx_k_choose_target), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -13917,6 +14138,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_gc, __pyx_k_gc, sizeof(__pyx_k_gc), 0, 1, 0, 0},
     {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
     {&__pyx_kp_u_got, __pyx_k_got, sizeof(__pyx_k_got), 0, 1, 0, 0},
+    {&__pyx_n_s_hull_points, __pyx_k_hull_points, sizeof(__pyx_k_hull_points), 0, 0, 1, 1},
     {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
     {&__pyx_n_s_initializing, __pyx_k_initializing, sizeof(__pyx_k_initializing), 0, 0, 1, 1},
     {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
@@ -13959,18 +14181,17 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_target_type, __pyx_k_target_type, sizeof(__pyx_k_target_type), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_to_array, __pyx_k_to_array, sizeof(__pyx_k_to_array), 0, 0, 1, 1},
-    {&__pyx_kp_u_with_damage, __pyx_k_with_damage, sizeof(__pyx_k_with_damage), 0, 1, 0, 0},
     {0, 0, 0, 0, 0, 0, 0}
   };
   return __Pyx_InitStrings(__pyx_string_tab);
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 79, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 152, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 273, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1043, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -14004,88 +14225,88 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "fight.pyx":78
+  /* "fight.pyx":79
  *         Prints the number of ships in each fleet and a sample of the fleets.
  *         """
  *         print("Fleet 1:")             # <<<<<<<<<<<<<<
  *         self.fleet_1.describe()
  *         print()
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Fleet_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Fleet_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "fight.pyx":81
+  /* "fight.pyx":82
  *         self.fleet_1.describe()
  *         print()
  *         print("Fleet 2:")             # <<<<<<<<<<<<<<
  *         self.fleet_2.describe()
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Fleet_2); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Fleet_2); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "fight.pyx":167
+  /* "fight.pyx":168
  *         """
  *         print("Number of ships: ", self.nb_ships)
  *         print("      Type    Attack    Shield Shield g.      Hull")             # <<<<<<<<<<<<<<
  *         for ship_idx in range(min(5, self.nb_ships)):
  *             for ship_char in range(SHIP_CHAR_SIZE):
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Type_Attack_Shield_Shield_g_Hul); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Type_Attack_Shield_Shield_g_Hul); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "fight.pyx":174
+  /* "fight.pyx":175
  * 
  *         if self.nb_ships > 10:
  *             print("...")             # <<<<<<<<<<<<<<
  * 
  *         for ship_idx in range(max(5, self.nb_ships - 5), self.nb_ships):
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s__8); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s__8); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "fight.pyx":74
+  /* "fight.pyx":75
  *         self.max_rounds = max_rounds
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
  *         """
  *         Prints the number of ships in each fleet and a sample of the fleets.
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_describe, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_describe, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 75, __pyx_L1_error)
 
-  /* "fight.pyx":84
+  /* "fight.pyx":85
  *         self.fleet_2.describe()
  * 
  *     def compact_fleet_1(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the first fleet to a compact fleet.
  */
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_1, 84, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_1, 85, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 85, __pyx_L1_error)
 
-  /* "fight.pyx":95
+  /* "fight.pyx":96
  *         return compact_fleet_from_fleet(self.fleet_1)
  * 
  *     def compact_fleet_2(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the second fleet to a compact fleet.
  */
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_2, 95, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_2, 96, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 96, __pyx_L1_error)
 
-  /* "fight.pyx":106
+  /* "fight.pyx":107
  *         return compact_fleet_from_fleet(self.fleet_2)
  * 
  *     def armada_(self):             # <<<<<<<<<<<<<<
  *         """
  *         Exposes the armada of the fight field.
  */
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_armada_2, 106, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_armada_2, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 107, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -14105,17 +14326,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__19);
   __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "fight.pyx":162
+  /* "fight.pyx":163
  *         return self.nb_ships == 0
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
  *         """
  *         Prints the number of ships and a sample of the ships array
  */
-  __pyx_tuple__21 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ship_idx, __pyx_n_s_ship_char); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ship_idx, __pyx_n_s_ship_char); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_describe, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_describe, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 163, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -14132,18 +14353,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "fight.pyx":250
+  /* "fight.pyx":251
  *         return self.nb_ships == 0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def from_array(cnp.ndarray[DTYPE_t, ndim=2] ships, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire = None):
  *         """
  */
-  __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_ships, __pyx_n_s_rapid_fire, __pyx_n_s_nb_ships, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_ships, __pyx_n_s_rapid_fire, __pyx_n_s_nb_ships, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_from_array, 250, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_tuple__27 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_from_array, 251, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 
@@ -14162,29 +14383,29 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "fight.pyx":358
+  /* "fight.pyx":359
  *             self.ships[ship_type_idx] = 0
  * 
  *     def to_array(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the compact fleet to a numpy array.
  */
-  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ships, __pyx_n_s_ship_type_idx); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ships, __pyx_n_s_ship_type_idx); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_to_array, 358, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_to_array, 359, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 359, __pyx_L1_error)
 
-  /* "fight.pyx":377
+  /* "fight.pyx":378
  *         return ships
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def from_array(ships):
  *         """
  */
-  __pyx_tuple__32 = PyTuple_Pack(4, __pyx_n_s_ships, __pyx_n_s_ship_type_idx, __pyx_n_s_nb_ship_types, __pyx_n_s_compact_fleet); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(4, __pyx_n_s_ships, __pyx_n_s_ship_type_idx, __pyx_n_s_nb_ship_types, __pyx_n_s_compact_fleet); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_from_array, 377, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_from_array, 378, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 378, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -14201,116 +14422,128 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "fight.pyx":430
+  /* "fight.pyx":431
  *     return <int>ship_types + 1
  * 
  * cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  * 
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_fleet); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_fleet); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_from_fleet, 430, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_compact_fleet_from_fleet, 431, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 431, __pyx_L1_error)
 
-  /* "fight.pyx":453
+  /* "fight.pyx":454
  *     return compact_fleet
  * 
  * cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Convert a compact fleet to a fleet.
  */
-  __pyx_tuple__38 = PyTuple_Pack(2, __pyx_n_s_compact_fleet, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(2, __pyx_n_s_compact_fleet, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fleet_from_compact_fleet, 453, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fleet_from_compact_fleet, 454, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 454, __pyx_L1_error)
 
-  /* "fight.pyx":492
+  /* "fight.pyx":493
  * 
  * 
  * cpdef void fight_fleets(FightField fight_field):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate inplace a fight between two fleets. After the function call,
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_fight_field); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_fight_field); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_fleets, 492, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_fleets, 493, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 493, __pyx_L1_error)
 
-  /* "fight.pyx":515
+  /* "fight.pyx":516
  *         rounds += 1
  * 
  * cpdef void remove_destroyed_ships(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  *     Remove inplace the destroyed ships from the fleet.
  */
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_remove_destroyed_ships, 515, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_remove_destroyed_ships, 516, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 516, __pyx_L1_error)
 
-  /* "fight.pyx":541
+  /* "fight.pyx":542
  *     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  * cpdef void restore_shields(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  *     Restore the shields of the fleet.
  */
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_restore_shields, 541, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_restore_shields, 542, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 542, __pyx_L1_error)
 
-  /* "fight.pyx":556
+  /* "fight.pyx":557
  *         fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
  * 
  * cpdef void fight_single_round(FightField fight_field):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate a single round of fight between two fleets.
  */
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_single_round, 556, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 556, __pyx_L1_error)
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_single_round, 557, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 557, __pyx_L1_error)
 
-  /* "fight.pyx":579
+  /* "fight.pyx":580
  *     remove_destroyed_ships(fleet_2)
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate inplace a one-way fight between two fleets.
  */
-  __pyx_tuple__45 = PyTuple_Pack(3, __pyx_n_s_fleet_attacker, __pyx_n_s_fleet_target, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(3, __pyx_n_s_fleet_attacker, __pyx_n_s_fleet_target, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__45);
   __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_one_way, 579, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_fight_one_way, 580, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 580, __pyx_L1_error)
 
-  /* "fight.pyx":635
+  /* "fight.pyx":642
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
  *     """
  *     Generate a random number between 0 and a given upper bound.
  */
-  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_a); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_a); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__47);
   __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 635, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_randint, 642, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 642, __pyx_L1_error)
 
-  /* "fight.pyx":668
+  /* "fight.pyx":675
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
  *     """
  *     Choose a random target from the target fleet.
  */
-  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_n_s_nb_ships_target); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_n_s_nb_ships_target); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 675, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 668, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_choose_target, 675, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 675, __pyx_L1_error)
 
-  /* "fight.pyx":684
+  /* "fight.pyx":691
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Checks if a rapid fire occured.
  */
-  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_attacker_type, __pyx_n_s_target_type, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__51);
   __Pyx_GIVEREF(__pyx_tuple__51);
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_check_rapid_fire, 684, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_check_rapid_fire, 691, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 691, __pyx_L1_error)
+
+  /* "fight.pyx":727
+ *     return randint(rapid_fire_count) > 0
+ * 
+ * cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):             # <<<<<<<<<<<<<<
+ *     """
+ *     Checks if the ship has exploded consequently to a hit.
+ */
+  __pyx_tuple__53 = PyTuple_Pack(3, __pyx_n_s_target_type, __pyx_n_s_hull_points, __pyx_n_s_armada); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 727, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__53);
+  __Pyx_GIVEREF(__pyx_tuple__53);
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fight_pyx, __pyx_n_s_check_explosion, 727, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 727, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14394,15 +14627,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_5fight_FightField = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_FightField_spec, NULL); if (unlikely(!__pyx_ptype_5fight_FightField)) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_FightField_spec, __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_ptype_5fight_FightField = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_FightField_spec, NULL); if (unlikely(!__pyx_ptype_5fight_FightField)) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_FightField_spec, __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   #else
   __pyx_ptype_5fight_FightField = &__pyx_type_5fight_FightField;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_5fight_FightField->tp_print = 0;
@@ -14412,24 +14645,24 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_5fight_FightField->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FightField, (PyObject *) __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FightField, (PyObject *) __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_FightField) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   #endif
   __pyx_vtabptr_5fight_Fleet = &__pyx_vtable_5fight_Fleet;
   __pyx_vtable_5fight_Fleet.initialize = (void (*)(struct __pyx_obj_5fight_Fleet *))__pyx_f_5fight_5Fleet_initialize;
   __pyx_vtable_5fight_Fleet.copy_2d_array = (void (*)(struct __pyx_obj_5fight_Fleet *, PyArrayObject *))__pyx_f_5fight_5Fleet_copy_2d_array;
   __pyx_vtable_5fight_Fleet.is_empty = (int (*)(struct __pyx_obj_5fight_Fleet *))__pyx_f_5fight_5Fleet_is_empty;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_5fight_Fleet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_Fleet_spec, NULL); if (unlikely(!__pyx_ptype_5fight_Fleet)) __PYX_ERR(0, 120, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_Fleet_spec, __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_ptype_5fight_Fleet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_Fleet_spec, NULL); if (unlikely(!__pyx_ptype_5fight_Fleet)) __PYX_ERR(0, 121, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_Fleet_spec, __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #else
   __pyx_ptype_5fight_Fleet = &__pyx_type_5fight_Fleet;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_5fight_Fleet->tp_print = 0;
@@ -14439,13 +14672,13 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_5fight_Fleet->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_5fight_Fleet, __pyx_vtabptr_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_5fight_Fleet, __pyx_vtabptr_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Fleet, (PyObject *) __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Fleet, (PyObject *) __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_Fleet) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #endif
   __pyx_vtabptr_5fight_Armada = &__pyx_vtable_5fight_Armada;
   __pyx_vtable_5fight_Armada.initialize = (void (*)(struct __pyx_obj_5fight_Armada *))__pyx_f_5fight_6Armada_initialize;
@@ -14453,15 +14686,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_5fight_Armada.rapid_fire_from_array = (void (*)(struct __pyx_obj_5fight_Armada *, PyArrayObject *))__pyx_f_5fight_6Armada_rapid_fire_from_array;
   __pyx_vtable_5fight_Armada.is_empty = (int (*)(struct __pyx_obj_5fight_Armada *))__pyx_f_5fight_6Armada_is_empty;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_5fight_Armada = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_Armada_spec, NULL); if (unlikely(!__pyx_ptype_5fight_Armada)) __PYX_ERR(0, 186, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_Armada_spec, __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_ptype_5fight_Armada = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_Armada_spec, NULL); if (unlikely(!__pyx_ptype_5fight_Armada)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_Armada_spec, __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #else
   __pyx_ptype_5fight_Armada = &__pyx_type_5fight_Armada;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_5fight_Armada->tp_print = 0;
@@ -14471,27 +14704,27 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_5fight_Armada->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_5fight_Armada, __pyx_vtabptr_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_5fight_Armada, __pyx_vtabptr_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Armada, (PyObject *) __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Armada, (PyObject *) __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_Armada) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   #endif
   __pyx_vtabptr_5fight_CompactFleet = &__pyx_vtable_5fight_CompactFleet;
   __pyx_vtable_5fight_CompactFleet.nb_ships = (int (*)(struct __pyx_obj_5fight_CompactFleet *))__pyx_f_5fight_12CompactFleet_nb_ships;
   __pyx_vtable_5fight_CompactFleet.initialize = (void (*)(struct __pyx_obj_5fight_CompactFleet *))__pyx_f_5fight_12CompactFleet_initialize;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_5fight_CompactFleet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_CompactFleet_spec, NULL); if (unlikely(!__pyx_ptype_5fight_CompactFleet)) __PYX_ERR(0, 320, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_CompactFleet_spec, __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_ptype_5fight_CompactFleet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5fight_CompactFleet_spec, NULL); if (unlikely(!__pyx_ptype_5fight_CompactFleet)) __PYX_ERR(0, 321, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5fight_CompactFleet_spec, __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #else
   __pyx_ptype_5fight_CompactFleet = &__pyx_type_5fight_CompactFleet;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_5fight_CompactFleet->tp_print = 0;
@@ -14501,13 +14734,13 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_5fight_CompactFleet->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_5fight_CompactFleet, __pyx_vtabptr_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_5fight_CompactFleet, __pyx_vtabptr_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CompactFleet, (PyObject *) __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CompactFleet, (PyObject *) __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_5fight_CompactFleet) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -14951,12 +15184,21 @@ if (!__Pyx_RefNanny) {
  * cdef int MAX_ROUNDS = 6
  * 
  * cdef DTYPE_t DEFLECTION_RATIO = 100             # <<<<<<<<<<<<<<
+ * cdef int EXPLOSION_HULL_RATIO_THRESHOLD = 70
  * 
- * cdef class FightField:
  */
   __pyx_v_5fight_DEFLECTION_RATIO = 0x64;
 
-  /* "fight.pyx":60
+  /* "fight.pyx":46
+ * 
+ * cdef DTYPE_t DEFLECTION_RATIO = 100
+ * cdef int EXPLOSION_HULL_RATIO_THRESHOLD = 70             # <<<<<<<<<<<<<<
+ * 
+ * cdef class FightField:
+ */
+  __pyx_v_5fight_EXPLOSION_HULL_RATIO_THRESHOLD = 70;
+
+  /* "fight.pyx":61
  *     cdef int max_rounds
  * 
  *     def __cinit__(self, Fleet fleet_1, Fleet fleet_2, Armada armada, int max_rounds=MAX_ROUNDS):             # <<<<<<<<<<<<<<
@@ -14965,55 +15207,55 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_k__3 = __pyx_v_5fight_MAX_ROUNDS;
 
-  /* "fight.pyx":74
+  /* "fight.pyx":75
  *         self.max_rounds = max_rounds
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
  *         """
  *         Prints the number of ships in each fleet and a sample of the fleets.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_3describe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_describe, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_3describe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_describe, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_describe, __pyx_t_3) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_describe, __pyx_t_3) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_FightField);
 
-  /* "fight.pyx":84
+  /* "fight.pyx":85
  *         self.fleet_2.describe()
  * 
  *     def compact_fleet_1(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the first fleet to a compact fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_5compact_fleet_1, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_compact_fleet_1, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_5compact_fleet_1, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_compact_fleet_1, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_compact_fleet_1, __pyx_t_3) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_compact_fleet_1, __pyx_t_3) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_FightField);
 
-  /* "fight.pyx":95
+  /* "fight.pyx":96
  *         return compact_fleet_from_fleet(self.fleet_1)
  * 
  *     def compact_fleet_2(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the second fleet to a compact fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_7compact_fleet_2, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_compact_fleet_2, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_7compact_fleet_2, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_compact_fleet_2, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_compact_fleet_2, __pyx_t_3) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_compact_fleet_2, __pyx_t_3) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_FightField);
 
-  /* "fight.pyx":106
+  /* "fight.pyx":107
  *         return compact_fleet_from_fleet(self.fleet_2)
  * 
  *     def armada_(self):             # <<<<<<<<<<<<<<
  *         """
  *         Exposes the armada of the fight field.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_9armada_, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_armada, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_10FightField_9armada_, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_FightField_armada, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_armada_2, __pyx_t_3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_FightField, __pyx_n_s_armada_2, __pyx_t_3) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_FightField);
 
@@ -15038,16 +15280,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":162
+  /* "fight.pyx":163
  *         return self.nb_ships == 0
  * 
  *     def describe(self):             # <<<<<<<<<<<<<<
  *         """
  *         Prints the number of ships and a sample of the ships array
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_5Fleet_3describe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Fleet_describe, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_5Fleet_3describe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Fleet_describe, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Fleet, __pyx_n_s_describe, __pyx_t_3) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Fleet, __pyx_n_s_describe, __pyx_t_3) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_Fleet);
 
@@ -15072,25 +15314,25 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":250
+  /* "fight.pyx":251
  *         return self.nb_ships == 0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def from_array(cnp.ndarray[DTYPE_t, ndim=2] ships, cnp.ndarray[DTYPE_t, ndim=2] rapid_fire = None):
  *         """
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_6Armada_3from_array, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Armada_from_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_6Armada_3from_array, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Armada_from_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__27);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array, __pyx_t_3) < 0) __PYX_ERR(0, 250, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array, __pyx_t_3) < 0) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_Armada);
-  __Pyx_GetNameInClass(__pyx_t_3, (PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_3, (PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array, __pyx_t_2) < 0) __PYX_ERR(0, 250, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_Armada, __pyx_n_s_from_array, __pyx_t_2) < 0) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_5fight_Armada);
 
@@ -15115,37 +15357,37 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fight.pyx":358
+  /* "fight.pyx":359
  *             self.ships[ship_type_idx] = 0
  * 
  *     def to_array(self):             # <<<<<<<<<<<<<<
  *         """
  *         Convert the compact fleet to a numpy array.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_12CompactFleet_3to_array, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CompactFleet_to_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_12CompactFleet_3to_array, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CompactFleet_to_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_to_array, __pyx_t_2) < 0) __PYX_ERR(0, 358, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_to_array, __pyx_t_2) < 0) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_5fight_CompactFleet);
 
-  /* "fight.pyx":377
+  /* "fight.pyx":378
  *         return ships
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def from_array(ships):
  *         """
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_12CompactFleet_5from_array, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CompactFleet_from_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_12CompactFleet_5from_array, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CompactFleet_from_array, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array, __pyx_t_2) < 0) __PYX_ERR(0, 377, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array, __pyx_t_2) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_5fight_CompactFleet);
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array, __pyx_t_3) < 0) __PYX_ERR(0, 377, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_5fight_CompactFleet, __pyx_n_s_from_array, __pyx_t_3) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_5fight_CompactFleet);
 
@@ -15170,125 +15412,137 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":430
+  /* "fight.pyx":431
  *     return <int>ship_types + 1
  * 
  * cpdef CompactFleet compact_fleet_from_fleet(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_1compact_fleet_from_fleet, 0, __pyx_n_s_compact_fleet_from_fleet, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_1compact_fleet_from_fleet, 0, __pyx_n_s_compact_fleet_from_fleet, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compact_fleet_from_fleet, __pyx_t_3) < 0) __PYX_ERR(0, 430, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compact_fleet_from_fleet, __pyx_t_3) < 0) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":453
+  /* "fight.pyx":454
  *     return compact_fleet
  * 
  * cpdef Fleet fleet_from_compact_fleet(CompactFleet compact_fleet, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Convert a compact fleet to a fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_3fleet_from_compact_fleet, 0, __pyx_n_s_fleet_from_compact_fleet, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_3fleet_from_compact_fleet, 0, __pyx_n_s_fleet_from_compact_fleet, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fleet_from_compact_fleet, __pyx_t_3) < 0) __PYX_ERR(0, 453, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fleet_from_compact_fleet, __pyx_t_3) < 0) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":492
+  /* "fight.pyx":493
  * 
  * 
  * cpdef void fight_fleets(FightField fight_field):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate inplace a fight between two fleets. After the function call,
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_5fight_fleets, 0, __pyx_n_s_fight_fleets, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_5fight_fleets, 0, __pyx_n_s_fight_fleets, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_fleets, __pyx_t_3) < 0) __PYX_ERR(0, 492, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_fleets, __pyx_t_3) < 0) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":515
+  /* "fight.pyx":516
  *         rounds += 1
  * 
  * cpdef void remove_destroyed_ships(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  *     Remove inplace the destroyed ships from the fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_7remove_destroyed_ships, 0, __pyx_n_s_remove_destroyed_ships, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_7remove_destroyed_ships, 0, __pyx_n_s_remove_destroyed_ships, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 516, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_remove_destroyed_ships, __pyx_t_3) < 0) __PYX_ERR(0, 515, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_remove_destroyed_ships, __pyx_t_3) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":541
+  /* "fight.pyx":542
  *     fleet.ships = <DTYPE_t *> realloc(fleet.ships, fleet.nb_ships * SHIP_CHAR_SIZE * sizeof(DTYPE_t))
  * 
  * cpdef void restore_shields(Fleet fleet):             # <<<<<<<<<<<<<<
  *     """
  *     Restore the shields of the fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_9restore_shields, 0, __pyx_n_s_restore_shields, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_9restore_shields, 0, __pyx_n_s_restore_shields, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_restore_shields, __pyx_t_3) < 0) __PYX_ERR(0, 541, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_restore_shields, __pyx_t_3) < 0) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":556
+  /* "fight.pyx":557
  *         fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_IDX] = fleet.ships[SHIP_CHAR_SIZE * ship_idx + SHIELD_GENERATOR_IDX]
  * 
  * cpdef void fight_single_round(FightField fight_field):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate a single round of fight between two fleets.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_11fight_single_round, 0, __pyx_n_s_fight_single_round, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 556, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_11fight_single_round, 0, __pyx_n_s_fight_single_round, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_single_round, __pyx_t_3) < 0) __PYX_ERR(0, 556, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_single_round, __pyx_t_3) < 0) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":579
+  /* "fight.pyx":580
  *     remove_destroyed_ships(fleet_2)
  * 
  * cpdef void fight_one_way(Fleet fleet_attacker, Fleet fleet_target, Armada armada = None):             # <<<<<<<<<<<<<<
  *     """
  *     Simulate inplace a one-way fight between two fleets.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_13fight_one_way, 0, __pyx_n_s_fight_one_way, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_13fight_one_way, 0, __pyx_n_s_fight_one_way, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__27);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_one_way, __pyx_t_3) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fight_one_way, __pyx_t_3) < 0) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":635
+  /* "fight.pyx":642
  * 
  * 
  * cpdef int randint(int a):             # <<<<<<<<<<<<<<
  *     """
  *     Generate a random number between 0 and a given upper bound.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_15randint, 0, __pyx_n_s_randint, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_3) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_3) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":668
+  /* "fight.pyx":675
  * 
  * 
  * cpdef int choose_target(int nb_ships_target):             # <<<<<<<<<<<<<<
  *     """
  *     Choose a random target from the target fleet.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_17choose_target, 0, __pyx_n_s_choose_target, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) < 0) __PYX_ERR(0, 668, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_choose_target, __pyx_t_3) < 0) __PYX_ERR(0, 675, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fight.pyx":684
+  /* "fight.pyx":691
  *     return randint(nb_ships_target)
  * 
  * cpdef bint check_rapid_fire(int attacker_type, int target_type, Armada armada):             # <<<<<<<<<<<<<<
  *     """
  *     Checks if a rapid fire occured.
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_19check_rapid_fire, 0, __pyx_n_s_check_rapid_fire, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) < 0) __PYX_ERR(0, 684, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_rapid_fire, __pyx_t_3) < 0) __PYX_ERR(0, 691, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "fight.pyx":727
+ *     return randint(rapid_fire_count) > 0
+ * 
+ * cpdef bint check_explosion(int target_type, DTYPE_t hull_points, Armada armada):             # <<<<<<<<<<<<<<
+ *     """
+ *     Checks if the ship has exploded consequently to a hit.
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5fight_21check_explosion, 0, __pyx_n_s_check_explosion, NULL, __pyx_n_s_fight, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 727, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_explosion, __pyx_t_3) < 0) __PYX_ERR(0, 727, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "fight.pyx":1
@@ -17862,6 +18116,14 @@ static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long int
     int r = a % b;
     r += ((r != 0) & ((r ^ b) < 0)) * b;
     return r;
+}
+
+/* DivInt[__pyx_t_5fight_DTYPE_t] */
+  static CYTHON_INLINE __pyx_t_5fight_DTYPE_t __Pyx_div___pyx_t_5fight_DTYPE_t(__pyx_t_5fight_DTYPE_t a, __pyx_t_5fight_DTYPE_t b) {
+    __pyx_t_5fight_DTYPE_t q = a / b;
+    __pyx_t_5fight_DTYPE_t r = a - q*b;
+    q -= ((r != 0) & ((r ^ b) < 0));
+    return q;
 }
 
 /* FixUpExtensionType */
@@ -21064,6 +21326,273 @@ raise_neg_overflow:
     return (int) -1;
 }
 
+/* CIntFromPy */
+  static CYTHON_INLINE npy_int64 __Pyx_PyInt_As_npy_int64(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const npy_int64 neg_one = (npy_int64) -1, const_zero = (npy_int64) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if ((sizeof(npy_int64) < sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT(npy_int64, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (npy_int64) val;
+        }
+    }
+#endif
+    if (unlikely(!PyLong_Check(x))) {
+        npy_int64 val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (npy_int64) -1;
+        val = __Pyx_PyInt_As_npy_int64(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+    if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
+            goto raise_neg_overflow;
+        } else if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(npy_int64, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_DigitCount(x)) {
+                case 2:
+                    if ((8 * sizeof(npy_int64) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) >= 2 * PyLong_SHIFT)) {
+                            return (npy_int64) (((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(npy_int64) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) >= 3 * PyLong_SHIFT)) {
+                            return (npy_int64) (((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(npy_int64) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) >= 4 * PyLong_SHIFT)) {
+                            return (npy_int64) (((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
+        if (unlikely(Py_SIZE(x) < 0)) {
+            goto raise_neg_overflow;
+        }
+#else
+        {
+            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+            if (unlikely(result < 0))
+                return (npy_int64) -1;
+            if (unlikely(result == 1))
+                goto raise_neg_overflow;
+        }
+#endif
+        if ((sizeof(npy_int64) <= sizeof(unsigned long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(npy_int64) <= sizeof(unsigned PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+        }
+    } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(npy_int64, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_SignedDigitCount(x)) {
+                case -2:
+                    if ((8 * sizeof(npy_int64) - 1 > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
+                            return (npy_int64) (((npy_int64)-1)*(((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if ((8 * sizeof(npy_int64) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
+                            return (npy_int64) ((((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
+                            return (npy_int64) (((npy_int64)-1)*(((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(npy_int64) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
+                            return (npy_int64) ((((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 4 * PyLong_SHIFT)) {
+                            return (npy_int64) (((npy_int64)-1)*(((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(npy_int64) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(npy_int64) - 1 > 4 * PyLong_SHIFT)) {
+                            return (npy_int64) ((((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+        if ((sizeof(npy_int64) <= sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(npy_int64) <= sizeof(PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+        }
+    }
+    {
+        npy_int64 val;
+        int ret = -1;
+#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
+        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
+            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
+        if (unlikely(bytes_copied == -1)) {
+        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
+            goto raise_overflow;
+        } else {
+            ret = 0;
+        }
+#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
+        int one = 1; int is_little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&val;
+        ret = _PyLong_AsByteArray((PyLongObject *)x,
+                                    bytes, sizeof(val),
+                                    is_little, !is_unsigned);
+#else
+        PyObject *v;
+        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
+        int bits, remaining_bits, is_negative = 0;
+        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
+        if (likely(PyLong_CheckExact(x))) {
+            v = __Pyx_NewRef(x);
+        } else {
+            v = PyNumber_Long(x);
+            if (unlikely(!v)) return (npy_int64) -1;
+            assert(PyLong_CheckExact(v));
+        }
+        {
+            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
+            if (unlikely(result < 0)) {
+                Py_DECREF(v);
+                return (npy_int64) -1;
+            }
+            is_negative = result == 1;
+        }
+        if (is_unsigned && unlikely(is_negative)) {
+            Py_DECREF(v);
+            goto raise_neg_overflow;
+        } else if (is_negative) {
+            stepval = PyNumber_Invert(v);
+            Py_DECREF(v);
+            if (unlikely(!stepval))
+                return (npy_int64) -1;
+        } else {
+            stepval = v;
+        }
+        v = NULL;
+        val = (npy_int64) 0;
+        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
+        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
+        for (bits = 0; bits < (int) sizeof(npy_int64) * 8 - chunk_size; bits += chunk_size) {
+            PyObject *tmp, *digit;
+            long idigit;
+            digit = PyNumber_And(stepval, mask);
+            if (unlikely(!digit)) goto done;
+            idigit = PyLong_AsLong(digit);
+            Py_DECREF(digit);
+            if (unlikely(idigit < 0)) goto done;
+            val |= ((npy_int64) idigit) << bits;
+            tmp = PyNumber_Rshift(stepval, shift);
+            if (unlikely(!tmp)) goto done;
+            Py_DECREF(stepval); stepval = tmp;
+        }
+        Py_DECREF(shift); shift = NULL;
+        Py_DECREF(mask); mask = NULL;
+        {
+            long idigit = PyLong_AsLong(stepval);
+            if (unlikely(idigit < 0)) goto done;
+            remaining_bits = ((int) sizeof(npy_int64) * 8) - bits - (is_unsigned ? 0 : 1);
+            if (unlikely(idigit >= (1L << remaining_bits)))
+                goto raise_overflow;
+            val |= ((npy_int64) idigit) << bits;
+        }
+        if (!is_unsigned) {
+            if (unlikely(val & (((npy_int64) 1) << (sizeof(npy_int64) * 8 - 1))))
+                goto raise_overflow;
+            if (is_negative)
+                val = ~val;
+        }
+        ret = 0;
+    done:
+        Py_XDECREF(shift);
+        Py_XDECREF(mask);
+        Py_XDECREF(stepval);
+#endif
+        if (unlikely(ret))
+            return (npy_int64) -1;
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to npy_int64");
+    return (npy_int64) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to npy_int64");
+    return (npy_int64) -1;
+}
+
 /* CIntToPy */
   static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -21348,273 +21877,6 @@ raise_neg_overflow:
     }
 }
 
-/* CIntFromPy */
-  static CYTHON_INLINE npy_int64 __Pyx_PyInt_As_npy_int64(PyObject *x) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const npy_int64 neg_one = (npy_int64) -1, const_zero = (npy_int64) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if ((sizeof(npy_int64) < sizeof(long))) {
-            __PYX_VERIFY_RETURN_INT(npy_int64, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (npy_int64) val;
-        }
-    }
-#endif
-    if (unlikely(!PyLong_Check(x))) {
-        npy_int64 val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (npy_int64) -1;
-        val = __Pyx_PyInt_As_npy_int64(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-    if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
-            goto raise_neg_overflow;
-        } else if (__Pyx_PyLong_IsCompact(x)) {
-            __PYX_VERIFY_RETURN_INT(npy_int64, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
-        } else {
-            const digit* digits = __Pyx_PyLong_Digits(x);
-            assert(__Pyx_PyLong_DigitCount(x) > 1);
-            switch (__Pyx_PyLong_DigitCount(x)) {
-                case 2:
-                    if ((8 * sizeof(npy_int64) > 1 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) >= 2 * PyLong_SHIFT)) {
-                            return (npy_int64) (((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if ((8 * sizeof(npy_int64) > 2 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) >= 3 * PyLong_SHIFT)) {
-                            return (npy_int64) (((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if ((8 * sizeof(npy_int64) > 3 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) >= 4 * PyLong_SHIFT)) {
-                            return (npy_int64) (((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0]));
-                        }
-                    }
-                    break;
-            }
-        }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
-        if (unlikely(Py_SIZE(x) < 0)) {
-            goto raise_neg_overflow;
-        }
-#else
-        {
-            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-            if (unlikely(result < 0))
-                return (npy_int64) -1;
-            if (unlikely(result == 1))
-                goto raise_neg_overflow;
-        }
-#endif
-        if ((sizeof(npy_int64) <= sizeof(unsigned long))) {
-            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-        } else if ((sizeof(npy_int64) <= sizeof(unsigned PY_LONG_LONG))) {
-            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-        }
-    } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-        if (__Pyx_PyLong_IsCompact(x)) {
-            __PYX_VERIFY_RETURN_INT(npy_int64, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
-        } else {
-            const digit* digits = __Pyx_PyLong_Digits(x);
-            assert(__Pyx_PyLong_DigitCount(x) > 1);
-            switch (__Pyx_PyLong_SignedDigitCount(x)) {
-                case -2:
-                    if ((8 * sizeof(npy_int64) - 1 > 1 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
-                            return (npy_int64) (((npy_int64)-1)*(((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if ((8 * sizeof(npy_int64) > 1 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
-                            return (npy_int64) ((((((npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if ((8 * sizeof(npy_int64) - 1 > 2 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
-                            return (npy_int64) (((npy_int64)-1)*(((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if ((8 * sizeof(npy_int64) > 2 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
-                            return (npy_int64) ((((((((npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if ((8 * sizeof(npy_int64) - 1 > 3 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 4 * PyLong_SHIFT)) {
-                            return (npy_int64) (((npy_int64)-1)*(((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if ((8 * sizeof(npy_int64) > 3 * PyLong_SHIFT)) {
-                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
-                            __PYX_VERIFY_RETURN_INT(npy_int64, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if ((8 * sizeof(npy_int64) - 1 > 4 * PyLong_SHIFT)) {
-                            return (npy_int64) ((((((((((npy_int64)digits[3]) << PyLong_SHIFT) | (npy_int64)digits[2]) << PyLong_SHIFT) | (npy_int64)digits[1]) << PyLong_SHIFT) | (npy_int64)digits[0])));
-                        }
-                    }
-                    break;
-            }
-        }
-#endif
-        if ((sizeof(npy_int64) <= sizeof(long))) {
-            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-        } else if ((sizeof(npy_int64) <= sizeof(PY_LONG_LONG))) {
-            __PYX_VERIFY_RETURN_INT_EXC(npy_int64, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-        }
-    }
-    {
-        npy_int64 val;
-        int ret = -1;
-#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
-        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
-            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
-        if (unlikely(bytes_copied == -1)) {
-        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
-            goto raise_overflow;
-        } else {
-            ret = 0;
-        }
-#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
-        int one = 1; int is_little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&val;
-        ret = _PyLong_AsByteArray((PyLongObject *)x,
-                                    bytes, sizeof(val),
-                                    is_little, !is_unsigned);
-#else
-        PyObject *v;
-        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
-        int bits, remaining_bits, is_negative = 0;
-        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
-        if (likely(PyLong_CheckExact(x))) {
-            v = __Pyx_NewRef(x);
-        } else {
-            v = PyNumber_Long(x);
-            if (unlikely(!v)) return (npy_int64) -1;
-            assert(PyLong_CheckExact(v));
-        }
-        {
-            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
-            if (unlikely(result < 0)) {
-                Py_DECREF(v);
-                return (npy_int64) -1;
-            }
-            is_negative = result == 1;
-        }
-        if (is_unsigned && unlikely(is_negative)) {
-            Py_DECREF(v);
-            goto raise_neg_overflow;
-        } else if (is_negative) {
-            stepval = PyNumber_Invert(v);
-            Py_DECREF(v);
-            if (unlikely(!stepval))
-                return (npy_int64) -1;
-        } else {
-            stepval = v;
-        }
-        v = NULL;
-        val = (npy_int64) 0;
-        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
-        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
-        for (bits = 0; bits < (int) sizeof(npy_int64) * 8 - chunk_size; bits += chunk_size) {
-            PyObject *tmp, *digit;
-            long idigit;
-            digit = PyNumber_And(stepval, mask);
-            if (unlikely(!digit)) goto done;
-            idigit = PyLong_AsLong(digit);
-            Py_DECREF(digit);
-            if (unlikely(idigit < 0)) goto done;
-            val |= ((npy_int64) idigit) << bits;
-            tmp = PyNumber_Rshift(stepval, shift);
-            if (unlikely(!tmp)) goto done;
-            Py_DECREF(stepval); stepval = tmp;
-        }
-        Py_DECREF(shift); shift = NULL;
-        Py_DECREF(mask); mask = NULL;
-        {
-            long idigit = PyLong_AsLong(stepval);
-            if (unlikely(idigit < 0)) goto done;
-            remaining_bits = ((int) sizeof(npy_int64) * 8) - bits - (is_unsigned ? 0 : 1);
-            if (unlikely(idigit >= (1L << remaining_bits)))
-                goto raise_overflow;
-            val |= ((npy_int64) idigit) << bits;
-        }
-        if (!is_unsigned) {
-            if (unlikely(val & (((npy_int64) 1) << (sizeof(npy_int64) * 8 - 1))))
-                goto raise_overflow;
-            if (is_negative)
-                val = ~val;
-        }
-        ret = 0;
-    done:
-        Py_XDECREF(shift);
-        Py_XDECREF(mask);
-        Py_XDECREF(stepval);
-#endif
-        if (unlikely(ret))
-            return (npy_int64) -1;
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to npy_int64");
-    return (npy_int64) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to npy_int64");
-    return (npy_int64) -1;
-}
-
 /* FormatTypeName */
   #if CYTHON_COMPILING_IN_LIMITED_API
 static __Pyx_TypeName
@@ -21625,7 +21887,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__53);
+        name = __Pyx_NewRef(__pyx_n_s__55);
     }
     return name;
 }
