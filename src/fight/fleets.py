@@ -29,9 +29,8 @@ def read_armadas() -> pd.DataFrame:
     ] //= 10  # Convert structure points to the same scale as the other values
 
     # Reads the rapid fire data from the csv
-    rapid_fire_df = pd.read_csv(data("assets/rapid_fires.csv"))
+    rapid_fire_df = pd.read_csv(data("assets/rapid_fires.csv"), index_col=0)
     rapid_fire_array = rapid_fire_df.values
-    print(rapid_fire_array)
 
     # Wrap the armada and rapid fire data into an Armada object
     armada = Armada.from_array(armada_array, rapid_fire_array)
@@ -46,5 +45,15 @@ def read_ship_names() -> pd.Series:
     return ships_df["name"]
 
 
+def read_ship_costs() -> pd.DataFrame:
+    """
+    Reads the ship costs from the CSV file and returns a DataFrame.
+    """
+    ships_costs_df = pd.read_csv(data("assets/ships_costs.csv"), index_col=False)
+    ships_costs_df.set_index("type", inplace=True)
+    return ships_costs_df
+
+
 ARMADA = read_armadas()
 SHIP_NAMES = read_ship_names()
+SHIP_COSTS = read_ship_costs()
