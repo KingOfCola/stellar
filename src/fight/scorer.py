@@ -60,6 +60,8 @@ class FightScore:
 
         # Initialize the results
         n_ship_types = ship_costs.shape[0]
+        n_elements = ship_costs.shape[1]
+
         self.fleet_own_results = np.zeros((n_sim, n_ship_types), dtype=int)
         self.fleet_other_results = np.zeros((n_sim, n_ship_types), dtype=int)
         self.fight_values = np.full((n_sim,), np.nan)
@@ -67,6 +69,14 @@ class FightScore:
 
         self.fight_values_normalized = np.full((n_sim,), np.nan)
         self.fight_values_normalized_mean = np.nan
+
+        self.fight_costs_own = np.zeros((n_sim, n_elements), dtype=int)
+        self.fight_costs_own_mean = np.zeros((n_elements,), dtype=int)
+        self.fight_costs_own_std = np.zeros((n_elements,), dtype=int)
+
+        self.fight_costs_other = np.zeros((n_sim, n_elements), dtype=int)
+        self.fight_costs_other_mean = np.zeros((n_elements,), dtype=int)
+        self.fight_costs_other_std = np.zeros((n_elements,), dtype=int)
 
     def simulate_single_fight(self, round: int = 0):
         """
@@ -110,6 +120,19 @@ class FightScore:
             self.fight_values[round] / self.fleet_other_value
         )
 
+        # Compute the costs of the fleets in resources
+        self.fight_costs_own[round, :] = fleet_cost(
+            fleet_own_results, ship_costs=self.ship_costs
+        ) - fleet_cost(self.fleet_own, ship_costs=self.ship_costs)
+        self.fight_costs_own_mean = np.nanmean(self.fight_costs_own, axis=0)
+        self.fight_costs_own_std = np.nanstd(self.fight_costs_own, axis=0)
+
+        self.fight_costs_other[round, :] = fleet_cost(
+            fleet_other_results, ship_costs=self.ship_costs
+        ) - fleet_cost(self.fleet_other, ship_costs=self.ship_costs)
+        self.fight_costs_other_mean = np.nanmean(self.fight_costs_other, axis=0)
+        self.fight_costs_other_std = np.nanstd(self.fight_costs_other, axis=0)
+
     def simulate_fights(self):
         """
         Simulates multiple fights between the two fleets and computes the value of the fights.
@@ -149,10 +172,34 @@ def value_fleet(
     float
         The value of the fleet, in terms of material coefficient 1.
     """
+
+    return (
+        fleet_cost(compact_fleet=compact_fleet, ship_costs=ship_costs) @ relative_values
+    )
+
+
+def fleet_cost(
+    compact_fleet: np.array,
+    ship_costs: np.array = SHIP_COSTS,
+) -> float:
+    """
+    Computes the cost of a fleet based on the number of ships and their costs.
+
+    Parameters
+    ----------
+    compact_fleet : np.array of shape (n_ship_types,)
+        The compact fleet to compute the cost for.
+    ship_costs : np.array of shape (n_ship_types, n_elements)
+        The costs of the ships. (optional, default are the values of the ships from the game)
+
+    Returns
+    -------
+    float
+        The cost of the fleet.
+    """
     compact_fleet_ = np.zeros((ship_costs.shape[0],), dtype=int)
     compact_fleet_[: compact_fleet.shape[0]] = compact_fleet
-
-    return compact_fleet_ @ ship_costs @ relative_values
+    return compact_fleet_ @ ship_costs
 
 
 def create_fleet_target_value(
