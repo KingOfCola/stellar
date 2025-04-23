@@ -1,0 +1,52 @@
+<!DOCTYPE document SYSTEM "rml.dtd">
+<document filename="example_01.pdf">
+    <template showBoundary="1">
+        <!--this section contains elements of the document -->
+        <!--which are FIXED into position. -->
+        <pageTemplate id="main">
+            <pageGraphics>
+                <fill color="red"/>
+                <setFont name="Helvetica" size="24"/>
+                <drawString x="50" y="765">
+                    Fleet optimizer report
+                </drawString>
+             </pageGraphics>
+            <frame id="first" x1="50" y1="50" width="495.27" height="711.89"/>
+        </pageTemplate>
+    </template>
+
+    <stylesheet>
+        <!--this section contains the STYLE information for -->
+        <!--the document, but there isn't any yet. The tags still -->
+        <!--have to be present, however, or the document won't compile.-->
+        <paraStyle name="title_1" fontName="Helvetica" fontSize="15"/>
+    </stylesheet>
+
+    <story>
+        <!--this section contains the FLOWABLE elements of the -->
+        <!--document. These elements will fill up the frames -->
+        <!--defined in the <template> section above. -->
+        <para style="title_1">
+            Welcome to RML!
+        </para>
+        <para>
+            This is the "story". This is the part of the RML document where  your text is placed.
+        </para>
+        <para>
+            It should be enclosed in "para" and "/para" tags to turn it into paragraphs.
+        </para>
+        <para>
+            Composantes
+
+Plusieurs caractéristiques composent l'empire d'un joueur :
+
+    ses planètes : il débute avec une planète-mère, et aura par la suite l'occasion d'en coloniser d'autres en développant ses recherches. Chaque planète a une taille fixe, déterminée aléatoirement – sauf pour la planète-mère de 188 cases (sauf caractéristiques particulières de certains univers[4]) par défaut – et ne peut accueillir qu'un nombre défini de bâtiments : une fois la planète remplie, seules des défenses ainsi que des vaisseaux peuvent encore y être produits et des technologies peuvent être recherchées. Il est possible de contourner ces impératifs :
+        la colonisation de nouvelles planètes : la taille et la température des planètes, ainsi que leur production d'énergie et de deutérium (carburant), dépendent de leur position par rapport au soleil. Plus une planète est proche du soleil plus les satellites produisent d'énergie, mais le synthétiseur de deutérium produit moins de deutérium. En contrepartie plus une planète est éloignée du soleil plus elle produit de deutérium, mais moins d'énergie avec les satellites. La taille d'une colonie peut dépasser les 300 cases (sauf univers 70 et + le max est de 247 cases). Le nombre de cases détermine la capacité de développement des bâtiments (chaque nouveau développement prend une case),
+        le terraformeur qui augmente le nombre de cases d'une planète : à la suite d'une attaque qui peut être convenue entre deux joueurs, une lune peut être créée autour de la planète attaquée. Il y a une lune au maximum par planète. La lune apporte de nouvelles possibilités de jeu, notamment avec la phalange de capteur (permet de voir les mouvements de flotte des autres joueurs qui ont fait partir leur flotte depuis une planète ou dont la flotte arrive sur une planète) et la porte de saut spatial (permet de transporter des vaisseaux entre deux portes de saut sans perte de temps). Ces technologies sont le fruit du développement d'une lune qui peut s'avérer couteux (il est possible de détruire une lune) ;
+    ses bâtiments : construits sur ses planètes, ils se répartissent principalement entre les bâtiments producteurs (mines de métal, mines de cristal, synthétiseurs de deutérium et centrales énergétiques solaire ou de fusion), les bâtiments de stockage (hangars de métal, hangars de cristal et réservoirs de deutérium sans lesquels la production sature au bout d'un moment) et les installations (usines de robots, usines de nanites, chantiers spatiaux, dépôts de ravitaillement, silos de missiles, laboratoires de recherche et terraformeurs). Le laboratoire de recherche (pour la recherche de nouvelles technologies) permet d'avoir accès à de nouveaux bâtiments, vaisseaux ou défenses. Chaque niveau de bâtiment construit occupe une case sur la planète sur laquelle il est placé ;
+    ses vaisseaux : ils permettent l'interaction entre les différentes planètes, que ce soit pour échanger des ressources, coloniser de nouvelles planètes, exploiter les champs de débris, espionner, attaquer les adversaires, détruire une lune ou effectuer une expédition. Il existe plusieurs types de vaisseaux : les vaisseaux civils (petits ou grands transporteurs, vaisseaux de colonisation, recycleurs, sondes d'espionnage) et les vaisseaux de combat (chasseurs légers ou lourds, croiseurs, vaisseaux de bataille, traqueurs, bombardiers, destructeurs et étoiles de la mort). L'étoile de la mort est le vaisseau le plus puissant. Sa supériorité est un des grands principes de base de OGame, depuis la création du jeu ;
+    ses défenses : en prévision des attaques, des défenses peuvent être construites sur les planètes : lanceurs de missiles, artilleries à ions, artilleries laser légères ou laser lourdes, canons de Gauss, lanceurs de plasma, missiles interceptions, petits et grands boucliers ;
+    ses recherches (aussi appelées technologies) : les recherches ne sont pas spécifiques à une planète contrairement aux bâtiments et aux défenses. Elles sont identiques dans tout l'empire d'un joueur. Il y a deux types de recherches : celles qui donnent accès à une autre technologie ou qui permettent de développer soit un vaisseau, soit un bâtiment, soit un type de défense (recherche d'accessibilité) ; et celles dont le niveau est pris en compte pour améliorer l'efficacité des vaisseaux, des défenses, de la propulsion ou encore de l'espionnage (recherche d'efficacité). Certaines recherches peuvent appartenir aux deux catégories en même temps. Par exemple, la « Technologie Bouclier » doit être montée au niveau 2 pour avoir le droit (accessibilité) de fabriquer des recycleurs mais parallèlement à ça, elle détermine la manière (efficacité) dont tous les vaisseaux vont se comporter lors des combats.
+        </para>
+    </story>
+</document>
