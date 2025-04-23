@@ -57,3 +57,7 @@ def read_ship_costs() -> pd.DataFrame:
 ARMADA = read_armadas()
 SHIP_NAMES = read_ship_names()
 SHIP_COSTS = read_ship_costs()
+
+# Relative costs for the different materials
+# 1: Metal, 2: Crystal, 3: Deuterium
+RELATIVE_VALUES = np.array([1, 2, 3])
