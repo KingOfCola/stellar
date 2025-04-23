@@ -102,7 +102,7 @@ def find_backgrounds_mappings(css: str) -> dict[str, str]:
 if __name__ == "__main__":
     # Paths
     RESOURCE_FILE = data("raw/1bee2581139faeb7d6e395e6c48f91.css")
-    DOWNLOAD_DIR = path_to_file("downloads/ogame")
+    DOWNLOAD_DIR = path_to_file("downloads/ogame/constructions")
     DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
     IMAGES_DIR = path_to_file("images/ogame")
