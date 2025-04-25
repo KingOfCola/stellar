@@ -29,51 +29,49 @@
 
         return style
     {{endscript}}
-    <template showBoundary="0">
-        <!--this section contains elements of the document -->
-        <!--which are FIXED into position. -->
-        <pageTemplate id="main">
-            <pageGraphics>
-                <place x="50" y="765" width="1" height="1">
-                    <para style="title_1">
+        <template showBoundary="0">
+            <!--this section contains elements of the document -->
+            <!--which are FIXED into position. -->
+            <pageTemplate id="main">
+                <pageGraphics>
+                    <place x="50" y="765" width="1" height="1">
+                        <para style="title_1">
                         
                     </para>
-                </place>
-                <image file="images/ogame/misc/background.jpg" x="300" y="430" height="1000" preserveAspectRatio="yes" anchorAtXY="yes" anchor="c"/>
-                <image file="images/ogame/misc/logo.png" x="445.27" y="765" width="100" height="50" preserveAspectRatio="yes"/>
-                <place x="50" y="765" width="495.27" height="30">
-                    <para style="title_1">
+                    </place>
+                    <image file="images/ogame/misc/background.jpg" x="300" y="430" height="1000" preserveAspectRatio="yes" anchorAtXY="yes" anchor="c"/>
+                    <image file="images/ogame/misc/logo.png" x="445.27" y="765" width="100" height="50" preserveAspectRatio="yes"/>
+                    <place x="50" y="765" width="495.27" height="30">
+                        <para style="title_1">
                         Fleet optimizer report
                     </para>
-                </place>
-             </pageGraphics>
-            <frame id="first" x1="50" y1="50" width="495.27" height="711.89"/>
-        </pageTemplate>
-    </template>
-
-    <stylesheet>
-        <initialize>
-            <color id="gray-50" RGB="(.071,.090,.110)" density="0.5"/>
-            <color id="anthracite-50" RGB="(0.051,0.063,0.078)" density="0.5"/>
-        </initialize>
-        <!--this section contains the STYLE information for -->
-        <!--the document, but there isn't any yet. The tags still -->
-        <!--have to be present, however, or the document won't compile.-->
-        <paraStyle name="title_1" fontName="Helvetica-Bold" fontSize="18"  textColor="white"/>
-        <paraStyle name="title_2" parent="title_1" fontSize="14" spaceAfter="5"/>
-        <paraStyle name="normal" fontName="Helvetica" fontSize="10" textColor="white" />
-        <paraStyle name="description" fontName="Helvetica" fontSize="8" textColor="lightslategray" />
-
-        <blockTableStyle id="report_table">
-            <blockFont name="Helvetica" size="10"/>
-            <blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
-            <blockTextColor colorName="white"/>
-            <blockTextColor colorName="lightslategray" start="1,0" stop="1,-1"/>
-            <blockLeftPadding length="5" />
-            <blockRightPadding length="5" />
-            <blockTopPadding length="2" />
-            <blockBottomPadding length="2" />
-            <blockValign value="MIDDLE"/>
+                    </place>
+                </pageGraphics>
+                <frame id="first" x1="50" y1="50" width="495.27" height="711.89"/>
+            </pageTemplate>
+        </template>
+        <stylesheet>
+            <initialize>
+                <color id="gray-50" RGB="(.071,.090,.110)" density="0.5"/>
+                <color id="anthracite-50" RGB="(0.051,0.063,0.078)" density="0.5"/>
+            </initialize>
+            <!--this section contains the STYLE information for -->
+            <!--the document, but there isn't any yet. The tags still -->
+            <!--have to be present, however, or the document won't compile.-->
+            <paraStyle name="title_1" fontName="Helvetica-Bold" fontSize="18"  textColor="white"/>
+            <paraStyle name="title_2" parent="title_1" fontSize="14" spaceAfter="5"/>
+            <paraStyle name="normal" fontName="Helvetica" fontSize="10" textColor="white" />
+            <paraStyle name="description" fontName="Helvetica" fontSize="8" textColor="lightslategray" />
+            <blockTableStyle id="report_table">
+                <blockFont name="Helvetica" size="10"/>
+                <blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
+                <blockTextColor colorName="white"/>
+                <blockTextColor colorName="lightslategray" start="1,0" stop="1,-1"/>
+                <blockLeftPadding length="5" />
+                <blockRightPadding length="5" />
+                <blockTopPadding length="2" />
+                <blockBottomPadding length="2" />
+                <blockValign value="MIDDLE"/>
             {{script}}
                 # Add alternating colors to the table rows
                 n_rows = 26  # Adjust this based on your data
@@ -83,21 +81,20 @@
                 style = alternate_colors(n_rows, even_color, odd_color, start_row)
             {{endscript}}
             {{style}}
-        </blockTableStyle>
-
-        <!-- Resources tables -->
-        <blockTableStyle id="resource_table">
-            <blockFont name="Helvetica" size="10"/>
-            <blockTextColor colorName="white"/>
-            <blockFont name="Helvetica-Bold" size="8" start="0,1" stop="-1,1"/>
-            <blockTextColor colorName="lightslategray" start="0,1" stop="-1,1"/>
-            <blockTextColor colorName="lightslategray" start="0,0" stop="0,-1"/>
-            <blockAlignment value="RIGHT" start="1, 0" stop="-1,-1"/>
-            <blockLeftPadding length="5" />
-            <blockRightPadding length="5" />
-            <blockTopPadding length="2" />
-            <blockBottomPadding length="2" />
-            <blockValign value="MIDDLE"/>
+            </blockTableStyle>
+            <!-- Resources tables -->
+            <blockTableStyle id="resource_table">
+                <blockFont name="Helvetica" size="10"/>
+                <blockTextColor colorName="white"/>
+                <blockFont name="Helvetica-Bold" size="8" start="0,1" stop="-1,1"/>
+                <blockTextColor colorName="lightslategray" start="0,1" stop="-1,1"/>
+                <blockTextColor colorName="lightslategray" start="0,0" stop="0,-1"/>
+                <blockAlignment value="RIGHT" start="1, 0" stop="-1,-1"/>
+                <blockLeftPadding length="5" />
+                <blockRightPadding length="5" />
+                <blockTopPadding length="2" />
+                <blockBottomPadding length="2" />
+                <blockValign value="MIDDLE"/>
             {{script}}
                 # Add alternating colors to the table rows
                 n_rows = 4  # Adjust this based on your data
@@ -107,26 +104,24 @@
                 style = alternate_colors(n_rows, even_color, odd_color, start_row)
             {{endscript}}
             {{style}}
-        </blockTableStyle>
-    </stylesheet>
-
-    <story>
-        <name id="default:image" value="images/ogame/misc/default_image.png"/>
-        <!--this section contains the FLOWABLE elements of the -->
-        <!--document. These elements will fill up the frames -->
-        <!--defined in the <template> section above. -->
-        <para style="title_2">
+            </blockTableStyle>
+        </stylesheet>
+        <story>
+            <name id="default:image" value="images/ogame/misc/default_image.png"/>
+            <!--this section contains the FLOWABLE elements of the -->
+            <!--document. These elements will fill up the frames -->
+            <!--defined in the <template> section above. -->
+            <para style="title_2">
             Optimizer results
         </para>
-        <blockTable style="report_table" colWidths="50, 200, 100, 100" repeatRows="1" spaceAfter="0" spaceBefore="0">
-            <tr>
-                <td></td>
-                <td>Name</td>
-                <td>Attacker</td>
-                <td>Defender</td>
-            </tr>
-
-            <!-- Ships -->
+            <blockTable style="report_table" colWidths="50, 200, 100, 100" repeatRows="1" spaceAfter="0" spaceBefore="0">
+                <tr>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Attacker</td>
+                    <td>Defender</td>
+                </tr>
+                <!-- Ships -->
             {{
                 for i, (name, filename) in enumerate(
                     [('Light Fighter', 'fighterLight.png'),
@@ -149,18 +144,18 @@
                      start=0
                 ):
             }}
-            <tr>
-                <td>
-                    <illustration height="30" width="30">
-                        <image file="images/ogame/constructions/{{filename}}" x="0" y="0" width="30" height="30" preserveAspectRatio="yes"/>
-                    </illustration>
-                </td>
-                <td>{{name}}</td>
-                <td>{{fleet_data.attacker_ship_counts[i]}}</td>
-                <td>{{fleet_data.defender_ship_counts[i]}}</td>
-            </tr>
+                <tr>
+                    <td>
+                        <illustration height="30" width="30">
+                            <image file="images/ogame/constructions/{{filename}}" x="0" y="0" width="30" height="30" preserveAspectRatio="yes"/>
+                        </illustration>
+                    </td>
+                    <td>{{name}}</td>
+                    <td>{{fleet_data.attacker_ship_counts[i]}}</td>
+                    <td>{{fleet_data.defender_ship_counts[i]}}</td>
+                </tr>
             {{endfor}}
-            <!-- Defenses -->
+                <!-- Defenses -->
             {{
                 for i, (name, filename) in enumerate(
                     [('Rocket Launcher', 'rocketLauncher.png'),
@@ -174,62 +169,61 @@
                      start=17
                 ):
             }}
-            <tr>
-                <td>
-                    <illustration height="30" width="30">
-                        <image file="images/ogame/constructions/{{filename}}" x="0" y="0" width="30" height="30" preserveAspectRatio="yes"/>
-                    </illustration>
-                </td>
-                <td>{{name}}</td>
-                <td>-</td>
-                <td>{{fleet_data.defender_ship_counts[i]}}</td>
-            </tr>
+                <tr>
+                    <td>
+                        <illustration height="30" width="30">
+                            <image file="images/ogame/constructions/{{filename}}" x="0" y="0" width="30" height="30" preserveAspectRatio="yes"/>
+                        </illustration>
+                    </td>
+                    <td>{{name}}</td>
+                    <td>-</td>
+                    <td>{{fleet_data.defender_ship_counts[i]}}</td>
+                </tr>
             {{endfor}}
-        </blockTable>
-
-
-        <!-- Fight simulations -->
-        <!-- Separator -->
-        <illustration width="200" height="20" align="CENTER">
-            <fill color="white"/>
-            <stroke color="white"/>
-            <lines> 0 10 200 10</lines>
-        </illustration>
-        <para style="title_2">
+            </blockTable>
+            <!-- 
+        Fight simulations 
+        -->
+            <!-- Separator -->
+            <illustration width="200" height="20" align="CENTER">
+                <fill color="white"/>
+                <stroke color="white"/>
+                <lines> 0 10 200 10</lines>
+            </illustration>
+            <para style="title_2">
             Simulation results
         </para>
-        
-        <blockTable style="resource_table" colWidths="200, 80, 80, 80" repeatRows="1" spaceAfter="0" spaceBefore="0">
-            <tr>
-                <td></td>
+            <blockTable style="resource_table" colWidths="200, 80, 80, 80" repeatRows="1" spaceAfter="0" spaceBefore="0">
+                <tr>
+                    <td></td>
                 {{for resource in ["metal", "crystal", "deuterium"]}}
-                <td>
-                    <illustration height="40" width="40">
-                        <image file="images/ogame/resources/{{resource}}.png" x="0" y="0" width="40" height="40" preserveAspectRatio="yes"/>
-                    </illustration>
-                </td>
+                    <td>
+                        <illustration height="40" width="40">
+                            <image file="images/ogame/resources/{{resource}}.png" x="0" y="0" width="40" height="40" preserveAspectRatio="yes"/>
+                        </illustration>
+                    </td>
                 {{endfor}}
-            </tr>
-            <tr>
-                <td></td>
+                </tr>
+                <tr>
+                    <td></td>
                 {{for resource in ["metal", "crystal", "deuterium"]}}
-                <td>
+                    <td>
                     {{resource.capitalize()}}
                 </td>
                 {{endfor}}
-            </tr>
+                </tr>
 
             {{
                 for (name, losses_mean, losses_std) in [
                 ("Attacker losses", fleet_data.attacker_costs_mean, fleet_data.attacker_costs_std),
                 ("Defender losses", fleet_data.defender_costs_mean, fleet_data.defender_costs_std)]:
             }}
-            <tr>
-                <td>{{name}}</td>
+                <tr>
+                    <td>{{name}}</td>
                 {{
                     for i, (mean, std) in enumerate(zip(losses_mean, losses_std)):
                 }}
-                <td>
+                    <td>
                     {{if np.isnan(mean)}}
                         NA
                     {{elif mean == 0}}
@@ -239,9 +233,43 @@
                     {{endif}}
                 </td>
                 {{endfor}}
-            </tr>
+                </tr>
             {{endfor}}
-
-        </blockTable>
-    </story>
-</document>
+            </blockTable>
+            <!-- 
+        Fight cost vs fleet cost ratio
+         -->
+            <illustration width="200" height="20" align="CENTER">
+                <fill color="white"/>
+                <stroke color="white"/>
+                <lines> 0 10 200 10</lines>
+            </illustration>
+            <para style="title_2">
+            Fight cost vs fleet cost ratio
+        </para>
+            <drawing module="reporting.charts.fleet_cost_chart" function="FleetCostChart">
+                <!--pass in dynamic data as a python list expression with preppy -->
+                {{script}}
+                    # Create a list of tuples for the chart data
+                    chart_data = [
+                        tuple([(float(ratio), float(loss)) for ratio, loss in zip(fleet_data.fleet_cost_ratios, losses) ])
+                        for losses in [fleet_data.attacker_normalized_losses_by_ratio, 
+                                      fleet_data.defender_normalized_losses_by_ratio]
+                    ]
+                {{endscript}}
+                <param name="chart.data">{{chart_data}}</param>
+            </drawing>
+            {{script}}
+                from reporting.charts.fleet_cost_ratio_chart import FleetCostRatioChart
+                # Create a list of tuples for the chart data
+                chart = FleetCostRatioChart()
+                chart.x_values = fleet_data.fleet_cost_ratios
+                chart.y_values = [fleet_data.attacker_normalized_losses_by_ratio, 
+                                      fleet_data.defender_normalized_losses_by_ratio]
+                chart.plot()
+                print(chart.to_rlg())
+            {{endscript}}
+            <drawing module="reporting.charts.fleet_cost_ratio_chart" function="FleetCostRatioChart">
+            </drawing>
+        </story>
+    </document>

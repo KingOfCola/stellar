@@ -25,6 +25,8 @@ class FleetSimulatedAnnealing(SimulatedAnnealing):
         n_sim: int = 10,
         n_iter: int = 100,
         progress_bar: bool = False,
+        initial_temperature: float = 1.0,
+        cooling_rate: float = 0.99,
     ):
         self.authorized_ships = authorized_ships
         self.fleet_value_max = fleet_value_max
@@ -35,8 +37,8 @@ class FleetSimulatedAnnealing(SimulatedAnnealing):
             initial_solution=np.ones(len(authorized_ships)) / len(authorized_ships),
             objective_function=self.objective_function,
             jump_function=self.jump_function,
-            initial_temperature=1.0,
-            cooling_rate=0.99,
+            initial_temperature=initial_temperature,
+            cooling_rate=cooling_rate,
             max_iterations=n_iter,
             progress_bar=progress_bar,
         )

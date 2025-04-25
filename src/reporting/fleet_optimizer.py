@@ -5,6 +5,7 @@ import preppy
 import numpy as np
 
 from utils.paths import output, data
+from fight.fleets import RELATIVE_VALUES
 
 
 class FleetOptimizationData:
@@ -20,6 +21,10 @@ class FleetOptimizationData:
         defender_costs_mean=None,
         attacker_costs_std=None,
         defender_costs_std=None,
+        fleet_cost_ratios=None,
+        attacker_losses_by_ratio=None,
+        defender_losses_by_ratio=None,
+        resources_value=RELATIVE_VALUES,
     ):
         self.attacker_ship_counts = attacker_ship_counts
         self.defender_ship_counts = defender_ship_counts
@@ -39,6 +44,31 @@ class FleetOptimizationData:
         )
         self.defender_costs_std = (
             defender_costs_std if defender_costs_std is not None else np.full(3, np.nan)
+        )
+
+        self.resources_value = resources_value
+
+        # Stores the fleet losses by value ratio
+        self.fleet_cost_ratios = (
+            fleet_cost_ratios if fleet_cost_ratios is not None else np.full(3, np.nan)
+        )
+        self.attacker_losses_by_ratio = (
+            attacker_losses_by_ratio
+            if attacker_losses_by_ratio is not None
+            else np.full((3, 3), np.nan)
+        )
+        self.defender_losses_by_ratio = (
+            defender_losses_by_ratio
+            if defender_losses_by_ratio is not None
+            else np.full((3, 3), np.nan)
+        )
+
+        # Calculate the normalized losses by ratio
+        self.attacker_normalized_losses_by_ratio = (
+            self.resources_value @ self.attacker_losses_by_ratio
+        )
+        self.defender_normalized_losses_by_ratio = (
+            self.resources_value @ self.defender_losses_by_ratio
         )
 
 
@@ -71,6 +101,7 @@ def make_optimization_report(
 if __name__ == "__main__":
     # create a directory for the report if it doesn't exist
     output_filename = output("fleet_report.pdf").absolute().as_posix()
+    ratios = np.geomspace(0.2, 5, 11)
 
     fleet_data = FleetOptimizationData(
         attacker_ship_counts=np.arange(5, 30),
@@ -79,6 +110,9 @@ if __name__ == "__main__":
         defender_costs_mean=np.random.randint(0, 1000000, 3),
         attacker_costs_std=np.random.randint(0, 1000, 3),
         defender_costs_std=np.random.randint(0, 1000, 3),
+        fleet_cost_ratios=ratios,
+        attacker_losses_by_ratio=np.ones((3, 1)) / (1 + ratios[None, :]),
+        defender_losses_by_ratio=np.ones((3, 1)) / (1 + 1 / ratios[None, :]),
     )
 
     make_optimization_report(fleet_data, output_filename)

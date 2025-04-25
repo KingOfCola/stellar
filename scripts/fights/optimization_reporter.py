@@ -41,12 +41,12 @@ SHIP_PERMUTATION = np.array(
 
 if __name__ == "__main__":
     # Defense fleet only
-    authorized_ships = np.array([17, 18, 19, 20, 21, 22])
-    fleet_value_max = 10_000_000
+    authorized_ships = np.arange(23)
+    fleet_value_max = 100_000_000
 
     # 8M of Cruisers
     fleet_other_proportions = np.zeros(len(SHIP_NAMES), dtype=int)
-    fleet_other_proportions[4] = 1
+    fleet_other_proportions[8] = 1
     fleet_other_proportions[2] = 0
     fleet_other = create_fleet_target_value(
         target_value=fleet_value_max * 1.0,
@@ -58,8 +58,9 @@ if __name__ == "__main__":
         fleet_value_max=fleet_value_max,
         fleet_other=fleet_other,
         n_sim=20,
-        n_iter=100,
+        n_iter=1000,
         progress_bar=True,
+        cooling_rate=0.995,
     )
     (fleet_proportions, best_score) = sa_optimizer.optimize()
 
